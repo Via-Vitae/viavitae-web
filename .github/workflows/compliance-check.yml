@@ -9,10 +9,10 @@ name: Compliance check
 # LEAST PRIVILEGE: workflow default `contents: read`; only `licences` escalates to
 # `pull-requests: write` to apply the manual-review label.
 #
-# OUTSTANDING BEFORE FIRST RUN: workflows ship with action TAGS, not SHAs (resolving
-# authentic SHAs needs a network lookup — QODER rule 4). The action-pinning gate below
-# will fail until every `uses:` is SHA-pinned. This mirrors the viavitae-template
-# precedent and is a deliberate, tracked pre-launch item.
+# ACTIONS ARE SHA-PINNED (rule R4): every `uses:` references an authentic full
+# 40-char commit SHA resolved from its semantic tag via network lookup (QODER rule 4 —
+# never fabricated), with the tag kept as a trailing comment for humans and Dependabot.
+# The action-pinning gate below verifies the pin and ignores the trailing comment.
 
 on:
   push:
@@ -43,11 +43,11 @@ jobs:
     timeout-minutes: 30
     steps:
       - name: Check out full history
-        uses: actions/checkout@v4
+        uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262 # v4
         with:
           fetch-depth: 0
       - name: Gitleaks (full history)
-        uses: gitleaks/gitleaks-action@v2
+        uses: gitleaks/gitleaks-action@ff98106e4c7b2bc287b24eaf42907196329070c7 # v2
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           # Required for organisation repositories; store a free key as an org secret.
@@ -70,10 +70,9 @@ jobs:
       contents: read
       pull-requests: write
     steps:
-      - uses: actions/checkout@v4
-      - uses: pnpm/action-setup@v4
-        with: { version: "${{ env.PNPM_VERSION }}" }
-      - uses: actions/setup-node@v4
+      - uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262 # v4
+      - uses: pnpm/action-setup@b906affcce14559ad1aafd4ab0e942779e9f58b1 # v4
+      - uses: actions/setup-node@49933ea5288caeca8642d1e84afbd3f7d6820020 # v4
         with: { node-version: "${{ env.NODE_VERSION }}", cache: pnpm }
       - name: Configure private registry
         run: |
@@ -134,7 +133,7 @@ jobs:
           fi
       - name: Upload licence reports
         if: always()
-        uses: actions/upload-artifact@v4
+        uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02 # v4
         with:
           name: licence-reports
           path: |
@@ -157,7 +156,7 @@ jobs:
     runs-on: ubuntu-latest
     timeout-minutes: 15
     steps:
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262 # v4
       - name: Verify required governance files
         run: |
           set -uo pipefail
@@ -211,7 +210,7 @@ jobs:
     runs-on: ubuntu-latest
     timeout-minutes: 15
     steps:
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262 # v4
       - name: Verify every action reference is SHA-pinned
         run: |
           set -uo pipefail
@@ -220,13 +219,13 @@ jobs:
             [ -z "$line" ] && continue
             total=$((total + 1))
             file=${line%%:*}; rest=${line#*:}; lineno=${rest%%:*}
-            ref=$(printf '%s' "$rest" | sed -E 's/.*uses:[[:space:]]*//; s/[[:space:]]*$//')
+            ref=$(printf '%s' "$rest" | sed -E 's/.*uses:[[:space:]]*//; s/[[:space:]]+#.*$//; s/[[:space:]]*$//')
             case "$ref" in ./*|./.github/*) continue ;; esac
             if ! printf '%s' "$ref" | grep -qE '@[0-9a-f]{40}$'; then
               echo "::error file=${file},line=${lineno}::Unpinned action '${ref}'. Rule R4 requires a full-length commit SHA."
               unpinned=$((unpinned + 1))
             fi
-          done < <(grep -rn --include='*.yml' --include='*.yaml' -E '^\s*uses:\s*\S+' .github/workflows 2>/dev/null | grep -v '^\s*#')
+          done < <(grep -rn --include='*.yml' --include='*.yaml' -E '^\s*(-\s*)?uses:\s*\S+' .github/workflows 2>/dev/null | grep -v '^\s*#')
           echo "action references checked: ${total}; unpinned: ${unpinned}"
           if [ "${unpinned}" -ne 0 ]; then
             echo "::error::${unpinned} action reference(s) are pinned to a mutable tag or branch."
