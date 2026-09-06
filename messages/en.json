@@ -1,0 +1,601 @@
+{
+  "a11y": {
+    "skipToContent": "Skip to main content"
+  },
+  "nav": {
+    "product": "Product",
+    "products": "Products",
+    "pricing": "Pricing",
+    "resources": "Resources",
+    "solutions": "Solutions",
+    "integrations": "Integrations",
+    "partners": "Partners",
+    "why": "Why ViaVitae",
+    "about": "About",
+    "mission": "Mission",
+    "contact": "Contact & support",
+    "blog": "Blog",
+    "news": "News",
+    "guides": "Guides",
+    "onboarding": "Onboarding & training",
+    "legalCompliance": "Legal & compliance",
+    "startFree": "Start for free",
+    "login": "Log in",
+    "breadcrumb": "Breadcrumb",
+    "home": "Home",
+    "menu": "Menu",
+    "closeMenu": "Close menu",
+    "globalLabel": "Main navigation",
+    "ribbonLabel": "Product catalogue",
+    "productMenuHeading": "All products",
+    "productSectionLabel": "Product section"
+  },
+  "footer": {
+    "tagline": "Digital infrastructure for churches, dioceses and faith organisations in the EU.",
+    "trustBadges": "Compliance and trust",
+    "copyright": "© {year} {entity}. All rights reserved.",
+    "newsletterComingSoon": "Newsletter coming soon — double opt-in, no third-party sharing.",
+    "products": "Products",
+    "company": "Company",
+    "resources": "Resources",
+    "legal": "Legal"
+  },
+  "home": {
+    "eyebrow": "ViaVitae",
+    "title": "Digital presence for churches and dioceses",
+    "subtitle": "Websites, donations, cemetery services and CRM for faith organisations across the European Union — GDPR-compliant and EU-hosted.",
+    "productsHeading": "A platform for every community",
+    "productsSubheading": "Fifteen purpose-built products, from a single parish site to a diocese-wide platform.",
+    "ctaHeading": "Request a free digital assessment",
+    "ctaBody": "Tell us about your community and current website. We will review it and send practical, no-obligation recommendations."
+  },
+  "products": {
+    "basilica": { "name": "Basilica", "short": "Basilica" },
+    "cathedral": { "name": "Cathedral", "short": "Cathedral" },
+    "diocese": { "name": "Diocese", "short": "Diocese" },
+    "deaneries": { "name": "Deaneries", "short": "Deaneries" },
+    "parishChurch": { "name": "Parish Church", "short": "Parish Church" },
+    "funeralServices": { "name": "Funeral Services", "short": "Funeral Services" },
+    "cemeteryServices": { "name": "Cemetery Services", "short": "Cemetery Services" },
+    "onlineStore": { "name": "Online Store", "short": "Online Store" },
+    "marketplace": { "name": "Marketplace", "short": "Marketplace" },
+    "vendorDashboard": { "name": "Vendor Dashboard", "short": "Vendors" },
+    "donationFlow": { "name": "Donation Flow", "short": "Donations" },
+    "donationImpact": { "name": "Donation Impact", "short": "Impact" },
+    "crmDashboard": { "name": "CRM Dashboard", "short": "CRM" },
+    "aiPastoralAssistant": { "name": "AI Pastoral Assistant", "short": "AI Assistant" },
+    "gpsCemeteryMap": { "name": "GPS Cemetery Map", "short": "Cemetery Map" }
+  },
+  "product": {
+    "eyebrow": "Product",
+    "heroSubtitle": "{product} for churches, dioceses and faith organisations.",
+    "featuresHeading": "What is included",
+    "features": [
+      "Responsive design for desktop, tablet and mobile",
+      "Multilingual content in Lithuanian, English and Russian",
+      "GDPR-compliant, EU-hosted infrastructure",
+      "Accessibility targeting WCAG 2.2 AA",
+      "Ongoing maintenance and support"
+    ],
+    "demoHeading": "See it in action",
+    "demoTitle": "Interactive {product} demo",
+    "pricingHeading": "Pricing tiers",
+    "faqHeading": "Frequently asked questions",
+    "ctaHeading": "Request your digital assessment",
+    "ctaBody": "Get practical recommendations for your community. No obligation, no payment details required."
+  },
+  "tiers": {
+    "economy": { "name": "Economy", "summary": "A focused single-site presence." },
+    "normal": { "name": "Normal", "summary": "Multilingual site with donations." },
+    "vip": { "name": "VIP", "summary": "Full platform with CRM and AI." }
+  },
+  "pricing": {
+    "title": "Pricing",
+    "lead": "Transparent one-off build tiers plus an optional monthly maintenance band. All figures exclude VAT (PVM).",
+    "tiersHeading": "Build tiers",
+    "calculatorHeading": "Estimate your configuration",
+    "tableCaption": "Comparison of features included in each build tier",
+    "featureColumn": "Feature",
+    "oneOff": "one-off",
+    "included": "Included",
+    "notIncluded": "Not included",
+    "maintenance": "Maintenance",
+    "perMonth": "month",
+    "vatNote": "All prices exclude VAT (PVM, 21%). The final price for a configuration is confirmed in your quote.",
+    "features": {
+      "responsive": "Responsive design",
+      "multilanguage": "Multilingual (LT / EN / RU)",
+      "donations": "Donations & payments",
+      "crm": "CRM dashboard",
+      "aiAssistant": "AI pastoral assistant",
+      "prioritySupport": "Priority support"
+    }
+  },
+  "quote": {
+    "addonsLabel": "Add-ons",
+    "configure": "Configure your quote",
+    "product": "Product",
+    "tier": "Tier",
+    "pages": "Pages",
+    "languages": "Languages",
+    "email": "Email for the quote PDF",
+    "consent": "I agree to the processing of my contact details to receive this quote (see the privacy notice).",
+    "downloadPdf": "Download quote PDF",
+    "preparing": "Preparing…",
+    "requestAssessment": "Prefer a full assessment? Start here",
+    "summary": "Summary",
+    "fromLabel": "From (one-off build, excl. VAT)",
+    "maintenance": "Maintenance",
+    "perMonth": "month",
+    "finalPriceNote": "The authoritative total for your configuration is calculated by the quote service and returned in the PDF.",
+    "errors": {
+      "consentRequired": "Please confirm consent to receive the quote.",
+      "generic": "We could not prepare your quote. Please try again.",
+      "network": "Network error. Check your connection and try again."
+    },
+    "tiers": {
+      "economy": "Economy",
+      "normal": "Normal",
+      "vip": "VIP"
+    },
+    "addons": {
+      "extraLanguage": "Additional language",
+      "extraPagePack": "Additional page pack",
+      "donationModule": "Donation module",
+      "cemeteryGps": "Cemetery GPS mapping",
+      "aiAssistant": "AI assistant"
+    },
+    "products": {
+      "basilica": "Basilica",
+      "cathedral": "Cathedral",
+      "diocese": "Diocese",
+      "deaneries": "Deaneries",
+      "parish-church": "Parish Church",
+      "funeral-services": "Funeral Services",
+      "cemetery-services": "Cemetery Services",
+      "online-store": "Online Store",
+      "marketplace": "Marketplace",
+      "vendor-dashboard": "Vendor Dashboard",
+      "donation-flow": "Donation Flow",
+      "donation-impact": "Donation Impact",
+      "crm-dashboard": "CRM Dashboard",
+      "ai-pastoral-assistant": "AI Pastoral Assistant",
+      "gps-cemetery-map": "GPS Cemetery Map"
+    }
+  },
+  "wizard": {
+    "chooseDemo": "Choose a demo to preview",
+    "demoTitle": "Interactive {product} demo",
+    "prompt": "Preview a demo, then make it yours with your own content.",
+    "makeItMine": "Make it mine",
+    "products": {
+      "basilica": "Basilica",
+      "cathedral": "Cathedral",
+      "diocese": "Diocese",
+      "deaneries": "Deaneries",
+      "parish-church": "Parish Church",
+      "funeral-services": "Funeral Services",
+      "cemetery-services": "Cemetery Services",
+      "online-store": "Online Store",
+      "marketplace": "Marketplace",
+      "vendor-dashboard": "Vendor Dashboard",
+      "donation-flow": "Donation Flow",
+      "donation-impact": "Donation Impact",
+      "crm-dashboard": "CRM Dashboard",
+      "ai-pastoral-assistant": "AI Pastoral Assistant",
+      "gps-cemetery-map": "GPS Cemetery Map"
+    }
+  },
+  "assessment": {
+    "title": "Request a digital assessment",
+    "stepProgress": "Step {current} of {total}",
+    "steps": {
+      "organization": "About your organisation",
+      "site": "Your current website",
+      "goals": "Your goals",
+      "contact": "Contact details"
+    },
+    "labels": {
+      "organizationType": "Organisation type",
+      "organizationName": "Organisation name (optional)",
+      "currentSiteUrl": "Current website URL (optional)",
+      "currentStatus": "Current situation (optional)",
+      "selectOptional": "Please select",
+      "contactName": "Contact name (optional)",
+      "contactEmail": "Contact email",
+      "contactPhone": "Contact phone (optional)",
+      "message": "Message (optional)"
+    },
+    "orgTypes": {
+      "basilica": "Basilica",
+      "cathedral": "Cathedral",
+      "diocese": "Diocese",
+      "deanery": "Deanery",
+      "parish_church": "Parish church",
+      "funeral_services": "Funeral services",
+      "cemetery_services": "Cemetery services",
+      "online_store": "Online store",
+      "marketplace_vendor": "Marketplace vendor",
+      "other_organization": "Other organisation"
+    },
+    "currentStatus": {
+      "no_website": "No website yet",
+      "outdated": "Outdated website",
+      "needs_redesign": "Needs a redesign",
+      "unhappy_with_provider": "Unhappy with current provider"
+    },
+    "goals": {
+      "new_website": "New website",
+      "ecommerce": "Online store",
+      "donations": "Donations",
+      "crm_integration": "CRM integration",
+      "ai_assistant": "AI assistant",
+      "cemetery_map": "Cemetery map",
+      "maintenance_only": "Maintenance only"
+    },
+    "goalsHint": "Select up to five goals.",
+    "thirdPartyNotice": "Please describe your community or organisation, not identifiable individuals. Do not include personal data about third parties in the message.",
+    "consentPrivacy": "I agree to the processing of my contact details so ViaVitae can prepare and send my assessment (required).",
+    "consentMarketing": "I would also like to receive occasional product and news updates (optional).",
+    "consentVersion": "Privacy notice version: {version}",
+    "back": "Back",
+    "continue": "Continue",
+    "submit": "Submit request",
+    "submitting": "Submitting…",
+    "successTitle": "Thank you — your request was received",
+    "successBody": "We will review your details and respond with practical recommendations at the email address you provided.",
+    "errors": {
+      "rateLimited": "Too many requests. Please wait a moment and try again.",
+      "duplicate": "We already received this request. We will be in touch.",
+      "generic": "We could not submit your request. Please try again.",
+      "network": "Network error. Check your connection and try again.",
+      "consentRequired": "Please confirm the privacy consent to continue."
+    },
+    "fields": {
+      "organization_type": "Please choose an organisation type.",
+      "organization_name": "Enter a valid organisation name (at least 2 characters).",
+      "current_site_url": "Enter a valid URL, or leave this field empty.",
+      "contact_name": "Enter a valid name (at least 2 characters), or leave it empty.",
+      "contact_email": "Enter a valid email address.",
+      "contact_phone": "Enter a valid phone number, or leave it empty.",
+      "message": "The message is too long (maximum 2000 characters).",
+      "consent_privacy": "Please confirm the privacy consent to continue."
+    }
+  },
+  "cookieConsent": {
+    "title": "Cookie preferences",
+    "body": "We use only necessary cookies by default. With your consent we use privacy-friendly analytics (self-hosted Matomo, EU). You can change or withdraw consent at any time.",
+    "cookiesLink": "Cookie policy",
+    "privacyLink": "Privacy notice",
+    "categories": "Cookie categories",
+    "necessary": "Necessary (always on)",
+    "analytics": "Analytics (self-hosted Matomo)",
+    "marketing": "Marketing",
+    "acceptAll": "Accept all",
+    "rejectAll": "Reject all",
+    "saveChoices": "Save choices"
+  },
+  "demo": {
+    "openFull": "Open the full demo in a new tab",
+    "fallbackNote": "If the embedded demo does not load, use the link above."
+  },
+  "languageSwitcher": {
+    "label": "Change language",
+    "soon": "Coming soon",
+    "soonBadge": "soon"
+  },
+  "contact": {
+    "title": "Contact & support",
+    "lead": "Reach the right team. Security issues have a dedicated channel and a 72-hour breach SLA (see SECURITY.md).",
+    "channelsHeading": "Contact channels",
+    "slaHeading": "Support response targets",
+    "slaCaption": "Support response and update targets by severity",
+    "slaTier": "Severity",
+    "slaResponse": "First response",
+    "slaUpdate": "Next update",
+    "sales": "Sales",
+    "support": "Support",
+    "security": "Security",
+    "phone": "Phone",
+    "status": "System status"
+  },
+  "sla": {
+    "tier": {
+      "critical": "Critical",
+      "high": "High",
+      "normal": "Normal"
+    },
+    "response": {
+      "1h": "Within 1 hour",
+      "4h": "Within 4 hours",
+      "1d": "Within 1 business day"
+    },
+    "update": {
+      "4h": "Every 4 hours",
+      "1d": "Every business day",
+      "3d": "Every 3 business days"
+    }
+  },
+  "integrations": {
+    "title": "Integrations",
+    "lead": "ViaVitae connects to the systems churches already use. Data flows through our EU-hosted API; the browser never talks to a third-party CRM directly.",
+    "bitrix24": {
+      "name": "Bitrix24",
+      "description": "Lead and CRM synchronisation, performed server-side by viavitae-api.",
+      "compliance": "Data residency and a DPIA review are required before enabling CRM sync."
+    },
+    "stripe": {
+      "name": "Stripe",
+      "description": "Card payments for stores and donations.",
+      "compliance": "Payment data triggers PCI-DSS scope; handled by the payment provider, never stored by us."
+    },
+    "paysera": {
+      "name": "Paysera",
+      "description": "Regional bank and card payments popular in the Baltics.",
+      "compliance": "Payment data triggers PCI-DSS scope; handled by the payment provider."
+    },
+    "matomo": {
+      "name": "Matomo",
+      "description": "Privacy-friendly, self-hosted analytics.",
+      "compliance": "Self-hosted in the EU; loaded only after analytics consent."
+    },
+    "calcom": {
+      "name": "Cal.com",
+      "description": "Scheduling for assessment follow-up calls.",
+      "compliance": "Scheduling links are offered only with the submitter consent."
+    }
+  },
+  "legal": {
+    "privacy": "Privacy notice",
+    "terms": "Terms of service",
+    "cookies": "Cookie policy",
+    "impressum": "Legal imprint (Impressum)",
+    "version": "Version {version}",
+    "effective": "Effective {date}",
+    "pendingNotice": "This legal document is being prepared by the ViaVitae legal team and will be published before launch. No legal text is shown until it has been reviewed and approved."
+  },
+  "login": {
+    "title": "Client portal",
+    "notConfigured": "Client portal sign-in is not configured for this environment. Single sign-on will be enabled before launch."
+  },
+  "startForFree": {
+    "title": "Start for free",
+    "lead": "Preview a demo, then request a free digital assessment for your community. No payment details required."
+  },
+  "why": {
+    "title": "Why ViaVitae",
+    "lead": "Purpose-built software for the church vertical, engineered for EU compliance.",
+    "body": [
+      "ViaVitae builds digital infrastructure specifically for churches, dioceses, deaneries and related organisations. Every product is designed around the way these communities actually work — from parish communication to cemetery services and donations.",
+      "We are an EU-focused vendor: infrastructure is hosted in the European Union, analytics are self-hosted, and the platform is built for GDPR compliance and WCAG 2.2 AA accessibility. This is a launch-gated summary; detailed references and case studies will be published once approved."
+    ]
+  },
+  "about": {
+    "title": "About ViaVitae",
+    "lead": "Who we are and what we build.",
+    "body": [
+      "ViaVitae is a software vendor serving the church vertical across the European Union. Our catalogue spans websites, donations, online stores, CRM and cemetery services.",
+      "Registered entity details, team information and company history are a launch gate and will be published here once verified by the ViaVitae legal entity."
+    ]
+  },
+  "mission": {
+    "title": "Our mission",
+    "lead": "Help faith communities serve people well, with trustworthy technology.",
+    "body": [
+      "Our mission is to give churches and dioceses dependable, accessible and compliant digital tools, so they can focus on their communities rather than on technology.",
+      "This mission statement is a launch-gated placeholder and will be finalised and approved by ViaVitae before go-live."
+    ]
+  },
+  "partners": {
+    "title": "Partners",
+    "lead": "Technology and channel partners.",
+    "body": [
+      "We work with hosting, payments and integration partners to deliver the ViaVitae platform across the EU.",
+      "The published partner list is a launch gate; named partners and logos will appear here once agreements and brand approvals are in place."
+    ]
+  },
+  "solutions": {
+    "title": "Solutions",
+    "lead": "Tailored bundles for parishes, dioceses, cemeteries and stores.",
+    "body": [
+      "ViaVitae solutions combine products from the catalogue into bundles for common needs: a parish presence, a diocese-wide platform, cemetery and funeral services, or online giving and stores.",
+      "Detailed solution bundles, eligibility and pricing are confirmed through the assessment and quote process."
+    ]
+  },
+  "legalCompliance": {
+    "title": "Legal & compliance",
+    "lead": "How ViaVitae approaches GDPR, accessibility and data residency.",
+    "body": [
+      "ViaVitae is built for EU compliance: data is hosted in the European Union, analytics are self-hosted and consent-gated, and the assessment funnel follows a documented DPIA (DPIA-001).",
+      "Accessibility targets WCAG 2.2 AA. Security vulnerabilities follow the disclosure process and 72-hour breach SLA in SECURITY.md."
+    ],
+    "links": [
+      { "label": "Privacy notice", "href": "/legal/privacy" },
+      { "label": "Cookie policy", "href": "/legal/cookies" },
+      { "label": "Terms of service", "href": "/legal/terms" },
+      { "label": "Legal imprint", "href": "/legal/impressum" }
+    ]
+  },
+  "onboarding": {
+    "title": "Onboarding & training",
+    "lead": "Get your team confident with ViaVitae.",
+    "body": [
+      "Onboarding covers content setup, language configuration, donations and cemetery modules, and administrator training.",
+      "Training materials and scheduled sessions are a launch-gate deliverable and will be listed here once published."
+    ],
+    "links": [
+      { "label": "Guides", "href": "/resources/guides" },
+      { "label": "Contact & support", "href": "/contact-support" }
+    ]
+  },
+  "resources": {
+    "hubLabel": "Resources"
+  },
+  "blog": {
+    "title": "Blog",
+    "lead": "Product updates, guidance and stories from the church vertical.",
+    "empty": "No articles published yet. Check back soon.",
+    "categoryFilter": "Filter articles by category",
+    "allCategories": "All categories",
+    "pagination": "Blog pagination",
+    "prev": "Previous",
+    "next": "Next",
+    "pageOf": "Page {page} of {pageCount}",
+    "byAuthor": "By {author}"
+  },
+  "news": {
+    "title": "News",
+    "lead": "ViaVitae news and announcements, with links to the original sources.",
+    "empty": "No news items published yet.",
+    "readSource": "Read the source"
+  },
+  "guides": {
+    "title": "Guides",
+    "lead": "Practical how-to guides for setting up and running your ViaVitae platform.",
+    "empty": "No guides published yet."
+  },
+  "seo": {
+    "home": {
+      "title": "ViaVitae — digital presence for churches and dioceses",
+      "description": "Websites, donations, cemetery services and CRM for churches, dioceses and faith organisations in the EU. GDPR-compliant and EU-hosted."
+    },
+    "about": {
+      "title": "About ViaVitae | ViaVitae",
+      "description": "ViaVitae is an EU software vendor building digital infrastructure for the church vertical: websites, donations, stores, CRM and cemetery services."
+    },
+    "mission": {
+      "title": "Our mission | ViaVitae",
+      "description": "Our mission is to give churches and dioceses dependable, accessible and GDPR-compliant digital tools."
+    },
+    "contact": {
+      "title": "Contact & support | ViaVitae",
+      "description": "Contact ViaVitae sales, support and security. Response targets and a 72-hour breach SLA are published here."
+    },
+    "pricing": {
+      "title": "Pricing | ViaVitae",
+      "description": "Transparent one-off build tiers (Economy, Normal, VIP) plus an optional monthly maintenance band. Prices exclude VAT."
+    },
+    "startForFree": {
+      "title": "Start for free | ViaVitae",
+      "description": "Preview a demo and request a free digital assessment for your church or diocese. No payment details required."
+    },
+    "login": {
+      "title": "Client portal | ViaVitae",
+      "description": "Sign in to the ViaVitae client portal via single sign-on."
+    },
+    "solutions": {
+      "title": "Solutions | ViaVitae",
+      "description": "Tailored ViaVitae bundles for parishes, dioceses, cemeteries, funeral services and online stores."
+    },
+    "integrations": {
+      "title": "Integrations | ViaVitae",
+      "description": "ViaVitae integrates with Bitrix24, Stripe, Paysera, Matomo and Cal.com through an EU-hosted API."
+    },
+    "partners": {
+      "title": "Partners | ViaVitae",
+      "description": "Technology and channel partners delivering the ViaVitae platform across the European Union."
+    },
+    "why": {
+      "title": "Why ViaVitae | ViaVitae",
+      "description": "Purpose-built software for the church vertical, engineered for EU data residency, GDPR and WCAG 2.2 AA accessibility."
+    },
+    "product": {
+      "basilica": {
+        "title": "Basilica | ViaVitae",
+        "description": "A website and management platform for basilicas, with multilingual content, donations and EU-hosted GDPR compliance."
+      },
+      "cathedral": {
+        "title": "Cathedral | ViaVitae",
+        "description": "A digital platform for cathedrals: multilingual content, events, donations and accessible, EU-hosted infrastructure."
+      },
+      "diocese": {
+        "title": "Diocese | ViaVitae",
+        "description": "A diocese-wide platform connecting parishes with shared content, CRM and reporting, hosted in the EU."
+      },
+      "deaneries": {
+        "title": "Deaneries | ViaVitae",
+        "description": "Coordinate a deanery of parishes with shared content, directories and communication tools."
+      },
+      "parishChurch": {
+        "title": "Parish Church | ViaVitae",
+        "description": "A parish website with news, events, multilingual content and donations, built for accessibility and GDPR."
+      },
+      "funeralServices": {
+        "title": "Funeral Services | ViaVitae",
+        "description": "Manage funeral service information, notices and scheduling with a dignified, accessible online presence."
+      },
+      "cemeteryServices": {
+        "title": "Cemetery Services | ViaVitae",
+        "description": "Cemetery management: plot records, search and services, with optional GPS mapping."
+      },
+      "onlineStore": {
+        "title": "Online Store | ViaVitae",
+        "description": "Sell items online with an accessible storefront, EU payment providers and PCI-compliant checkout."
+      },
+      "marketplace": {
+        "title": "Marketplace | ViaVitae",
+        "description": "A multi-vendor marketplace with vendor onboarding, listings and PCI-compliant payments."
+      },
+      "vendorDashboard": {
+        "title": "Vendor Dashboard | ViaVitae",
+        "description": "A dashboard for marketplace vendors to manage listings, orders and payouts."
+      },
+      "donationFlow": {
+        "title": "Donation Flow | ViaVitae",
+        "description": "Accept one-off and recurring donations with an accessible, PCI-compliant giving flow."
+      },
+      "donationImpact": {
+        "title": "Donation Impact | ViaVitae",
+        "description": "Show donors the impact of their giving with transparent, configurable reporting."
+      },
+      "crmDashboard": {
+        "title": "CRM Dashboard | ViaVitae",
+        "description": "Manage community relationships and leads with a CRM dashboard, synchronised server-side."
+      },
+      "aiPastoralAssistant": {
+        "title": "AI Pastoral Assistant | ViaVitae",
+        "description": "An assistant for common pastoral and administrative questions, with data processed in the EU."
+      },
+      "gpsCemeteryMap": {
+        "title": "GPS Cemetery Map | ViaVitae",
+        "description": "Locate plots and navigate cemeteries with GPS mapping tied to cemetery records."
+      }
+    },
+    "blog": {
+      "title": "Blog | ViaVitae",
+      "description": "Product updates, guidance and stories from the church vertical."
+    },
+    "news": {
+      "title": "News | ViaVitae",
+      "description": "ViaVitae news and announcements, with links to the original sources."
+    },
+    "guides": {
+      "title": "Guides | ViaVitae",
+      "description": "Practical how-to guides for setting up and running your ViaVitae platform."
+    },
+    "legalCompliance": {
+      "title": "Legal & compliance | ViaVitae",
+      "description": "How ViaVitae approaches GDPR, EU data residency and WCAG 2.2 AA accessibility."
+    },
+    "onboarding": {
+      "title": "Onboarding & training | ViaVitae",
+      "description": "Onboarding and training for content, languages, donations, cemetery modules and administrators."
+    },
+    "privacy": {
+      "title": "Privacy notice | ViaVitae",
+      "description": "How ViaVitae processes personal data, your rights under the GDPR, and how to contact us."
+    },
+    "terms": {
+      "title": "Terms of service | ViaVitae",
+      "description": "The terms governing use of the ViaVitae platform and services."
+    },
+    "cookies": {
+      "title": "Cookie policy | ViaVitae",
+      "description": "The cookies ViaVitae uses, why, and how to control your consent."
+    },
+    "impressum": {
+      "title": "Legal imprint (Impressum) | ViaVitae",
+      "description": "The legal imprint for ViaVitae, including the registered entity and contact details required by Lithuanian law."
+    }
+  }
+}

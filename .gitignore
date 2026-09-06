@@ -1,0 +1,83 @@
+# viavitae-web .gitignore — Node / Next.js / TypeScript.
+# Derived from the viavitae-template superset, trimmed to this stack.
+#
+# Never un-ignore a secret, key or environment file. If a value must be committed
+# it is not a secret and belongs in .env.example (documented, no value) or a schema.
+#
+# NOTE: pnpm-lock.yaml is deliberately NOT ignored. The lockfile is committed and
+# is the source of reproducible installs; CI installs with --frozen-lockfile.
+
+# --- Secrets and environment -------------------------------------------------
+.env
+.env.*
+!.env.example
+*.pem
+*.key
+*.p12
+*.pfx
+.npmrc
+
+# --- Dependencies ------------------------------------------------------------
+node_modules/
+.pnpm-store/
+
+# --- Next.js build output ----------------------------------------------------
+.next/
+out/
+build/
+next-env.d.ts
+*.tsbuildinfo
+.swc/
+
+# --- Test and tooling output -------------------------------------------------
+coverage/
+*.lcov
+playwright-report/
+test-results/
+blob-report/
+playwright/.cache/
+.lhci/
+lighthouse-report/
+
+# --- Lint / format caches ----------------------------------------------------
+.eslintcache
+.stylelintcache
+.prettiercache
+.turbo/
+.vite/
+
+# --- Logs --------------------------------------------------------------------
+*.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*
+
+# --- Editors, IDEs, OS -------------------------------------------------------
+.idea/*
+!.idea/runConfigurations/
+.vscode/*
+!.vscode/settings.json
+!.vscode/extensions.json
+!.vscode/launch.json
+*.swp
+*.swo
+*~
+.DS_Store
+.DS_Store?
+._*
+.Spotlight-V100
+.Trashes
+Thumbs.db
+ehthumbs.db
+Desktop.ini
+
+# --- Archives and large binaries ---------------------------------------------
+*.zip
+*.tar
+*.tar.gz
+*.tgz
+*.rar
+*.7z
+*.dmg
+*.iso

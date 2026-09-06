@@ -1,0 +1,70 @@
+# CODEOWNERS — viavitae-web   (GitHub org: Via-Vitae)
+#
+# ACTUAL OWNERSHIP MODEL (2026-09): SOLE OWNER + one independent four-eyes
+# reviewer. The former multi-team owners (architects, compliance, dpo, legal,
+# platform, security, web-team) never existed and have been REMOVED: GitHub marks
+# unknown teams as invalid owners and, with "require review from Code Owners"
+# enabled, that would permanently block every pull request.
+#
+# FOUR-EYES (two-person integrity):
+#   * The owner authors PRs. @IterVitae (the owner's son — an independent GitHub
+#     account) is the required reviewer. GitHub forbids self-approval, so
+#     @IterVitae's approval IS the four-eyes gate on every change.
+#   * @IterVitae MUST be added as a repo collaborator (or Via-Vitae org member)
+#     or GitHub shows "unknown owner" and the rule does not resolve.
+#   * @IterVitae must use HIS OWN credentials. If the owner also holds that
+#     login, the four-eyes control is void (self-approval) and breaches GitHub
+#     account-sharing terms.
+#   * OWNER: add your own handle to the default rule when convenient, e.g.
+#         *   @JourneyOfLife   @IterVitae
+#     (guidance in a comment, not a placeholder rule, so CI never sees a fake owner).
+#
+# LIMITS OF THIS CONTROL (recorded honestly — see README launch gates):
+#   * GitHub enforces code review only. For GDPR Article-9 / DPIA / legal /
+#     payment / auth changes a family reviewer is NOT independent or necessarily
+#     competent assurance; those paths ALSO require off-platform DPO /
+#     external-expert sign-off before merge or go-live.
+#   * Branch protection = required status checks + required Code Owner review,
+#     with admin bypass ON so the sole owner is never locked out when the
+#     reviewer is unavailable (every bypass is logged and visible).
+#
+# Syntax: last matching pattern wins; guarded paths are declared after broad ones.
+
+# --- 1. Default: everything requires four-eyes review ------------------------
+*                                          @JourneyOfLife @IterVitae
+
+# --- 2. Compliance / security-critical paths ---------------------------------
+# Only one reviewer identity exists today, so these resolve to the same owner;
+# they are listed explicitly so the sensitivity map survives and can be
+# re-assigned to a real DPO/security owner the moment one joins. Each ALSO needs
+# off-platform DPO/external sign-off (see LIMITS above).
+/docs/DPIA-template.md                   @IterVitae
+/docs/contracts/                         @IterVitae
+/src/generated/                          @IterVitae
+/LICENSE                                 @IterVitae
+/SECURITY.md                             @IterVitae
+/QODER.md                                @IterVitae
+/.github/CODEOWNERS                      @IterVitae
+/.github/workflows/                      @IterVitae
+/middleware.ts                           @IterVitae
+/next.config.ts                          @IterVitae
+/package.json                            @IterVitae
+/pnpm-lock.yaml                          @IterVitae
+/app/api/                                @IterVitae
+/lib/config.ts                           @IterVitae
+/lib/bitrix24.ts                         @IterVitae
+/lib/analytics.ts                        @IterVitae
+/components/ui/cookie-consent.tsx        @IterVitae
+/components/church/assessment-form.tsx   @IterVitae
+/components/church/make-it-mine-wizard.tsx @IterVitae
+/content/legal/                          @IterVitae
+/app/*/legal/                            @IterVitae
+/app/*/start-for-free/                   @IterVitae
+/app/*/login/                            @IterVitae
+/app/*/product/donation-flow/            @IterVitae
+/app/*/product/donation-impact/          @IterVitae
+/app/*/product/online-store/             @IterVitae
+/app/*/product/marketplace/              @IterVitae
+/app/*/product/vendor-dashboard/         @IterVitae
+**/payments/**                           @IterVitae
+**/donations/**                          @IterVitae

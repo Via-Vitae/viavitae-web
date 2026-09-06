@@ -1,0 +1,91 @@
+# Dependabot — viavitae-web
+# Weekly, grouped updates for the ecosystems actually present in this repository:
+# npm (pnpm), github-actions, and docker (the Dockerfile base image).
+version: 2
+
+updates:
+  # --- npm / pnpm dependencies (pnpm-lock.yaml) ------------------------------
+  - package-ecosystem: npm
+    directory: "/"
+    schedule:
+      interval: weekly
+      day: monday
+      time: "06:00"
+      timezone: Europe/Vilnius
+    open-pull-requests-limit: 10
+    reviewers:
+      - IterVitae
+    commit-message:
+      prefix: "chore(deps)"
+    labels:
+      - dependencies
+    groups:
+      # Framework majors get their own review; keep them out of the catch-all.
+      next-react:
+        patterns: ["next", "react", "react-dom", "eslint-config-next"]
+      # Tooling (test/lint/build) grouped together.
+      tooling:
+        patterns: ["vitest*", "@vitest/*", "@playwright/test", "eslint*", "typescript*", "prettier", "tsx", "openapi-*", "@lhci/*"]
+      # Everything else: group the noisy minor/patch churn into one PR.
+      frontend-minor-patch:
+        update-types: [minor, patch]
+        patterns: ["*"]
+        exclude-patterns:
+          - "next"
+          - "react"
+          - "react-dom"
+          - "eslint-config-next"
+          - "vitest*"
+          - "@vitest/*"
+          - "@playwright/test"
+          - "eslint*"
+          - "typescript*"
+          - "prettier"
+          - "tsx"
+          - "openapi-*"
+          - "@lhci/*"
+    ignore:
+      # Majors of the framework are upgraded deliberately via an ADR, not by a bot.
+      - dependency-name: next
+        update-types: [version-update:semver-major]
+      - dependency-name: react
+        update-types: [version-update:semver-major]
+      - dependency-name: react-dom
+        update-types: [version-update:semver-major]
+
+  # --- GitHub Actions (SHA-pinned; Dependabot moves the SHA) -----------------
+  - package-ecosystem: github-actions
+    directory: "/"
+    schedule:
+      interval: weekly
+      day: monday
+      time: "06:00"
+      timezone: Europe/Vilnius
+    open-pull-requests-limit: 5
+    reviewers:
+      - IterVitae
+    commit-message:
+      prefix: "ci(deps)"
+    labels:
+      - dependencies
+      - ci
+    groups:
+      github-actions:
+        patterns: ["*"]
+
+  # --- Docker base image (node:22-alpine in the Dockerfile) ------------------
+  - package-ecosystem: docker
+    directory: "/"
+    schedule:
+      interval: weekly
+      day: monday
+      time: "06:00"
+      timezone: Europe/Vilnius
+    open-pull-requests-limit: 5
+    reviewers:
+      - IterVitae
+    commit-message:
+      prefix: "build(deps)"
+    labels:
+      - dependencies
+      - docker

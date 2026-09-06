@@ -1,0 +1,250 @@
+name: CI
+
+# viavitae-web pipeline (pnpm):
+#   contract-check -> lint -> typecheck -> unit -> build -> lighthouse -> a11y(axe)
+# `contract-check` runs first and gates the rest: if the generated types are stale
+# or the header split (ADR-WEB-002) is violated, nothing downstream is trustworthy.
+#
+# SECURITY (least privilege): `contents: read` for the whole workflow. No job needs
+# write. Artefacts use the Actions service, not the contents scope.
+#
+# OUTSTANDING BEFORE FIRST RUN
+#   - Actions are referenced by tag, not commit SHA. Resolving authentic 40-char
+#     SHAs requires a network lookup (QODER rule 4 forbids it at generation time).
+#     Pin each `uses:` to its verified SHA, then Dependabot keeps them current.
+#   - pnpm-lock.yaml must be committed (`pnpm install` locally) before `--frozen-lockfile`
+#     can succeed. It is a launch gate; see README.
+#   - @via-vitae/brand pulls from GitHub Packages: provide NODE_AUTH_TOKEN + .npmrc
+#     as a repository secret for the install steps.
+
+on:
+  push:
+    branches: ["main"]
+  pull_request:
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: "ci-${{ github.workflow }}-${{ github.ref }}"
+  cancel-in-progress: true
+
+env:
+  NODE_VERSION: "22"
+  PNPM_VERSION: "9"
+  COVERAGE_MIN: "80"
+
+jobs:
+  # ---------------------------------------------------------------------------
+  # setup: pnpm + deps cache, shared by every downstream job
+  # ---------------------------------------------------------------------------
+  setup:
+    name: Setup
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v4
+      - uses: pnpm/action-setup@v4
+        with:
+          version: ${{ env.PNPM_VERSION }}
+      - uses: actions/setup-node@v4
+        with:
+          node-version: ${{ env.NODE_VERSION }}
+          cache: pnpm
+      - name: Configure private registry
+        run: |
+          set -euo pipefail
+          echo "@via-vitae:registry=https://npm.pkg.github.com" >> .npmrc
+          echo "//npm.pkg.github.com/:_authToken=${NODE_AUTH_TOKEN}" >> .npmrc
+        env:
+          NODE_AUTH_TOKEN: ${{ secrets.NODE_AUTH_TOKEN }}
+      - name: Install dependencies
+        run: pnpm install --frozen-lockfile
+
+  # ---------------------------------------------------------------------------
+  # contract-check: generated types fresh + OpenAPI valid + header split
+  # ---------------------------------------------------------------------------
+  contract-check:
+    name: Contract check
+    needs: setup
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v4
+      - uses: pnpm/action-setup@v4
+        with:
+          version: ${{ env.PNPM_VERSION }}
+      - uses: actions/setup-node@v4
+        with:
+          node-version: ${{ env.NODE_VERSION }}
+          cache: pnpm
+      - run: pnpm install --frozen-lockfile
+      - name: Generated types are fresh (ADR-WEB-005)
+        run: pnpm check:generated
+      - name: OpenAPI specs parse
+        run: node scripts/validate-contracts.mjs
+      - name: Header split intact (ADR-WEB-002)
+        run: pnpm check:headers
+
+  lint:
+    name: Lint
+    needs: setup
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    steps:
+      - uses: actions/checkout@v4
+      - uses: pnpm/action-setup@v4
+        with: { version: "${{ env.PNPM_VERSION }}" }
+      - uses: actions/setup-node@v4
+        with: { node-version: "${{ env.NODE_VERSION }}", cache: pnpm }
+      - run: pnpm install --frozen-lockfile
+      - run: pnpm lint
+      - run: pnpm format:check
+
+  typecheck:
+    name: Typecheck
+    needs: contract-check
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    steps:
+      - uses: actions/checkout@v4
+      - uses: pnpm/action-setup@v4
+        with: { version: "${{ env.PNPM_VERSION }}" }
+      - uses: actions/setup-node@v4
+        with: { node-version: "${{ env.NODE_VERSION }}", cache: pnpm }
+      - run: pnpm install --frozen-lockfile
+      - run: pnpm generate:types
+      - run: pnpm typecheck
+
+  unit:
+    name: Unit + contract tests
+    needs: contract-check
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+    steps:
+      - uses: actions/checkout@v4
+      - uses: pnpm/action-setup@v4
+        with: { version: "${{ env.PNPM_VERSION }}" }
+      - uses: actions/setup-node@v4
+        with: { node-version: "${{ env.NODE_VERSION }}", cache: pnpm }
+      - run: pnpm install --frozen-lockfile
+      - run: pnpm generate:types
+      - name: Vitest with coverage gate
+        run: |
+          pnpm test -- --coverage \
+            --coverage.thresholds.lines="${COVERAGE_MIN}" \
+            --coverage.thresholds.statements="${COVERAGE_MIN}"
+      - name: i18n parity (LT/EN/RU)
+        run: pnpm check:i18n
+      - name: SEO matrix coverage
+        run: pnpm check:seo
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: coverage
+          path: coverage/
+          if-no-files-found: ignore
+          retention-days: 14
+
+  build:
+    name: Build
+    needs: [lint, typecheck, unit]
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+    env:
+      NEXT_PUBLIC_SITE_URL: https://staging.viavitae.com
+    steps:
+      - uses: actions/checkout@v4
+      - uses: pnpm/action-setup@v4
+        with: { version: "${{ env.PNPM_VERSION }}" }
+      - uses: actions/setup-node@v4
+        with: { node-version: "${{ env.NODE_VERSION }}", cache: pnpm }
+      - run: pnpm install --frozen-lockfile
+      - run: pnpm build
+      - uses: actions/upload-artifact@v4
+        with:
+          name: next-standalone
+          path: .next/standalone/
+          if-no-files-found: error
+          retention-days: 7
+
+  # ---------------------------------------------------------------------------
+  # lighthouse: Core Web Vitals budgets against a production build preview
+  # ---------------------------------------------------------------------------
+  lighthouse:
+    name: Lighthouse CI
+    needs: build
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+    steps:
+      - uses: actions/checkout@v4
+      - uses: pnpm/action-setup@v4
+        with: { version: "${{ env.PNPM_VERSION }}" }
+      - uses: actions/setup-node@v4
+        with: { node-version: "${{ env.NODE_VERSION }}", cache: pnpm }
+      - run: pnpm install --frozen-lockfile
+      - run: pnpm build
+        env:
+          NEXT_PUBLIC_SITE_URL: http://127.0.0.1:3000
+      - name: Lighthouse CI (budgets + assertions)
+        run: pnpm lighthouse
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: lighthouse-report
+          path: .lhci/
+          if-no-files-found: ignore
+          retention-days: 14
+
+  # ---------------------------------------------------------------------------
+  # a11y: axe-core over key pages via Playwright (WCAG 2.2 AA launch gate)
+  # ---------------------------------------------------------------------------
+  a11y:
+    name: Accessibility (axe)
+    needs: build
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+    steps:
+      - uses: actions/checkout@v4
+      - uses: pnpm/action-setup@v4
+        with: { version: "${{ env.PNPM_VERSION }}" }
+      - uses: actions/setup-node@v4
+        with: { node-version: "${{ env.NODE_VERSION }}", cache: pnpm }
+      - run: pnpm install --frozen-lockfile
+      - run: pnpm exec playwright install --with-deps chromium
+      - run: pnpm build
+        env:
+          NEXT_PUBLIC_SITE_URL: http://127.0.0.1:3000
+      - name: Serve build and run axe suite
+        run: |
+          set -euo pipefail
+          PORT=3000 pnpm start &
+          npx --no-install wait-on http://127.0.0.1:3000 -t 60000
+          PLAYWRIGHT_BASE_URL=http://127.0.0.1:3000 pnpm test:a11y
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: playwright-report
+          path: playwright-report/
+          if-no-files-found: ignore
+          retention-days: 14
+
+  ci-status:
+    name: CI status
+    needs: [contract-check, lint, typecheck, unit, build, lighthouse, a11y]
+    if: always()
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - name: Evaluate required gates
+        run: |
+          set -euo pipefail
+          results='${{ toJSON(needs) }}'
+          failed=$(printf '%s' "$results" | grep -o '"result":"failure"' | wc -l)
+          cancelled=$(printf '%s' "$results" | grep -o '"result":"cancelled"' | wc -l)
+          if [ "$failed" -ne 0 ] || [ "$cancelled" -ne 0 ]; then
+            echo "::error::CI failed: ${failed} job(s) failed, ${cancelled} cancelled."
+            exit 1
+          fi
+          echo "All required gates passed."

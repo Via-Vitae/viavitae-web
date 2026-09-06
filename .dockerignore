@@ -1,0 +1,22 @@
+# Keep the build context minimal and never leak secrets or VCS history into an image.
+.git
+.gitignore
+.github
+.idea
+.vscode
+.env
+.env.*
+!.env.example
+node_modules
+.next
+out
+coverage
+playwright-report
+test-results
+*.log
+Dockerfile
+.dockerignore
+README.md
+docs
+tests
+lighthouse

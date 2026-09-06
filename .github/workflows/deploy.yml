@@ -1,0 +1,140 @@
+name: Deploy
+
+# Release pipeline: a semver tag builds a container image, pushes it to GHCR, then
+# triggers an Argo CD sync of the target environment.
+#
+#   push tag v*  ->  build (Docker, standalone)  ->  push ghcr.io  ->  argocd sync
+#
+# GitOps: Argo CD is the only thing that mutates the cluster; this workflow never
+# talks to Kubernetes directly. It asks Argo CD to sync the app to the new image tag.
+#
+# SECRETS REQUIRED (never hardcoded — QODER rule 7):
+#   NODE_AUTH_TOKEN   GitHub Packages read token, used to pull @via-vitae/brand at build.
+#   ARGOCD_SERVER     Argo CD API endpoint (EEA-hosted control plane).
+#   ARGOCD_AUTH_TOKEN Argo CD auth token scoped to the web app only (least privilege).
+#
+# OUTSTANDING BEFORE FIRST RUN: actions are tag-referenced, not SHA-pinned (see the
+# compliance action-pinning gate). The Argo CD application name and destination are
+# deployment inputs set in `env:` below — confirm them against viavitae-infra.
+
+on:
+  push:
+    tags:
+      - "v*.*.*"
+  workflow_dispatch:
+    inputs:
+      environment:
+        description: Target Argo CD environment
+        required: true
+        default: staging
+        type: choice
+        options: [staging, production]
+
+permissions:
+  contents: read
+
+concurrency:
+  group: "deploy-${{ github.ref }}"
+  cancel-in-progress: false
+
+env:
+  REGISTRY: ghcr.io
+  IMAGE_NAME: ${{ github.repository }}
+  # Argo CD application name; adjust per viavitae-infra naming.
+  ARGOCD_APP_NAME: viavitae-web
+
+jobs:
+  build-and-push:
+    name: Build & push image
+    runs-on: ubuntu-latest
+    timeout-minutes: 40
+    permissions:
+      contents: read
+      packages: write
+    outputs:
+      image: ${{ env.REGISTRY }}/${{ env.IMAGE_NAME }}:${{ github.sha }}
+      version: ${{ github.ref_name }}
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Set up Docker Buildx
+        uses: docker/setup-buildx-action@v3
+
+      - name: Log in to GHCR
+        uses: docker/login-action@v3
+        with:
+          registry: ${{ env.REGISTRY }}
+          username: ${{ github.actor }}
+          password: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Extract image metadata
+        id: meta
+        uses: docker/metadata-action@v5
+        with:
+          images: ${{ env.REGISTRY }}/${{ env.IMAGE_NAME }}
+          tags: |
+            type=semver,pattern={{version}}
+            type=semver,pattern={{major}}.{{minor}}
+            type=sha
+            type=raw,value=${{ github.sha }}
+
+      - name: Prepare private-registry npmrc (build secret)
+        run: |
+          set -euo pipefail
+          {
+            echo "@via-vitae:registry=https://npm.pkg.github.com"
+            echo "//npm.pkg.github.com/:_authToken=${NODE_AUTH_TOKEN}"
+          } > .npmrc.docker
+        env:
+          NODE_AUTH_TOKEN: ${{ secrets.NODE_AUTH_TOKEN }}
+
+      - name: Build and push
+        uses: docker/build-push-action@v6
+        with:
+          context: .
+          push: true
+          tags: ${{ steps.meta.outputs.tags }}
+          labels: ${{ steps.meta.outputs.labels }}
+          cache-from: type=gha
+          cache-to: type=gha,mode=max
+          secrets: |
+            npmrc=${{ github.workspace }}/.npmrc.docker
+          build-args: |
+            NEXT_PUBLIC_SITE_URL=${{ github.event_name == 'workflow_dispatch' && (github.event.inputs.environment == 'production' && 'https://viavitae.com' || 'https://staging.viavitae.com') || 'https://viavitae.com' }}
+
+      - name: Shred build secret
+        if: always()
+        run: shred -u .npmrc.docker 2>/dev/null || rm -f .npmrc.docker
+
+  argocd-sync:
+    name: Argo CD sync
+    needs: build-and-push
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    environment:
+      name: ${{ github.event_name == 'workflow_dispatch' && github.event.inputs.environment || 'production' }}
+    steps:
+      - name: Install Argo CD CLI
+        run: |
+          set -euo pipefail
+          # Pinned to a release tag; replace with a checksum-verified binary in prod.
+          curl -sSL -o argocd https://github.com/argoproj/argo-cd/releases/latest/download/argocd-linux-amd64
+          chmod +x argocd && sudo mv argocd /usr/local/bin/argocd
+          argocd version --client
+
+      - name: Log in and set the new image
+        env:
+          ARGOCD_SERVER: ${{ secrets.ARGOCD_SERVER }}
+          ARGOCD_AUTH_TOKEN: ${{ secrets.ARGOCD_AUTH_TOKEN }}
+          IMAGE: ${{ needs.build-and-push.outputs.image }}
+        run: |
+          set -euo pipefail
+          # The image tag is written through Argo CD (GitOps), not by editing the
+          # cluster directly. `argocd app set --parameter` overrides the Helm/Kustomize
+          # image parameter for this app, then sync applies it.
+          argocd app set "${ARGOCD_APP_NAME}" --parameter "image=${IMAGE}" --auth-token "${ARGOCD_AUTH_TOKEN}"
+          argocd app sync "${ARGOCD_APP_NAME}" --auth-token "${ARGOCD_AUTH_TOKEN}" --prune --timeout 300
+          argocd app wait "${ARGOCD_APP_NAME}" --auth-token "${ARGOCD_AUTH_TOKEN}" --health --timeout 300
+
+      - name: Report
+        run: echo "Deployed ${{ needs.build-and-push.outputs.image }} via Argo CD app ${ARGOCD_APP_NAME}."

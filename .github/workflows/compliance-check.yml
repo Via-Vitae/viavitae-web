@@ -1,0 +1,262 @@
+name: Compliance check
+
+# Governance gate for viavitae-web (pnpm/Node stack).
+#   secrets        — Gitleaks over full history, fail on any finding
+#   licences       — allow-list scan of production Node deps (pnpm), unknown = fail
+#   governance     — required baseline files present, CODEOWNERS/.editorconfig/.gitignore valid
+#   action-pinning — every `uses:` must be a 40-char SHA (rule R4) + least-privilege permissions
+#
+# LEAST PRIVILEGE: workflow default `contents: read`; only `licences` escalates to
+# `pull-requests: write` to apply the manual-review label.
+#
+# OUTSTANDING BEFORE FIRST RUN: workflows ship with action TAGS, not SHAs (resolving
+# authentic SHAs needs a network lookup — QODER rule 4). The action-pinning gate below
+# will fail until every `uses:` is SHA-pinned. This mirrors the viavitae-template
+# precedent and is a deliberate, tracked pre-launch item.
+
+on:
+  push:
+    branches: ["main"]
+  pull_request:
+  schedule:
+    - cron: "0 5 * * 1" # Mondays 07:00 Europe/Vilnius (UTC cron)
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: "compliance-${{ github.workflow }}-${{ github.ref }}"
+  cancel-in-progress: true
+
+env:
+  NODE_VERSION: "22"
+  PNPM_VERSION: "9"
+  ALLOWED_LICENCES: "MIT Apache-2.0 BSD-2-Clause BSD-3-Clause 0BSD ISC CC0-1.0 Unlicense OFL-1.1 Proprietary"
+  FORBIDDEN_LICENCES: "GPL-2.0 GPL-3.0 AGPL-3.0 LGPL-2.1 LGPL-3.0 MPL-2.0 EPL-1.0 EPL-2.0 CDDL-1.0 SSPL-1.0 BUSL-1.1"
+  REVIEW_LABEL: "compliance/licence-review"
+
+jobs:
+  secrets:
+    name: Secret scanning
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+    steps:
+      - name: Check out full history
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+      - name: Gitleaks (full history)
+        uses: gitleaks/gitleaks-action@v2
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          # Required for organisation repositories; store a free key as an org secret.
+          GITLEAKS_LICENSE: ${{ secrets.GITLEAKS_LICENSE }}
+          GITLEAKS_ENABLE_UPLOAD_ARTIFACT: "false"
+          GITLEAKS_ENABLE_COMMENTS: "true"
+      - name: Confirm the scan ran
+        if: failure()
+        run: |
+          echo "::error::Gitleaks reported a finding, or could not run. Both block the merge."
+          echo "If a real credential was committed: rotate it first, then purge history."
+          echo "Never resolve this by adding the finding to .gitleaksignore without security approval."
+          exit 1
+
+  licences:
+    name: Licence compliance
+    runs-on: ubuntu-latest
+    timeout-minutes: 40
+    permissions:
+      contents: read
+      pull-requests: write
+    steps:
+      - uses: actions/checkout@v4
+      - uses: pnpm/action-setup@v4
+        with: { version: "${{ env.PNPM_VERSION }}" }
+      - uses: actions/setup-node@v4
+        with: { node-version: "${{ env.NODE_VERSION }}", cache: pnpm }
+      - name: Configure private registry
+        run: |
+          set -euo pipefail
+          echo "@via-vitae:registry=https://npm.pkg.github.com" >> .npmrc
+          echo "//npm.pkg.github.com/:_authToken=${NODE_AUTH_TOKEN}" >> .npmrc
+        env:
+          NODE_AUTH_TOKEN: ${{ secrets.NODE_AUTH_TOKEN }}
+      - name: Install production dependencies
+        run: pnpm install --frozen-lockfile --prod
+      - name: Node licence report
+        run: |
+          set -uo pipefail
+          npx --yes license-checker-rseidelsohn --production --json > node-licences.json
+          node - <<'JS'
+          const fs = require("fs");
+          const allowed = new Set(process.env.ALLOWED_LICENCES.split(/\s+/));
+          const forbidden = new Set(process.env.FORBIDDEN_LICENCES.split(/\s+/));
+          const report = JSON.parse(fs.readFileSync("node-licences.json", "utf8"));
+          const bad = [];
+          const review = [];
+          for (const [pkg, meta] of Object.entries(report)) {
+            const lic = String(meta.licenses || "").trim();
+            if (!lic || /unknown|custom|see licen/i.test(lic)) {
+              review.push(`${pkg}: licence not declared ('${lic || "none"}')`);
+              continue;
+            }
+            const tokens = lic.split(/[\s,/()]+| OR | AND /).filter(Boolean);
+            if (tokens.some((t) => forbidden.has(t))) {
+              bad.push(`${pkg}: FORBIDDEN licence '${lic}'`);
+            } else if (!tokens.some((t) => allowed.has(t))) {
+              review.push(`${pkg}: unrecognised licence '${lic}'`);
+            }
+          }
+          console.log(`scanned ${Object.keys(report).length} Node packages`);
+          for (const line of bad) console.log(`::error::${line}`);
+          for (const line of review) console.log(`::warning::${line}`);
+          fs.appendFileSync("licence-review.txt", review.map((l) => `node: ${l}\n`).join(""));
+          fs.appendFileSync("licence-failures.txt", bad.map((l) => `node: ${l}\n`).join(""));
+          if (bad.length) {
+            console.log("::error::Copyleft or otherwise forbidden licences are present. Remove the dependency or record a legal decision as an ADR.");
+            process.exit(1);
+          }
+          JS
+      - name: Apply manual review label
+        if: always() && github.event_name == 'pull_request'
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          set -uo pipefail
+          if [ -s licence-review.txt ]; then
+            gh pr edit "${{ github.event.pull_request.number }}" --repo "${{ github.repository }}" \
+              --add-label "${REVIEW_LABEL}" \
+              || echo "::warning::Could not apply '${REVIEW_LABEL}'. Create the label or apply it manually; this does not waive the review."
+          else
+            gh pr edit "${{ github.event.pull_request.number }}" --repo "${{ github.repository }}" \
+              --remove-label "${REVIEW_LABEL}" || true
+          fi
+      - name: Upload licence reports
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: licence-reports
+          path: |
+            node-licences.json
+            licence-review.txt
+            licence-failures.txt
+          if-no-files-found: ignore
+          retention-days: 90
+      - name: Fail on unknown licences
+        run: |
+          set -uo pipefail
+          if [ -s licence-review.txt ]; then
+            echo "::error::Unknown or undeclared licences are present. Unknown is treated as a failure."
+            exit 1
+          fi
+          echo "All resolved licences are on the allow list."
+
+  governance:
+    name: Governance files
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v4
+      - name: Verify required governance files
+        run: |
+          set -uo pipefail
+          missing=0
+          for f in README.md LICENSE SECURITY.md CONTRIBUTING.md CHANGELOG.md \
+                   QODER.md .gitignore .editorconfig \
+                   .github/CODEOWNERS .github/dependabot.yml \
+                   .github/PULL_REQUEST_TEMPLATE.md \
+                   docs/architecture.md docs/DPIA-template.md; do
+            if [ ! -s "$f" ]; then
+              echo "::error::Missing or empty required governance file: $f"
+              missing=1
+            else
+              echo "present: $f"
+            fi
+          done
+          exit "$missing"
+      - name: Verify CODEOWNERS default owner and no placeholders
+        run: |
+          set -uo pipefail
+          file=.github/CODEOWNERS
+          effective=$(grep -vE '^\s*(#|$)' "$file" || true)
+          if [ -z "$effective" ]; then
+            echo "::error::CODEOWNERS has no effective rules (R2 forbids an empty CODEOWNERS)."
+            exit 1
+          fi
+          if ! printf '%s\n' "$effective" | grep -qE '^\*\s+@'; then
+            echo "::error::CODEOWNERS has no '* @team' default rule (R2 requires architects)."
+            exit 1
+          fi
+          if printf '%s\n' "$effective" | grep -qE '@org/|<OWNER_HANDLE>|@your-org'; then
+            echo "::error::CODEOWNERS still contains template placeholders."
+            exit 1
+          fi
+          echo "effective CODEOWNERS rules: $(printf '%s\n' "$effective" | wc -l)"
+      - name: Verify .gitignore covers secrets and does not ignore the lockfile
+        run: |
+          set -uo pipefail
+          failed=0
+          for pattern in '\.env' 'node_modules/?' '\*\.pem' '\*\.key'; do
+            grep -qE "^!?${pattern}" .gitignore || { echo "::error::.gitignore does not cover '${pattern}'."; failed=1; }
+          done
+          if grep -qE '^!?pnpm-lock\.yaml' .gitignore; then
+            echo "::error::.gitignore must NOT ignore pnpm-lock.yaml — the lockfile is committed for reproducible installs."
+            failed=1
+          fi
+          exit "$failed"
+
+  action-pinning:
+    name: Action SHA pinning
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v4
+      - name: Verify every action reference is SHA-pinned
+        run: |
+          set -uo pipefail
+          unpinned=0; total=0
+          while IFS= read -r line; do
+            [ -z "$line" ] && continue
+            total=$((total + 1))
+            file=${line%%:*}; rest=${line#*:}; lineno=${rest%%:*}
+            ref=$(printf '%s' "$rest" | sed -E 's/.*uses:[[:space:]]*//; s/[[:space:]]*$//')
+            case "$ref" in ./*|./.github/*) continue ;; esac
+            if ! printf '%s' "$ref" | grep -qE '@[0-9a-f]{40}$'; then
+              echo "::error file=${file},line=${lineno}::Unpinned action '${ref}'. Rule R4 requires a full-length commit SHA."
+              unpinned=$((unpinned + 1))
+            fi
+          done < <(grep -rn --include='*.yml' --include='*.yaml' -E '^\s*uses:\s*\S+' .github/workflows 2>/dev/null | grep -v '^\s*#')
+          echo "action references checked: ${total}; unpinned: ${unpinned}"
+          if [ "${unpinned}" -ne 0 ]; then
+            echo "::error::${unpinned} action reference(s) are pinned to a mutable tag or branch."
+            exit 1
+          fi
+      - name: Verify least-privilege permissions
+        run: |
+          set -uo pipefail
+          failed=0
+          for f in .github/workflows/*.yml; do
+            grep -qE '^permissions:' "$f" || { echo "::error file=${f}::No top-level 'permissions' block."; failed=1; }
+            grep -qE '^\s*permissions:\s*(write-all|read-all)\s*$' "$f" && { echo "::error file=${f}::'permissions: write-all' violates least privilege."; failed=1; }
+          done
+          exit "${failed}"
+
+  compliance-status:
+    name: Compliance status
+    needs: [secrets, licences, governance, action-pinning]
+    if: always()
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - name: Evaluate compliance gates
+        run: |
+          set -uo pipefail
+          results='${{ toJSON(needs) }}'
+          printf '%s\n' "$results" | jq -r 'to_entries[] | "  \(.key): \(.value.result)"'
+          failed=$(printf '%s\n' "$results" | jq '[to_entries[] | select(.value.result != "success" and .value.result != "skipped")] | length')
+          if [ "$failed" -ne 0 ]; then
+            echo "::error::${failed} compliance gate(s) did not succeed."
+            exit 1
+          fi
+          echo "All compliance gates passed."

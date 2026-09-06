@@ -1,0 +1,24 @@
+---
+# Copy this file into content/blog/<locale>/ and rename to <slug>.mdx.
+# Every field below is validated by content-loader.ts (blog schema). Replace all TODOs.
+title: "TODO: post title (plain string; localise per file)"
+description: "TODO: 1–2 sentence summary used for meta + cards."
+locale: en            # must be lt | en | ru and mirror the directory
+slug: example-post    # must equal the file name (no .mdx), no locale prefix
+kind: blog
+publishedAt: 2026-01-01   # YYYY-MM-DD
+# updatedAt: 2026-01-02   # optional, YYYY-MM-DD
+author: "TODO: author name"
+category: "TODO: category"
+# tags: ["donations", "gdpr"]   # optional
+# image: "/images/heroes/example.avif"  # optional, launch-gated asset under public/
+# draft: true                 # optional; drafts are excluded from listings
+---
+
+{/* Body is MDX. Available components are mapped in components/mdx/mdx-components.tsx
+    (a11y-enforced <img>, auto heading ids). Do not fabricate published copy — this
+    template is inert until renamed to <slug>.mdx. */}
+
+## TODO: first section
+
+Write the post body here.

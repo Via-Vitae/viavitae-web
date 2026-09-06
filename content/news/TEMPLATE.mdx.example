@@ -1,0 +1,16 @@
+---
+# Copy this file into content/news/<locale>/ and rename to <slug>.mdx.
+# Validated by content-loader.ts (news schema). Replace all TODOs.
+title: "TODO: news headline"
+description: "TODO: short summary for meta + cards."
+locale: en            # lt | en | ru; must mirror the directory
+slug: example-news    # must equal the file name (no .mdx)
+kind: news
+publishedAt: 2026-01-01   # YYYY-MM-DD
+# source: "TODO: optional original source / publication"
+---
+
+{/* News items are short. Do not fabricate announcements — inert until renamed
+    to <slug>.mdx. */}
+
+TODO: news body.

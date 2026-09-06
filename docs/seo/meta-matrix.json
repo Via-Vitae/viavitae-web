@@ -1,0 +1,58 @@
+{
+  "$comment": "Per-page SEO meta matrix. Single source of truth for titles, descriptions, indexability, JSON-LD types and sitemap hints. scripts/check-seo-matrix.ts enforces: (1) no duplicate paths, (2) every product in lib/constants CATALOG has a /product/<slug> entry, (3) every nav href in lib/navigation has an entry, (4) every titleKey/descriptionKey exists in messages/en.json. Titles/descriptions are message keys (localised), never literal strings.",
+  "defaults": {
+    "ogImage": "/og/default.png",
+    "changefreq": "monthly",
+    "priority": "0.6"
+  },
+  "pages": [
+    { "path": "/", "titleKey": "seo.home.title", "descriptionKey": "seo.home.description", "index": true, "jsonld": ["Organization", "WebSite"], "priority": "1.0", "changefreq": "weekly" },
+    { "path": "/about", "titleKey": "seo.about.title", "descriptionKey": "seo.about.description", "index": true, "jsonld": ["AboutPage", "Organization"], "priority": "0.7" },
+    { "path": "/mission", "titleKey": "seo.mission.title", "descriptionKey": "seo.mission.description", "index": true, "jsonld": ["AboutPage"], "priority": "0.6" },
+    { "path": "/contact-support", "titleKey": "seo.contact.title", "descriptionKey": "seo.contact.description", "index": true, "jsonld": ["ContactPage", "Organization"], "priority": "0.7" },
+    { "path": "/pricing", "titleKey": "seo.pricing.title", "descriptionKey": "seo.pricing.description", "index": true, "jsonld": ["Product", "OfferCatalog"], "priority": "0.9", "changefreq": "weekly" },
+    { "path": "/start-for-free", "titleKey": "seo.startForFree.title", "descriptionKey": "seo.startForFree.description", "index": true, "jsonld": ["WebPage"], "priority": "0.9" },
+    { "path": "/login", "titleKey": "seo.login.title", "descriptionKey": "seo.login.description", "index": false, "jsonld": [], "priority": "0.2" },
+    { "path": "/solutions", "titleKey": "seo.solutions.title", "descriptionKey": "seo.solutions.description", "index": true, "jsonld": ["CollectionPage"], "priority": "0.7" },
+    { "path": "/integrations", "titleKey": "seo.integrations.title", "descriptionKey": "seo.integrations.description", "index": true, "jsonld": ["CollectionPage", "ItemList"], "priority": "0.6" },
+    { "path": "/partners", "titleKey": "seo.partners.title", "descriptionKey": "seo.partners.description", "index": true, "jsonld": ["WebPage"], "priority": "0.6" },
+    { "path": "/why", "titleKey": "seo.why.title", "descriptionKey": "seo.why.description", "index": true, "jsonld": ["WebPage"], "priority": "0.7" },
+
+    { "path": "/product/basilica", "titleKey": "seo.product.basilica.title", "descriptionKey": "seo.product.basilica.description", "index": true, "jsonld": ["Product", "Offer", "FAQPage"], "priority": "0.8" },
+    { "path": "/product/cathedral", "titleKey": "seo.product.cathedral.title", "descriptionKey": "seo.product.cathedral.description", "index": true, "jsonld": ["Product", "Offer", "FAQPage"], "priority": "0.8" },
+    { "path": "/product/diocese", "titleKey": "seo.product.diocese.title", "descriptionKey": "seo.product.diocese.description", "index": true, "jsonld": ["Product", "Offer", "FAQPage"], "priority": "0.8" },
+    { "path": "/product/deaneries", "titleKey": "seo.product.deaneries.title", "descriptionKey": "seo.product.deaneries.description", "index": true, "jsonld": ["Product", "Offer", "FAQPage"], "priority": "0.8" },
+    { "path": "/product/parish-church", "titleKey": "seo.product.parishChurch.title", "descriptionKey": "seo.product.parishChurch.description", "index": true, "jsonld": ["Product", "Offer", "FAQPage"], "priority": "0.8" },
+    { "path": "/product/funeral-services", "titleKey": "seo.product.funeralServices.title", "descriptionKey": "seo.product.funeralServices.description", "index": true, "jsonld": ["Product", "Offer", "FAQPage"], "priority": "0.8" },
+    { "path": "/product/cemetery-services", "titleKey": "seo.product.cemeteryServices.title", "descriptionKey": "seo.product.cemeteryServices.description", "index": true, "jsonld": ["Product", "Offer", "FAQPage"], "priority": "0.8" },
+    { "path": "/product/online-store", "titleKey": "seo.product.onlineStore.title", "descriptionKey": "seo.product.onlineStore.description", "index": true, "jsonld": ["Product", "Offer", "FAQPage"], "priority": "0.8" },
+    { "path": "/product/marketplace", "titleKey": "seo.product.marketplace.title", "descriptionKey": "seo.product.marketplace.description", "index": true, "jsonld": ["Product", "Offer", "FAQPage"], "priority": "0.8" },
+    { "path": "/product/vendor-dashboard", "titleKey": "seo.product.vendorDashboard.title", "descriptionKey": "seo.product.vendorDashboard.description", "index": true, "jsonld": ["Product", "Offer", "FAQPage"], "priority": "0.7" },
+    { "path": "/product/donation-flow", "titleKey": "seo.product.donationFlow.title", "descriptionKey": "seo.product.donationFlow.description", "index": true, "jsonld": ["Product", "Offer", "FAQPage"], "priority": "0.8" },
+    { "path": "/product/donation-impact", "titleKey": "seo.product.donationImpact.title", "descriptionKey": "seo.product.donationImpact.description", "index": true, "jsonld": ["Product", "Offer", "FAQPage"], "priority": "0.7" },
+    { "path": "/product/crm-dashboard", "titleKey": "seo.product.crmDashboard.title", "descriptionKey": "seo.product.crmDashboard.description", "index": true, "jsonld": ["Product", "Offer", "FAQPage"], "priority": "0.7" },
+    { "path": "/product/ai-pastoral-assistant", "titleKey": "seo.product.aiPastoralAssistant.title", "descriptionKey": "seo.product.aiPastoralAssistant.description", "index": true, "jsonld": ["Product", "Offer", "FAQPage"], "priority": "0.8" },
+    { "path": "/product/gps-cemetery-map", "titleKey": "seo.product.gpsCemeteryMap.title", "descriptionKey": "seo.product.gpsCemeteryMap.description", "index": true, "jsonld": ["Product", "Offer", "FAQPage"], "priority": "0.7" },
+
+    { "path": "/resources/blog", "titleKey": "seo.blog.title", "descriptionKey": "seo.blog.description", "index": true, "jsonld": ["CollectionPage", "Blog"], "priority": "0.7", "changefreq": "daily" },
+    { "path": "/resources/news", "titleKey": "seo.news.title", "descriptionKey": "seo.news.description", "index": true, "jsonld": ["CollectionPage"], "priority": "0.6", "changefreq": "weekly" },
+    { "path": "/resources/guides", "titleKey": "seo.guides.title", "descriptionKey": "seo.guides.description", "index": true, "jsonld": ["CollectionPage", "ItemList"], "priority": "0.6" },
+    { "path": "/resources/legal-compliance", "titleKey": "seo.legalCompliance.title", "descriptionKey": "seo.legalCompliance.description", "index": true, "jsonld": ["WebPage"], "priority": "0.5" },
+    { "path": "/resources/onboarding-training", "titleKey": "seo.onboarding.title", "descriptionKey": "seo.onboarding.description", "index": true, "jsonld": ["WebPage", "ItemList"], "priority": "0.5" },
+
+    { "path": "/legal/privacy", "titleKey": "seo.privacy.title", "descriptionKey": "seo.privacy.description", "index": true, "jsonld": ["WebPage"], "priority": "0.4" },
+    { "path": "/legal/terms", "titleKey": "seo.terms.title", "descriptionKey": "seo.terms.description", "index": true, "jsonld": ["WebPage"], "priority": "0.4" },
+    { "path": "/legal/cookies", "titleKey": "seo.cookies.title", "descriptionKey": "seo.cookies.description", "index": true, "jsonld": ["WebPage"], "priority": "0.4" },
+    { "path": "/legal/impressum", "titleKey": "seo.impressum.title", "descriptionKey": "seo.impressum.description", "index": true, "jsonld": ["WebPage"], "priority": "0.4" }
+  ],
+  "dynamic": [
+    {
+      "path": "/resources/blog/[slug]",
+      "titleSource": "front-matter.title",
+      "descriptionSource": "front-matter.description",
+      "index": true,
+      "jsonld": ["Article", "BreadcrumbList"],
+      "$comment": "Title/description come from MDX front-matter, not message keys. Not enumerated in the static matrix; sitemap.ts expands it from published content."
+    }
+  ]
+}

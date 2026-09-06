@@ -1,0 +1,601 @@
+{
+  "a11y": {
+    "skipToContent": "Pereiti prie pagrindinio turinio"
+  },
+  "nav": {
+    "product": "Produktas",
+    "products": "Produktai",
+    "pricing": "Kainos",
+    "resources": "Ištekliai",
+    "solutions": "Sprendimai",
+    "integrations": "Integracijos",
+    "partners": "Partneriai",
+    "why": "Kodėl ViaVitae",
+    "about": "Apie",
+    "mission": "Misija",
+    "contact": "Kontaktai ir pagalba",
+    "blog": "Tinklaraštis",
+    "news": "Naujienos",
+    "guides": "Gidai",
+    "onboarding": "Įvedimas ir mokymai",
+    "legalCompliance": "Teisė ir atitiktis",
+    "startFree": "Pradėkite nemokamai",
+    "login": "Prisijungti",
+    "breadcrumb": "Naršymo kelias",
+    "home": "Pradžia",
+    "menu": "Meniu",
+    "closeMenu": "Uždaryti meniu",
+    "globalLabel": "Pagrindinė navigacija",
+    "ribbonLabel": "Produktų katalogas",
+    "productMenuHeading": "Visi produktai",
+    "productSectionLabel": "Produktų skyrius"
+  },
+  "footer": {
+    "tagline": "Skaitmeninė infrastruktūra bažnyčioms, vyskupijoms ir tikinčiųjų organizacijoms ES.",
+    "trustBadges": "Atitiktis ir pasitikėjimas",
+    "copyright": "© {year} {entity}. Visos teisės saugomos.",
+    "newsletterComingSoon": "Naujienlaiškis netrukus — dvigubas patvirtinimas, jokių duomenų trečiosioms šalims.",
+    "products": "Produktai",
+    "company": "Įmonė",
+    "resources": "Ištekliai",
+    "legal": "Teisinė informacija"
+  },
+  "home": {
+    "eyebrow": "ViaVitae",
+    "title": "Skaitmeninis buvimas bažnyčioms ir vyskupijoms",
+    "subtitle": "Svetainės, aukojimas, kapinių paslaugos ir CRM tikinčiųjų organizacijoms visoje Europos Sąjungoje — atitinka GDPR ir talpinama ES.",
+    "productsHeading": "Platforma kiekvienai bendruomenei",
+    "productsSubheading": "Penkiolika specialiai sukurtų produktų — nuo vienos parapijos svetainės iki visos vyskupijos platformos.",
+    "ctaHeading": "Užsisakykite nemokamą skaitmeninį įvertinimą",
+    "ctaBody": "Papasakokite apie savo bendruomenę ir dabartinę svetainę. Peržiūrėsime ją ir atsiųsime praktinių, neįpareigojančių rekomendacijų."
+  },
+  "products": {
+    "basilica": { "name": "Bazilika", "short": "Bazilika" },
+    "cathedral": { "name": "Katedra", "short": "Katedra" },
+    "diocese": { "name": "Vyskupija", "short": "Vyskupija" },
+    "deaneries": { "name": "Dekanatai", "short": "Dekanatai" },
+    "parishChurch": { "name": "Parapijos bažnyčia", "short": "Parapija" },
+    "funeralServices": { "name": "Laidojimo paslaugos", "short": "Laidojimas" },
+    "cemeteryServices": { "name": "Kapinių paslaugos", "short": "Kapinės" },
+    "onlineStore": { "name": "Internetinė parduotuvė", "short": "Parduotuvė" },
+    "marketplace": { "name": "Turgavietė", "short": "Turgavietė" },
+    "vendorDashboard": { "name": "Pardavėjo skydelis", "short": "Pardavėjai" },
+    "donationFlow": { "name": "Aukojimo srautas", "short": "Aukojimas" },
+    "donationImpact": { "name": "Aukų poveikis", "short": "Poveikis" },
+    "crmDashboard": { "name": "CRM skydelis", "short": "CRM" },
+    "aiPastoralAssistant": { "name": "AI pastoracinis asistentas", "short": "AI asistentas" },
+    "gpsCemeteryMap": { "name": "GPS kapinių žemėlapis", "short": "Kapinių žemėlapis" }
+  },
+  "product": {
+    "eyebrow": "Produktas",
+    "heroSubtitle": "{product} bažnyčioms, vyskupijoms ir tikinčiųjų organizacijoms.",
+    "featuresHeading": "Kas įskaičiuota",
+    "features": [
+      "Responsyvus dizainas kompiuteriui, planšetei ir telefonui",
+      "Daugiakalbė turinio sistema: lietuvių, anglų ir rusų kalbos",
+      "GDPR reikalavimus atitinkanti, ES talpinama infrastruktūra",
+      "Prieinamumas, orientuotas į WCAG 2.2 AA",
+      "Nuolatinė priežiūra ir palaikymas"
+    ],
+    "demoHeading": "Išbandykite veikloje",
+    "demoTitle": "Interaktyvi {product} demonstracija",
+    "pricingHeading": "Kainų lygiai",
+    "faqHeading": "Dažnai užduodami klausimai",
+    "ctaHeading": "Užsisakykite skaitmeninį įvertinimą",
+    "ctaBody": "Gaukite praktinių rekomendacijų savo bendruomenei. Jokių įsipareigojimų, nereikia mokėjimo duomenų."
+  },
+  "tiers": {
+    "economy": { "name": "Ekonomiškas", "summary": "Koncentruotas vienos svetainės sprendimas." },
+    "normal": { "name": "Standartinis", "summary": "Daugiakalbė svetainė su aukojimu." },
+    "vip": { "name": "VIP", "summary": "Pilna platforma su CRM ir AI." }
+  },
+  "pricing": {
+    "title": "Kainos",
+    "lead": "Skaidrūs vienkartiniai sukūrimo lygiai ir pasirenkamas mėnesinis priežiūros intervalas. Visos sumos be PVM.",
+    "tiersHeading": "Sukūrimo lygiai",
+    "calculatorHeading": "Apskaičiuokite savo konfigūraciją",
+    "tableCaption": "Kiekvienam sukūrimo lygiui įskaičiuotų funkcijų palyginimas",
+    "featureColumn": "Funkcija",
+    "oneOff": "vienkartinė",
+    "included": "Įskaičiuota",
+    "notIncluded": "Neįskaičiuota",
+    "maintenance": "Priežiūra",
+    "perMonth": "mėn.",
+    "vatNote": "Visos kainos be PVM (21%). Galutinė konfigūracijos kaina patvirtinama komerciniame pasiūlyme.",
+    "features": {
+      "responsive": "Responsyvus dizainas",
+      "multilanguage": "Daugiakalbystė (LT / EN / RU)",
+      "donations": "Aukojimas ir mokėjimai",
+      "crm": "CRM skydelis",
+      "aiAssistant": "AI pastoracinis asistentas",
+      "prioritySupport": "Prioritetinis palaikymas"
+    }
+  },
+  "quote": {
+    "addonsLabel": "Priedai",
+    "configure": "Konfigūruokite pasiūlymą",
+    "product": "Produktas",
+    "tier": "Lygis",
+    "pages": "Puslapiai",
+    "languages": "Kalbos",
+    "email": "El. paštas pasiūlymo PDF gauti",
+    "consent": "Sutinku, kad mano kontaktiniai duomenys būtų tvarkomi šiam pasiūlymui gauti (žr. privatumo pranešimą).",
+    "downloadPdf": "Atsisiųsti pasiūlymo PDF",
+    "preparing": "Ruošiama…",
+    "requestAssessment": "Norite pilno įvertinimo? Pradėkite čia",
+    "summary": "Santrauka",
+    "fromLabel": "Nuo (vienkartinė kaina, be PVM)",
+    "maintenance": "Priežiūra",
+    "perMonth": "mėn.",
+    "finalPriceNote": "Galutinę jūsų konfigūracijos sumą apskaičiuoja pasiūlymų sistema ir pateikia PDF dokumente.",
+    "errors": {
+      "consentRequired": "Patvirtinkite sutikimą, kad gautumėte pasiūlymą.",
+      "generic": "Nepavyko parengti pasiūlymo. Bandykite dar kartą.",
+      "network": "Tinklo klaida. Patikrinkite ryšį ir bandykite dar kartą."
+    },
+    "tiers": {
+      "economy": "Ekonomiškas",
+      "normal": "Standartinis",
+      "vip": "VIP"
+    },
+    "addons": {
+      "extraLanguage": "Papildoma kalba",
+      "extraPagePack": "Papildomų puslapių paketas",
+      "donationModule": "Aukojimo modulis",
+      "cemeteryGps": "Kapinių GPS žemėlapis",
+      "aiAssistant": "AI asistentas"
+    },
+    "products": {
+      "basilica": "Bazilika",
+      "cathedral": "Katedra",
+      "diocese": "Vyskupija",
+      "deaneries": "Dekanatai",
+      "parish-church": "Parapijos bažnyčia",
+      "funeral-services": "Laidojimo paslaugos",
+      "cemetery-services": "Kapinių paslaugos",
+      "online-store": "Internetinė parduotuvė",
+      "marketplace": "Turgavietė",
+      "vendor-dashboard": "Pardavėjo skydelis",
+      "donation-flow": "Aukojimo srautas",
+      "donation-impact": "Aukų poveikis",
+      "crm-dashboard": "CRM skydelis",
+      "ai-pastoral-assistant": "AI pastoracinis asistentas",
+      "gps-cemetery-map": "GPS kapinių žemėlapis"
+    }
+  },
+  "wizard": {
+    "chooseDemo": "Pasirinkite demonstraciją",
+    "demoTitle": "Interaktyvi {product} demonstracija",
+    "prompt": "Peržiūrėkite demonstraciją, o tada pritaikykite ją savo turiniui.",
+    "makeItMine": "Pritaikyti sau",
+    "products": {
+      "basilica": "Bazilika",
+      "cathedral": "Katedra",
+      "diocese": "Vyskupija",
+      "deaneries": "Dekanatai",
+      "parish-church": "Parapijos bažnyčia",
+      "funeral-services": "Laidojimo paslaugos",
+      "cemetery-services": "Kapinių paslaugos",
+      "online-store": "Internetinė parduotuvė",
+      "marketplace": "Turgavietė",
+      "vendor-dashboard": "Pardavėjo skydelis",
+      "donation-flow": "Aukojimo srautas",
+      "donation-impact": "Aukų poveikis",
+      "crm-dashboard": "CRM skydelis",
+      "ai-pastoral-assistant": "AI pastoracinis asistentas",
+      "gps-cemetery-map": "GPS kapinių žemėlapis"
+    }
+  },
+  "assessment": {
+    "title": "Užsisakykite skaitmeninį įvertinimą",
+    "stepProgress": "{current} žingsnis iš {total}",
+    "steps": {
+      "organization": "Apie jūsų organizaciją",
+      "site": "Jūsų dabartinė svetainė",
+      "goals": "Jūsų tikslai",
+      "contact": "Kontaktiniai duomenys"
+    },
+    "labels": {
+      "organizationType": "Organizacijos tipas",
+      "organizationName": "Organizacijos pavadinimas (neprivaloma)",
+      "currentSiteUrl": "Dabartinės svetainės URL (neprivaloma)",
+      "currentStatus": "Dabartinė situacija (neprivaloma)",
+      "selectOptional": "Pasirinkite",
+      "contactName": "Kontaktinio asmens vardas (neprivaloma)",
+      "contactEmail": "Kontaktinis el. paštas",
+      "contactPhone": "Kontaktinis telefonas (neprivaloma)",
+      "message": "Žinutė (neprivaloma)"
+    },
+    "orgTypes": {
+      "basilica": "Bazilika",
+      "cathedral": "Katedra",
+      "diocese": "Vyskupija",
+      "deanery": "Dekanatas",
+      "parish_church": "Parapijos bažnyčia",
+      "funeral_services": "Laidojimo paslaugos",
+      "cemetery_services": "Kapinių paslaugos",
+      "online_store": "Internetinė parduotuvė",
+      "marketplace_vendor": "Turgavietės pardavėjas",
+      "other_organization": "Kita organizacija"
+    },
+    "currentStatus": {
+      "no_website": "Dar neturime svetainės",
+      "outdated": "Pasenusi svetainė",
+      "needs_redesign": "Reikia naujo dizaino",
+      "unhappy_with_provider": "Nepatenkinti dabartiniu tiekėju"
+    },
+    "goals": {
+      "new_website": "Nauja svetainė",
+      "ecommerce": "Internetinė parduotuvė",
+      "donations": "Aukojimas",
+      "crm_integration": "CRM integracija",
+      "ai_assistant": "AI asistentas",
+      "cemetery_map": "Kapinių žemėlapis",
+      "maintenance_only": "Tik priežiūra"
+    },
+    "goalsHint": "Pasirinkite iki penkių tikslų.",
+    "thirdPartyNotice": "Aprašykite savo bendruomenę ar organizaciją, o ne konkrečius asmenis. Žinutėje nepateikite trečiųjų asmenų asmens duomenų.",
+    "consentPrivacy": "Sutinku, kad mano kontaktiniai duomenys būtų tvarkomi, jog ViaVitae parengtų ir atsiųstų mano įvertinimą (būtina).",
+    "consentMarketing": "Taip pat norėčiau kartais gauti produktų ir naujienų atnaujinimus (neprivaloma).",
+    "consentVersion": "Privatumo pranešimo versija: {version}",
+    "back": "Atgal",
+    "continue": "Tęsti",
+    "submit": "Pateikti užklausą",
+    "submitting": "Pateikiama…",
+    "successTitle": "Ačiū — jūsų užklausa gauta",
+    "successBody": "Peržiūrėsime jūsų duomenis ir atsakysime su praktinėmis rekomendacijomis jūsų nurodytu el. pašto adresu.",
+    "errors": {
+      "rateLimited": "Per daug užklausų. Palaukite ir bandykite dar kartą.",
+      "duplicate": "Šią užklausą jau gavome. Susisieksime su jumis.",
+      "generic": "Nepavyko pateikti užklausos. Bandykite dar kartą.",
+      "network": "Tinklo klaida. Patikrinkite ryšį ir bandykite dar kartą.",
+      "consentRequired": "Norėdami tęsti, patvirtinkite privatumo sutikimą."
+    },
+    "fields": {
+      "organization_type": "Pasirinkite organizacijos tipą.",
+      "organization_name": "Įveskite tinkamą organizacijos pavadinimą (bent 2 simboliai).",
+      "current_site_url": "Įveskite tinkamą URL arba palikite lauką tuščią.",
+      "contact_name": "Įveskite tinkamą vardą (bent 2 simboliai) arba palikite tuščią.",
+      "contact_email": "Įveskite tinkamą el. pašto adresą.",
+      "contact_phone": "Įveskite tinkamą telefono numerį arba palikite tuščią.",
+      "message": "Žinutė per ilga (daugiausia 2000 simbolių).",
+      "consent_privacy": "Norėdami tęsti, patvirtinkite privatumo sutikimą."
+    }
+  },
+  "cookieConsent": {
+    "title": "Slapukų nustatymai",
+    "body": "Pagal numatytuosius nustatymus naudojame tik būtinus slapukus. Gavę jūsų sutikimą, naudojame privatumui draugišką analitiką (savarankiškai talpinamas Matomo, ES). Sutikimą bet kada galite pakeisti arba atšaukti.",
+    "cookiesLink": "Slapukų politika",
+    "privacyLink": "Privatumo pranešimas",
+    "categories": "Slapukų kategorijos",
+    "necessary": "Būtini (visada įjungti)",
+    "analytics": "Analitika (savarankiškai talpinamas Matomo)",
+    "marketing": "Rinkodara",
+    "acceptAll": "Priimti visus",
+    "rejectAll": "Atmesti visus",
+    "saveChoices": "Išsaugoti pasirinkimus"
+  },
+  "demo": {
+    "openFull": "Atidaryti pilną demonstraciją naujame skirtuke",
+    "fallbackNote": "Jei įterpta demonstracija neįsikrauna, naudokite aukščiau esančią nuorodą."
+  },
+  "languageSwitcher": {
+    "label": "Keisti kalbą",
+    "soon": "Netrukus",
+    "soonBadge": "netrukus"
+  },
+  "contact": {
+    "title": "Kontaktai ir palaikymas",
+    "lead": "Kreipkitės į tinkamą komandą. Saugumo problemoms skirtas atskiras kanalas ir 72 valandų pažeidimų SLA (žr. SECURITY.md).",
+    "channelsHeading": "Kontaktiniai kanalai",
+    "slaHeading": "Palaikymo reagavimo tikslai",
+    "slaCaption": "Palaikymo reagavimo ir atnaujinimo tikslai pagal svarbą",
+    "slaTier": "Svarba",
+    "slaResponse": "Pirmas atsakas",
+    "slaUpdate": "Kitas atnaujinimas",
+    "sales": "Pardavimai",
+    "support": "Palaikymas",
+    "security": "Saugumas",
+    "phone": "Telefonas",
+    "status": "Sistemos būsena"
+  },
+  "sla": {
+    "tier": {
+      "critical": "Kritinė",
+      "high": "Aukšta",
+      "normal": "Įprasta"
+    },
+    "response": {
+      "1h": "Per 1 valandą",
+      "4h": "Per 4 valandas",
+      "1d": "Per 1 darbo dieną"
+    },
+    "update": {
+      "4h": "Kas 4 valandas",
+      "1d": "Kiekvieną darbo dieną",
+      "3d": "Kas 3 darbo dienas"
+    }
+  },
+  "integrations": {
+    "title": "Integracijos",
+    "lead": "ViaVitae jungiasi prie sistemų, kurias bažnyčios jau naudoja. Duomenys keliauja per mūsų ES talpinamą API; naršyklė niekada tiesiogiai nesikreipia į trečiosios šalies CRM.",
+    "bitrix24": {
+      "name": "Bitrix24",
+      "description": "Kontaktų ir CRM sinchronizacija, atliekama serveryje per viavitae-api.",
+      "compliance": "Prieš įjungiant CRM sinchronizaciją būtina duomenų buvimo vietos ir DPIA peržiūra."
+    },
+    "stripe": {
+      "name": "Stripe",
+      "description": "Kortelių mokėjimai parduotuvėms ir aukojimui.",
+      "compliance": "Mokėjimo duomenys patenka į PCI-DSS apimtį; juos tvarko mokėjimo paslaugų teikėjas, mes jų nesaugome."
+    },
+    "paysera": {
+      "name": "Paysera",
+      "description": "Regioniniai banko ir kortelių mokėjimai, populiarūs Baltijos šalyse.",
+      "compliance": "Mokėjimo duomenys patenka į PCI-DSS apimtį; juos tvarko mokėjimo paslaugų teikėjas."
+    },
+    "matomo": {
+      "name": "Matomo",
+      "description": "Privatumui draugiška, savarankiškai talpinama analitika.",
+      "compliance": "Savarankiškai talpinama ES; įkeliama tik gavus analitikos sutikimą."
+    },
+    "calcom": {
+      "name": "Cal.com",
+      "description": "Susitikimų planavimas po įvertinimo.",
+      "compliance": "Planavimo nuorodos pateikiamos tik gavus pateikėjo sutikimą."
+    }
+  },
+  "legal": {
+    "privacy": "Privatumo pranešimas",
+    "terms": "Paslaugų teikimo sąlygos",
+    "cookies": "Slapukų politika",
+    "impressum": "Teisinė informacija (Impressum)",
+    "version": "Versija {version}",
+    "effective": "Įsigalioja {date}",
+    "pendingNotice": "Šį teisinį dokumentą rengia ViaVitae teisininkų komanda ir jis bus paskelbtas prieš paleidimą. Kol tekstas nėra peržiūrėtas ir patvirtintas, jokia teisinė informacija nerodoma."
+  },
+  "login": {
+    "title": "Klientų portalas",
+    "notConfigured": "Klientų portalo prisijungimas šioje aplinkoje nesukonfigūruotas. Vieningas prisijungimas (SSO) bus įjungtas prieš paleidimą."
+  },
+  "startForFree": {
+    "title": "Pradėkite nemokamai",
+    "lead": "Peržiūrėkite demonstraciją, o tada užsisakykite nemokamą savo bendruomenės skaitmeninį įvertinimą. Mokėjimo duomenų nereikia."
+  },
+  "why": {
+    "title": "Kodėl ViaVitae",
+    "lead": "Specialiai bažnyčių sektoriui sukurta programinė įranga, atitinkanti ES reikalavimus.",
+    "body": [
+      "ViaVitae kuria skaitmeninę infrastruktūrą specialiai bažnyčioms, vyskupijoms, dekanatams ir susijusioms organizacijoms. Kiekvienas produktas sukurtas atsižvelgiant į tai, kaip šios bendruomenės iš tikrųjų veikia — nuo parapijos komunikacijos iki kapinių paslaugų ir aukojimo.",
+      "Esame į ES orientuotas tiekėjas: infrastruktūra talpinama Europos Sąjungoje, analitika savarankiškai talpinama, o platforma sukurta taip, kad atitiktų GDPR ir WCAG 2.2 AA prieinamumo reikalavimus. Tai yra prieš paleidimą patikslintina santrauka; išsami informacija ir pavyzdžiai bus paskelbti po patvirtinimo."
+    ]
+  },
+  "about": {
+    "title": "Apie ViaVitae",
+    "lead": "Kas mes esame ir ką kuriame.",
+    "body": [
+      "ViaVitae yra programinės įrangos tiekėjas, aptarnaujantis bažnyčių sektorių visoje Europos Sąjungoje. Mūsų katalogą sudaro svetainės, aukojimas, internetinės parduotuvės, CRM ir kapinių paslaugos.",
+      "Registruoto juridinio asmens duomenys, komandos informacija ir įmonės istorija yra prieš paleidimą patikslintina informacija ir bus paskelbti čia, kai juos patvirtins ViaVitae juridinis asmuo."
+    ]
+  },
+  "mission": {
+    "title": "Mūsų misija",
+    "lead": "Padėti tikinčiųjų bendruomenėms patikimai tarnauti žmonėms.",
+    "body": [
+      "Mūsų misija — suteikti bažnyčioms ir vyskupijoms patikimus, prieinamus ir reikalavimus atitinkančius skaitmeninius įrankius, kad jos galėtų susitelkti į savo bendruomenes, o ne į technologijas.",
+      "Šis misijos tekstas yra prieš paleidimą patikslintina vieta ir bus galutinai patvirtintas ViaVitae prieš pradedant veiklą."
+    ]
+  },
+  "partners": {
+    "title": "Partneriai",
+    "lead": "Technologijų ir kanalų partneriai.",
+    "body": [
+      "Dirbame su talpinimo, mokėjimų ir integracijų partneriais, kad pristatytume ViaVitae platformą visoje ES.",
+      "Paskelbtas partnerių sąrašas yra prieš paleidimą patikslintina informacija; partnerių pavadinimai ir logotipai atsiras čia po susitarimų ir prekės ženklo patvirtinimų."
+    ]
+  },
+  "solutions": {
+    "title": "Sprendimai",
+    "lead": "Individualizuoti paketai parapijoms, vyskupijoms, kapinėms ir parduotuvėms.",
+    "body": [
+      "ViaVitae sprendimai sujungia katalogo produktus į paketus dažniausiems poreikiams: parapijos svetainė, visos vyskupijos platforma, kapinių ir laidojimo paslaugos arba internetinis aukojimas bei parduotuvės.",
+      "Išsamūs sprendimų paketai, tinkamumas ir kainos patvirtinami per įvertinimo ir pasiūlymo procesą."
+    ]
+  },
+  "legalCompliance": {
+    "title": "Teisė ir atitiktis",
+    "lead": "Kaip ViaVitae užtikrina GDPR, prieinamumą ir duomenų buvimą ES.",
+    "body": [
+      "ViaVitae sukurta taip, kad atitiktų ES reikalavimus: duomenys talpinami Europos Sąjungoje, analitika savarankiškai talpinama ir priklauso nuo sutikimo, o įvertinimo procesas atitinka dokumentuotą DPIA (DPIA-001).",
+      "Prieinamumas orientuotas į WCAG 2.2 AA. Saugumo pažeidimai tvarkomi pagal SECURITY.md aprašytą atskleidimo procesą ir 72 valandų SLA."
+    ],
+    "links": [
+      { "label": "Privatumo pranešimas", "href": "/legal/privacy" },
+      { "label": "Slapukų politika", "href": "/legal/cookies" },
+      { "label": "Paslaugų teikimo sąlygos", "href": "/legal/terms" },
+      { "label": "Teisinė informacija", "href": "/legal/impressum" }
+    ]
+  },
+  "onboarding": {
+    "title": "Įvedimas ir mokymai",
+    "lead": "Padėkite savo komandai pasitikėti ViaVitae.",
+    "body": [
+      "Įvedimas apima turinio nustatymą, kalbų konfigūravimą, aukojimo ir kapinių modulius bei administratorių mokymus.",
+      "Mokymo medžiaga ir suplanuoti užsiėmimai yra prieš paleidimą pateikiamas rezultatas ir bus išvardyti čia po paskelbimo."
+    ],
+    "links": [
+      { "label": "Gidai", "href": "/resources/guides" },
+      { "label": "Kontaktai ir palaikymas", "href": "/contact-support" }
+    ]
+  },
+  "resources": {
+    "hubLabel": "Ištekliai"
+  },
+  "blog": {
+    "title": "Tinklaraštis",
+    "lead": "Produktų naujienos, patarimai ir istorijos iš bažnyčių sektoriaus.",
+    "empty": "Kol kas nėra paskelbtų straipsnių. Užsukite netrukus.",
+    "categoryFilter": "Filtruoti straipsnius pagal kategoriją",
+    "allCategories": "Visos kategorijos",
+    "pagination": "Tinklaraščio puslapiavimas",
+    "prev": "Ankstesnis",
+    "next": "Kitas",
+    "pageOf": "{page} puslapis iš {pageCount}",
+    "byAuthor": "Autorius: {author}"
+  },
+  "news": {
+    "title": "Naujienos",
+    "lead": "ViaVitae naujienos ir pranešimai su nuorodomis į pradinius šaltinius.",
+    "empty": "Kol kas nėra paskelbtų naujienų.",
+    "readSource": "Skaityti šaltinį"
+  },
+  "guides": {
+    "title": "Gidai",
+    "lead": "Praktiniai gidai, kaip nustatyti ir naudoti savo ViaVitae platformą.",
+    "empty": "Kol kas nėra paskelbtų gidų."
+  },
+  "seo": {
+    "home": {
+      "title": "ViaVitae — skaitmeninis buvimas bažnyčioms ir vyskupijoms",
+      "description": "Svetainės, aukojimas, kapinių paslaugos ir CRM bažnyčioms, vyskupijoms ir tikinčiųjų organizacijoms ES. Atitinka GDPR, talpinama ES."
+    },
+    "about": {
+      "title": "Apie ViaVitae | ViaVitae",
+      "description": "ViaVitae yra ES programinės įrangos tiekėjas, kuriantis skaitmeninę infrastruktūrą bažnyčių sektoriui: svetaines, aukojimą, parduotuves, CRM ir kapinių paslaugas."
+    },
+    "mission": {
+      "title": "Mūsų misija | ViaVitae",
+      "description": "Mūsų misija — suteikti bažnyčioms ir vyskupijoms patikimus, prieinamus ir GDPR reikalavimus atitinkančius skaitmeninius įrankius."
+    },
+    "contact": {
+      "title": "Kontaktai ir palaikymas | ViaVitae",
+      "description": "Kreipkitės į ViaVitae pardavimų, palaikymo ir saugumo komandas. Čia skelbiami reagavimo tikslai ir 72 valandų pažeidimų SLA."
+    },
+    "pricing": {
+      "title": "Kainos | ViaVitae",
+      "description": "Skaidrūs vienkartiniai sukūrimo lygiai (Ekonomiškas, Standartinis, VIP) ir pasirenkamas mėnesinis priežiūros intervalas. Kainos be PVM."
+    },
+    "startForFree": {
+      "title": "Pradėkite nemokamai | ViaVitae",
+      "description": "Peržiūrėkite demonstraciją ir užsisakykite nemokamą savo bažnyčios ar vyskupijos skaitmeninį įvertinimą. Mokėjimo duomenų nereikia."
+    },
+    "login": {
+      "title": "Klientų portalas | ViaVitae",
+      "description": "Prisijunkite prie ViaVitae klientų portalo per vieningą prisijungimą (SSO)."
+    },
+    "solutions": {
+      "title": "Sprendimai | ViaVitae",
+      "description": "Individualizuoti ViaVitae paketai parapijoms, vyskupijoms, kapinėms, laidojimo paslaugoms ir internetinėms parduotuvėms."
+    },
+    "integrations": {
+      "title": "Integracijos | ViaVitae",
+      "description": "ViaVitae integruojasi su Bitrix24, Stripe, Paysera, Matomo ir Cal.com per ES talpinamą API."
+    },
+    "partners": {
+      "title": "Partneriai | ViaVitae",
+      "description": "Technologijų ir kanalų partneriai, pristatantys ViaVitae platformą visoje Europos Sąjungoje."
+    },
+    "why": {
+      "title": "Kodėl ViaVitae | ViaVitae",
+      "description": "Specialiai bažnyčių sektoriui sukurta programinė įranga, atitinkanti ES duomenų buvimo, GDPR ir WCAG 2.2 AA prieinamumo reikalavimus."
+    },
+    "product": {
+      "basilica": {
+        "title": "Bazilika | ViaVitae",
+        "description": "Svetainės ir valdymo platforma bazilikoms: daugiakalbis turinys, aukojimas ir ES talpinama GDPR atitiktis."
+      },
+      "cathedral": {
+        "title": "Katedra | ViaVitae",
+        "description": "Skaitmeninė platforma katedroms: daugiakalbis turinys, renginiai, aukojimas ir prieinama, ES talpinama infrastruktūra."
+      },
+      "diocese": {
+        "title": "Vyskupija | ViaVitae",
+        "description": "Visos vyskupijos platforma, jungianti parapijas su bendru turiniu, CRM ir ataskaitomis, talpinama ES."
+      },
+      "deaneries": {
+        "title": "Dekanatai | ViaVitae",
+        "description": "Koordinuokite dekanato parapijas su bendru turiniu, katalogais ir komunikacijos įrankiais."
+      },
+      "parishChurch": {
+        "title": "Parapijos bažnyčia | ViaVitae",
+        "description": "Parapijos svetainė su naujienomis, renginiais, daugiakalbiu turiniu ir aukojimu, sukurta prieinamumui ir GDPR."
+      },
+      "funeralServices": {
+        "title": "Laidojimo paslaugos | ViaVitae",
+        "description": "Tvarkykite laidojimo paslaugų informaciją, pranešimus ir planavimą su oria, prieinama internetine svetaine."
+      },
+      "cemeteryServices": {
+        "title": "Kapinių paslaugos | ViaVitae",
+        "description": "Kapinių valdymas: vietų įrašai, paieška ir paslaugos, su pasirenkamu GPS žemėlapiu."
+      },
+      "onlineStore": {
+        "title": "Internetinė parduotuvė | ViaVitae",
+        "description": "Prekiaukite internetu su prieinama vitrina, ES mokėjimo paslaugų teikėjais ir PCI atitinkančiu atsiskaitymu."
+      },
+      "marketplace": {
+        "title": "Turgavietė | ViaVitae",
+        "description": "Kelių pardavėjų turgavietė su pardavėjų įvedimu, skelbimais ir PCI atitinkančiais mokėjimais."
+      },
+      "vendorDashboard": {
+        "title": "Pardavėjo skydelis | ViaVitae",
+        "description": "Skydelis turgavietės pardavėjams valdyti skelbimus, užsakymus ir išmokas."
+      },
+      "donationFlow": {
+        "title": "Aukojimo srautas | ViaVitae",
+        "description": "Priimkite vienkartines ir periodines aukas su prieinamu, PCI atitinkančiu aukojimo procesu."
+      },
+      "donationImpact": {
+        "title": "Aukų poveikis | ViaVitae",
+        "description": "Parodykite aukotojams jų aukų poveikį su skaidriomis, konfigūruojamomis ataskaitomis."
+      },
+      "crmDashboard": {
+        "title": "CRM skydelis | ViaVitae",
+        "description": "Valdykite bendruomenės ryšius ir kontaktus su CRM skydeliu, sinchronizuojamu serveryje."
+      },
+      "aiPastoralAssistant": {
+        "title": "AI pastoracinis asistentas | ViaVitae",
+        "description": "Asistentas dažniems pastoraciniams ir administraciniams klausimams, duomenis apdorojantis ES."
+      },
+      "gpsCemeteryMap": {
+        "title": "GPS kapinių žemėlapis | ViaVitae",
+        "description": "Raskite vietas ir naršykite po kapines su GPS žemėlapiu, susietu su kapinių įrašais."
+      }
+    },
+    "blog": {
+      "title": "Tinklaraštis | ViaVitae",
+      "description": "Produktų naujienos, patarimai ir istorijos iš bažnyčių sektoriaus."
+    },
+    "news": {
+      "title": "Naujienos | ViaVitae",
+      "description": "ViaVitae naujienos ir pranešimai su nuorodomis į pradinius šaltinius."
+    },
+    "guides": {
+      "title": "Gidai | ViaVitae",
+      "description": "Praktiniai gidai, kaip nustatyti ir naudoti savo ViaVitae platformą."
+    },
+    "legalCompliance": {
+      "title": "Teisė ir atitiktis | ViaVitae",
+      "description": "Kaip ViaVitae užtikrina GDPR, duomenų buvimą ES ir WCAG 2.2 AA prieinamumą."
+    },
+    "onboarding": {
+      "title": "Įvedimas ir mokymai | ViaVitae",
+      "description": "Įvedimas ir mokymai apie turinį, kalbas, aukojimą, kapinių modulius ir administratoriams."
+    },
+    "privacy": {
+      "title": "Privatumo pranešimas | ViaVitae",
+      "description": "Kaip ViaVitae tvarko asmens duomenis, jūsų teisės pagal GDPR ir kaip su mumis susisiekti."
+    },
+    "terms": {
+      "title": "Paslaugų teikimo sąlygos | ViaVitae",
+      "description": "Sąlygos, reglamentuojančios ViaVitae platformos ir paslaugų naudojimą."
+    },
+    "cookies": {
+      "title": "Slapukų politika | ViaVitae",
+      "description": "Kokius slapukus ViaVitae naudoja, kodėl ir kaip valdyti savo sutikimą."
+    },
+    "impressum": {
+      "title": "Teisinė informacija (Impressum) | ViaVitae",
+      "description": "ViaVitae teisinė informacija, įskaitant registruotą juridinį asmenį ir kontaktus, kurių reikalauja Lietuvos teisė."
+    }
+  }
+}

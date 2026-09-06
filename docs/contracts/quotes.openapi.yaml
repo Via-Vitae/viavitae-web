@@ -1,0 +1,173 @@
+openapi: 3.1.0
+info:
+  title: ViaVitae Quote API
+  version: 1.0.0
+  description: |
+    Contract for generating a priced quote as a PDF. Consumed by
+    app/api/quote/route.ts (server-side proxy) and components/church/
+    quote-calculator.tsx.
+
+    SINGLE SOURCE OF TRUTH (ADR-WEB-005): viavitae-web generates TypeScript types
+    (`pnpm generate:types` -> src/generated/quotes.ts); viavitae-api generates
+    Pydantic models from the same file.
+
+    Path is `/quotes` (the server URL already ends in `/v1`). The `product` enum
+    MUST stay in sync with ProductId in types/catalog.ts; tests/contract asserts
+    the parity.
+servers:
+  - url: https://api.viavitae.com/v1
+    description: production
+  - url: https://api-staging.viavitae.com/v1
+    description: staging
+tags:
+  - name: quotes
+paths:
+  /quotes:
+    post:
+      operationId: createQuote
+      summary: Generate a priced quote PDF
+      tags: [quotes]
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/QuoteRequest'
+      responses:
+        '200':
+          description: Quote rendered as a PDF document.
+          headers:
+            Content-Disposition:
+              description: 'Attachment filename, e.g. `attachment; filename="viavitae-quote.pdf"`.'
+              schema:
+                type: string
+          content:
+            application/pdf:
+              schema:
+                type: string
+                format: binary
+        '400':
+          description: Validation error (including a `consent_privacy` that is not `true`).
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '422':
+          description: Schema-valid but a business rule was violated.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '429':
+          description: Rate limited.
+          headers:
+            Retry-After:
+              schema:
+                type: integer
+                minimum: 1
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+components:
+  schemas:
+    Product:
+      type: string
+      description: Marketing catalogue product; mirrors ProductId in types/catalog.ts.
+      enum:
+        - basilica
+        - cathedral
+        - diocese
+        - deaneries
+        - parish-church
+        - funeral-services
+        - cemetery-services
+        - online-store
+        - marketplace
+        - vendor-dashboard
+        - donation-flow
+        - donation-impact
+        - crm-dashboard
+        - ai-pastoral-assistant
+        - gps-cemetery-map
+    Tier:
+      type: string
+      enum: [economy, normal, vip]
+    Addon:
+      type: string
+      enum:
+        - extra_language
+        - extra_page_pack
+        - donation_module
+        - cemetery_gps
+        - ai_assistant
+    QuoteRequest:
+      type: object
+      additionalProperties: false
+      required:
+        - product
+        - tier
+        - pages
+        - languages
+        - contact_email
+        - consent_privacy
+        - consent_notice_version
+        - locale
+      properties:
+        product:
+          $ref: '#/components/schemas/Product'
+        tier:
+          $ref: '#/components/schemas/Tier'
+        pages:
+          type: integer
+          minimum: 1
+          maximum: 500
+        languages:
+          type: integer
+          minimum: 1
+          maximum: 5
+        addons:
+          type: array
+          maxItems: 5
+          items:
+            $ref: '#/components/schemas/Addon'
+        organization_name:
+          type: string
+          minLength: 2
+          maxLength: 200
+        contact_name:
+          type: string
+          minLength: 2
+          maxLength: 120
+        contact_email:
+          type: string
+          format: email
+          maxLength: 254
+        consent_privacy:
+          type: boolean
+          const: true
+        consent_notice_version:
+          type: string
+          minLength: 1
+          maxLength: 40
+          description: Privacy-notice version the submitter agreed to (DPIA-001 R7).
+        locale:
+          type: string
+          description: Locale the PDF is rendered in.
+          enum: [lt, en, ru]
+    Error:
+      type: object
+      additionalProperties: false
+      required: [error]
+      properties:
+        error:
+          type: object
+          additionalProperties: false
+          required: [code, message]
+          properties:
+            code: { type: string }
+            message: { type: string }
+            fields:
+              type: object
+              additionalProperties:
+                type: string

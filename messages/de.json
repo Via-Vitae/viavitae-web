@@ -1,0 +1,673 @@
+{
+  "a11y": {
+    "skipToContent": ""
+  },
+  "nav": {
+    "product": "",
+    "products": "",
+    "pricing": "",
+    "resources": "",
+    "solutions": "",
+    "integrations": "",
+    "partners": "",
+    "why": "",
+    "about": "",
+    "mission": "",
+    "contact": "",
+    "blog": "",
+    "news": "",
+    "guides": "",
+    "onboarding": "",
+    "legalCompliance": "",
+    "startFree": "",
+    "login": "",
+    "breadcrumb": "",
+    "home": "",
+    "menu": "",
+    "closeMenu": "",
+    "globalLabel": "",
+    "ribbonLabel": "",
+    "productMenuHeading": "",
+    "productSectionLabel": ""
+  },
+  "footer": {
+    "tagline": "",
+    "trustBadges": "",
+    "copyright": "",
+    "newsletterComingSoon": "",
+    "products": "",
+    "company": "",
+    "resources": "",
+    "legal": ""
+  },
+  "home": {
+    "eyebrow": "",
+    "title": "",
+    "subtitle": "",
+    "productsHeading": "",
+    "productsSubheading": "",
+    "ctaHeading": "",
+    "ctaBody": ""
+  },
+  "products": {
+    "basilica": {
+      "name": "",
+      "short": ""
+    },
+    "cathedral": {
+      "name": "",
+      "short": ""
+    },
+    "diocese": {
+      "name": "",
+      "short": ""
+    },
+    "deaneries": {
+      "name": "",
+      "short": ""
+    },
+    "parishChurch": {
+      "name": "",
+      "short": ""
+    },
+    "funeralServices": {
+      "name": "",
+      "short": ""
+    },
+    "cemeteryServices": {
+      "name": "",
+      "short": ""
+    },
+    "onlineStore": {
+      "name": "",
+      "short": ""
+    },
+    "marketplace": {
+      "name": "",
+      "short": ""
+    },
+    "vendorDashboard": {
+      "name": "",
+      "short": ""
+    },
+    "donationFlow": {
+      "name": "",
+      "short": ""
+    },
+    "donationImpact": {
+      "name": "",
+      "short": ""
+    },
+    "crmDashboard": {
+      "name": "",
+      "short": ""
+    },
+    "aiPastoralAssistant": {
+      "name": "",
+      "short": ""
+    },
+    "gpsCemeteryMap": {
+      "name": "",
+      "short": ""
+    }
+  },
+  "product": {
+    "eyebrow": "",
+    "heroSubtitle": "",
+    "featuresHeading": "",
+    "features": [
+      "",
+      "",
+      "",
+      "",
+      ""
+    ],
+    "demoHeading": "",
+    "demoTitle": "",
+    "pricingHeading": "",
+    "faqHeading": "",
+    "ctaHeading": "",
+    "ctaBody": ""
+  },
+  "tiers": {
+    "economy": {
+      "name": "",
+      "summary": ""
+    },
+    "normal": {
+      "name": "",
+      "summary": ""
+    },
+    "vip": {
+      "name": "",
+      "summary": ""
+    }
+  },
+  "pricing": {
+    "title": "",
+    "lead": "",
+    "tiersHeading": "",
+    "calculatorHeading": "",
+    "tableCaption": "",
+    "featureColumn": "",
+    "oneOff": "",
+    "included": "",
+    "notIncluded": "",
+    "maintenance": "",
+    "perMonth": "",
+    "vatNote": "",
+    "features": {
+      "responsive": "",
+      "multilanguage": "",
+      "donations": "",
+      "crm": "",
+      "aiAssistant": "",
+      "prioritySupport": ""
+    }
+  },
+  "quote": {
+    "addonsLabel": "",
+    "configure": "",
+    "product": "",
+    "tier": "",
+    "pages": "",
+    "languages": "",
+    "email": "",
+    "consent": "",
+    "downloadPdf": "",
+    "preparing": "",
+    "requestAssessment": "",
+    "summary": "",
+    "fromLabel": "",
+    "maintenance": "",
+    "perMonth": "",
+    "finalPriceNote": "",
+    "errors": {
+      "consentRequired": "",
+      "generic": "",
+      "network": ""
+    },
+    "tiers": {
+      "economy": "",
+      "normal": "",
+      "vip": ""
+    },
+    "addons": {
+      "extraLanguage": "",
+      "extraPagePack": "",
+      "donationModule": "",
+      "cemeteryGps": "",
+      "aiAssistant": ""
+    },
+    "products": {
+      "basilica": "",
+      "cathedral": "",
+      "diocese": "",
+      "deaneries": "",
+      "parish-church": "",
+      "funeral-services": "",
+      "cemetery-services": "",
+      "online-store": "",
+      "marketplace": "",
+      "vendor-dashboard": "",
+      "donation-flow": "",
+      "donation-impact": "",
+      "crm-dashboard": "",
+      "ai-pastoral-assistant": "",
+      "gps-cemetery-map": ""
+    }
+  },
+  "wizard": {
+    "chooseDemo": "",
+    "demoTitle": "",
+    "prompt": "",
+    "makeItMine": "",
+    "products": {
+      "basilica": "",
+      "cathedral": "",
+      "diocese": "",
+      "deaneries": "",
+      "parish-church": "",
+      "funeral-services": "",
+      "cemetery-services": "",
+      "online-store": "",
+      "marketplace": "",
+      "vendor-dashboard": "",
+      "donation-flow": "",
+      "donation-impact": "",
+      "crm-dashboard": "",
+      "ai-pastoral-assistant": "",
+      "gps-cemetery-map": ""
+    }
+  },
+  "assessment": {
+    "title": "",
+    "stepProgress": "",
+    "steps": {
+      "organization": "",
+      "site": "",
+      "goals": "",
+      "contact": ""
+    },
+    "labels": {
+      "organizationType": "",
+      "organizationName": "",
+      "currentSiteUrl": "",
+      "currentStatus": "",
+      "selectOptional": "",
+      "contactName": "",
+      "contactEmail": "",
+      "contactPhone": "",
+      "message": ""
+    },
+    "orgTypes": {
+      "basilica": "",
+      "cathedral": "",
+      "diocese": "",
+      "deanery": "",
+      "parish_church": "",
+      "funeral_services": "",
+      "cemetery_services": "",
+      "online_store": "",
+      "marketplace_vendor": "",
+      "other_organization": ""
+    },
+    "currentStatus": {
+      "no_website": "",
+      "outdated": "",
+      "needs_redesign": "",
+      "unhappy_with_provider": ""
+    },
+    "goals": {
+      "new_website": "",
+      "ecommerce": "",
+      "donations": "",
+      "crm_integration": "",
+      "ai_assistant": "",
+      "cemetery_map": "",
+      "maintenance_only": ""
+    },
+    "goalsHint": "",
+    "thirdPartyNotice": "",
+    "consentPrivacy": "",
+    "consentMarketing": "",
+    "consentVersion": "",
+    "back": "",
+    "continue": "",
+    "submit": "",
+    "submitting": "",
+    "successTitle": "",
+    "successBody": "",
+    "errors": {
+      "rateLimited": "",
+      "duplicate": "",
+      "generic": "",
+      "network": "",
+      "consentRequired": ""
+    },
+    "fields": {
+      "organization_type": "",
+      "organization_name": "",
+      "current_site_url": "",
+      "contact_name": "",
+      "contact_email": "",
+      "contact_phone": "",
+      "message": "",
+      "consent_privacy": ""
+    }
+  },
+  "cookieConsent": {
+    "title": "",
+    "body": "",
+    "cookiesLink": "",
+    "privacyLink": "",
+    "categories": "",
+    "necessary": "",
+    "analytics": "",
+    "marketing": "",
+    "acceptAll": "",
+    "rejectAll": "",
+    "saveChoices": ""
+  },
+  "demo": {
+    "openFull": "",
+    "fallbackNote": ""
+  },
+  "languageSwitcher": {
+    "label": "",
+    "soon": "",
+    "soonBadge": ""
+  },
+  "contact": {
+    "title": "",
+    "lead": "",
+    "channelsHeading": "",
+    "slaHeading": "",
+    "slaCaption": "",
+    "slaTier": "",
+    "slaResponse": "",
+    "slaUpdate": "",
+    "sales": "",
+    "support": "",
+    "security": "",
+    "phone": "",
+    "status": ""
+  },
+  "sla": {
+    "tier": {
+      "critical": "",
+      "high": "",
+      "normal": ""
+    },
+    "response": {
+      "1h": "",
+      "4h": "",
+      "1d": ""
+    },
+    "update": {
+      "4h": "",
+      "1d": "",
+      "3d": ""
+    }
+  },
+  "integrations": {
+    "title": "",
+    "lead": "",
+    "bitrix24": {
+      "name": "",
+      "description": "",
+      "compliance": ""
+    },
+    "stripe": {
+      "name": "",
+      "description": "",
+      "compliance": ""
+    },
+    "paysera": {
+      "name": "",
+      "description": "",
+      "compliance": ""
+    },
+    "matomo": {
+      "name": "",
+      "description": "",
+      "compliance": ""
+    },
+    "calcom": {
+      "name": "",
+      "description": "",
+      "compliance": ""
+    }
+  },
+  "legal": {
+    "privacy": "",
+    "terms": "",
+    "cookies": "",
+    "impressum": "",
+    "version": "",
+    "effective": "",
+    "pendingNotice": ""
+  },
+  "login": {
+    "title": "",
+    "notConfigured": ""
+  },
+  "startForFree": {
+    "title": "",
+    "lead": ""
+  },
+  "why": {
+    "title": "",
+    "lead": "",
+    "body": [
+      "",
+      ""
+    ]
+  },
+  "about": {
+    "title": "",
+    "lead": "",
+    "body": [
+      "",
+      ""
+    ]
+  },
+  "mission": {
+    "title": "",
+    "lead": "",
+    "body": [
+      "",
+      ""
+    ]
+  },
+  "partners": {
+    "title": "",
+    "lead": "",
+    "body": [
+      "",
+      ""
+    ]
+  },
+  "solutions": {
+    "title": "",
+    "lead": "",
+    "body": [
+      "",
+      ""
+    ]
+  },
+  "legalCompliance": {
+    "title": "",
+    "lead": "",
+    "body": [
+      "",
+      ""
+    ],
+    "links": [
+      {
+        "label": "",
+        "href": ""
+      },
+      {
+        "label": "",
+        "href": ""
+      },
+      {
+        "label": "",
+        "href": ""
+      },
+      {
+        "label": "",
+        "href": ""
+      }
+    ]
+  },
+  "onboarding": {
+    "title": "",
+    "lead": "",
+    "body": [
+      "",
+      ""
+    ],
+    "links": [
+      {
+        "label": "",
+        "href": ""
+      },
+      {
+        "label": "",
+        "href": ""
+      }
+    ]
+  },
+  "resources": {
+    "hubLabel": ""
+  },
+  "blog": {
+    "title": "",
+    "lead": "",
+    "empty": "",
+    "categoryFilter": "",
+    "allCategories": "",
+    "pagination": "",
+    "prev": "",
+    "next": "",
+    "pageOf": "",
+    "byAuthor": ""
+  },
+  "news": {
+    "title": "",
+    "lead": "",
+    "empty": "",
+    "readSource": ""
+  },
+  "guides": {
+    "title": "",
+    "lead": "",
+    "empty": ""
+  },
+  "seo": {
+    "home": {
+      "title": "",
+      "description": ""
+    },
+    "about": {
+      "title": "",
+      "description": ""
+    },
+    "mission": {
+      "title": "",
+      "description": ""
+    },
+    "contact": {
+      "title": "",
+      "description": ""
+    },
+    "pricing": {
+      "title": "",
+      "description": ""
+    },
+    "startForFree": {
+      "title": "",
+      "description": ""
+    },
+    "login": {
+      "title": "",
+      "description": ""
+    },
+    "solutions": {
+      "title": "",
+      "description": ""
+    },
+    "integrations": {
+      "title": "",
+      "description": ""
+    },
+    "partners": {
+      "title": "",
+      "description": ""
+    },
+    "why": {
+      "title": "",
+      "description": ""
+    },
+    "product": {
+      "basilica": {
+        "title": "",
+        "description": ""
+      },
+      "cathedral": {
+        "title": "",
+        "description": ""
+      },
+      "diocese": {
+        "title": "",
+        "description": ""
+      },
+      "deaneries": {
+        "title": "",
+        "description": ""
+      },
+      "parishChurch": {
+        "title": "",
+        "description": ""
+      },
+      "funeralServices": {
+        "title": "",
+        "description": ""
+      },
+      "cemeteryServices": {
+        "title": "",
+        "description": ""
+      },
+      "onlineStore": {
+        "title": "",
+        "description": ""
+      },
+      "marketplace": {
+        "title": "",
+        "description": ""
+      },
+      "vendorDashboard": {
+        "title": "",
+        "description": ""
+      },
+      "donationFlow": {
+        "title": "",
+        "description": ""
+      },
+      "donationImpact": {
+        "title": "",
+        "description": ""
+      },
+      "crmDashboard": {
+        "title": "",
+        "description": ""
+      },
+      "aiPastoralAssistant": {
+        "title": "",
+        "description": ""
+      },
+      "gpsCemeteryMap": {
+        "title": "",
+        "description": ""
+      }
+    },
+    "blog": {
+      "title": "",
+      "description": ""
+    },
+    "news": {
+      "title": "",
+      "description": ""
+    },
+    "guides": {
+      "title": "",
+      "description": ""
+    },
+    "legalCompliance": {
+      "title": "",
+      "description": ""
+    },
+    "onboarding": {
+      "title": "",
+      "description": ""
+    },
+    "privacy": {
+      "title": "",
+      "description": ""
+    },
+    "terms": {
+      "title": "",
+      "description": ""
+    },
+    "cookies": {
+      "title": "",
+      "description": ""
+    },
+    "impressum": {
+      "title": "",
+      "description": ""
+    }
+  }
+}

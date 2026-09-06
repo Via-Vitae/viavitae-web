@@ -1,0 +1,21 @@
+---
+# LEGAL — LAUNCH GATE. Real text must come from Legal; NEVER fabricate (QODER rule 4).
+# Copy into content/legal/<locale>/ and rename to <doc>.mdx where <doc> is one of:
+#   privacy | terms | cookies | impressum
+# The legal collection does NOT fall back across locales: each served locale needs
+# its own authorised text. /legal/impressum additionally requires the LT legal imprint.
+title: "TODO: e.g. Privacy Policy"
+description: "TODO: one-line summary of this document."
+locale: en            # lt | en | ru; must mirror the directory
+slug: privacy         # MUST equal the `doc` value and the file name (no .mdx)
+kind: legal
+doc: privacy          # privacy | terms | cookies | impressum
+effectiveDate: 2026-01-01   # YYYY-MM-DD — date this text takes effect
+version: "1.0.0"            # surfaced in the page footer
+---
+
+{/* Replace this body with the authorised legal text for THIS jurisdiction/locale.
+    Until real text exists the page renders `legal.pendingNotice` instead — do not
+    commit placeholder or invented legal prose. */}
+
+TODO: authorised legal text (from Legal / DPO).

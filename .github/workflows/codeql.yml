@@ -1,0 +1,50 @@
+name: CodeQL
+
+# Static analysis for the TypeScript/JavaScript in viavitae-web.
+# Self-contained: uses the built-in `security-and-quality` suite via `queries:`,
+# so there is no sibling CodeQL config file to drift out of the tree.
+# The JS/TS extractor does not require a build, so this job does NOT install
+# dependencies and does NOT need the private @via-vitae/brand registry.
+
+on:
+  push:
+    branches: ["main"]
+  pull_request:
+    branches: ["main"]
+  schedule:
+    - cron: "30 4 * * 1" # Mondays, weekly authoritative scan
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: "codeql-${{ github.ref }}"
+  cancel-in-progress: true
+
+jobs:
+  analyze:
+    name: Analyze (javascript-typescript)
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+    permissions:
+      contents: read
+      actions: read
+      security-events: write
+    steps:
+      - name: Check out repository
+        uses: actions/checkout@v4
+
+      - name: Initialize CodeQL
+        uses: github/codeql-action/init@v3
+        with:
+          languages: javascript-typescript
+          queries: security-and-quality
+
+      # No autobuild: the JS/TS extractor analyses source directly. Building would
+      # require the private package registry, which this job deliberately avoids.
+
+      - name: Perform CodeQL Analysis
+        uses: github/codeql-action/analyze@v3
+        with:
+          category: "/language:javascript-typescript"
