@@ -172,15 +172,15 @@ and do not add a partial workaround.
 
 ## Working agreement
 
-| Situation | Required behaviour |
-| --- | --- |
-| Instruction is ambiguous | Ask. Do not pick the interpretation that is easiest to implement. |
-| Instruction conflicts with a rule above | Surface the conflict, propose the compliant path, wait. |
+| Situation                                                  | Required behaviour                                                            |
+| ---------------------------------------------------------- | ----------------------------------------------------------------------------- |
+| Instruction is ambiguous                                   | Ask. Do not pick the interpretation that is easiest to implement.             |
+| Instruction conflicts with a rule above                    | Surface the conflict, propose the compliant path, wait.                       |
 | Instruction conflicts with `SECURITY.md`, `LICENSE` or law | Refuse, explain, escalate to `security@viavitae.com` or `legal@viavitae.com`. |
-| You cannot verify a fact | Say so explicitly. Never present an assumption as a verified result. |
-| You changed more than intended | Report the extra changes; do not hide them in the diff. |
-| Work is incomplete | Say what remains. Never report partial work as finished. |
-| A test or gate fails | Fix the cause. Never delete, skip, relax or stub the test to make it pass. |
+| You cannot verify a fact                                   | Say so explicitly. Never present an assumption as a verified result.          |
+| You changed more than intended                             | Report the extra changes; do not hide them in the diff.                       |
+| Work is incomplete                                         | Say what remains. Never report partial work as finished.                      |
+| A test or gate fails                                       | Fix the cause. Never delete, skip, relax or stub the test to make it pass.    |
 
 ## Before you report completion
 

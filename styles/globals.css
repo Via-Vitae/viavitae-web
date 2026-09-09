@@ -39,19 +39,34 @@
        The variable packages register "Inter Variable"/"Fraunces Variable", so the
        literal family names are set here rather than relying on the preset's
        "Inter"/"Fraunces" aliases. */
-    font-family: "Inter Variable", "Inter", system-ui, -apple-system, "Segoe UI",
-      Roboto, "Helvetica Neue", Arial, sans-serif;
+    font-family:
+      "Inter Variable",
+      "Inter",
+      system-ui,
+      -apple-system,
+      "Segoe UI",
+      Roboto,
+      "Helvetica Neue",
+      Arial,
+      sans-serif;
   }
 
-  h1, h2, h3, h4 {
+  h1,
+  h2,
+  h3,
+  h4 {
     @apply text-text-primary;
-    font-family: "Fraunces Variable", "Fraunces", "Iowan Old Style", "Palatino Linotype",
-      Palatino, Georgia, serif;
+    font-family:
+      "Fraunces Variable", "Fraunces", "Iowan Old Style", "Palatino Linotype", Palatino, Georgia,
+      serif;
   }
 
   /* The brand's Russian display face is a distinct serif (WCAG 1.4.1 + Cyrillic
      glyph coverage); the preset switches display-cyrillic under [lang="ru"]. */
-  :lang(ru) h1, :lang(ru) h2, :lang(ru) h3, :lang(ru) h4 {
+  :lang(ru) h1,
+  :lang(ru) h2,
+  :lang(ru) h3,
+  :lang(ru) h4 {
     font-family: "Noto Serif", "PT Serif", Georgia, serif;
   }
 

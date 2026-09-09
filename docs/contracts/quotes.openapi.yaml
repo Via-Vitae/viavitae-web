@@ -32,9 +32,9 @@ paths:
         content:
           application/json:
             schema:
-              $ref: '#/components/schemas/QuoteRequest'
+              $ref: "#/components/schemas/QuoteRequest"
       responses:
-        '200':
+        "200":
           description: Quote rendered as a PDF document.
           headers:
             Content-Disposition:
@@ -46,19 +46,19 @@ paths:
               schema:
                 type: string
                 format: binary
-        '400':
+        "400":
           description: Validation error (including a `consent_privacy` that is not `true`).
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/Error'
-        '422':
+                $ref: "#/components/schemas/Error"
+        "422":
           description: Schema-valid but a business rule was violated.
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/Error'
-        '429':
+                $ref: "#/components/schemas/Error"
+        "429":
           description: Rate limited.
           headers:
             Retry-After:
@@ -68,7 +68,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/Error'
+                $ref: "#/components/schemas/Error"
 components:
   schemas:
     Product:
@@ -115,9 +115,9 @@ components:
         - locale
       properties:
         product:
-          $ref: '#/components/schemas/Product'
+          $ref: "#/components/schemas/Product"
         tier:
-          $ref: '#/components/schemas/Tier'
+          $ref: "#/components/schemas/Tier"
         pages:
           type: integer
           minimum: 1
@@ -130,7 +130,7 @@ components:
           type: array
           maxItems: 5
           items:
-            $ref: '#/components/schemas/Addon'
+            $ref: "#/components/schemas/Addon"
         organization_name:
           type: string
           minLength: 2

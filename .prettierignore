@@ -1,0 +1,4 @@
+
+# Generated contract types — do not format
+src/generated/
+pnpm-lock.yaml

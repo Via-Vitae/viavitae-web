@@ -25,7 +25,18 @@ updates:
         patterns: ["next", "react", "react-dom", "eslint-config-next"]
       # Tooling (test/lint/build) grouped together.
       tooling:
-        patterns: ["vitest*", "@vitest/*", "@playwright/test", "eslint*", "typescript*", "prettier", "tsx", "openapi-*", "@lhci/*"]
+        patterns:
+          [
+            "vitest*",
+            "@vitest/*",
+            "@playwright/test",
+            "eslint*",
+            "typescript*",
+            "prettier",
+            "tsx",
+            "openapi-*",
+            "@lhci/*",
+          ]
       # Everything else: group the noisy minor/patch churn into one PR.
       frontend-minor-patch:
         update-types: [minor, patch]

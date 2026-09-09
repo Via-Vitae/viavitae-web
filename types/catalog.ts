@@ -8,24 +8,24 @@
 
 /** Marketing catalogue product identifiers (the church ribbon + product pages). */
 export type ProductId =
-  | 'basilica'
-  | 'cathedral'
-  | 'diocese'
-  | 'deaneries'
-  | 'parish-church'
-  | 'funeral-services'
-  | 'cemetery-services'
-  | 'online-store'
-  | 'marketplace'
-  | 'vendor-dashboard'
-  | 'donation-flow'
-  | 'donation-impact'
-  | 'crm-dashboard'
-  | 'ai-pastoral-assistant'
-  | 'gps-cemetery-map';
+  | "basilica"
+  | "cathedral"
+  | "diocese"
+  | "deaneries"
+  | "parish-church"
+  | "funeral-services"
+  | "cemetery-services"
+  | "online-store"
+  | "marketplace"
+  | "vendor-dashboard"
+  | "donation-flow"
+  | "donation-impact"
+  | "crm-dashboard"
+  | "ai-pastoral-assistant"
+  | "gps-cemetery-map";
 
 /** Pricing tiers. Prices are fixed by product strategy (see lib/constants.ts). */
-export type TierId = 'economy' | 'normal' | 'vip';
+export type TierId = "economy" | "normal" | "vip";
 
 export interface Tier {
   readonly id: TierId;

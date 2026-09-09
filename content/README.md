@@ -27,10 +27,10 @@ Empty locale directories are preserved with `.gitkeep`.
 
 `getDoc(collection, locale, slug)` resolves in this order:
 
-| Collection          | Fallback chain        | Why                                                                 |
-| ------------------- | --------------------- | ------------------------------------------------------------------- |
-| `blog` `news` `guides` | `locale` → `en`    | Marketing content may safely fall back to English.                  |
-| `legal`             | `locale` **only**     | A legal text in the wrong language/jurisdiction is worse than none. |
+| Collection             | Fallback chain    | Why                                                                 |
+| ---------------------- | ----------------- | ------------------------------------------------------------------- |
+| `blog` `news` `guides` | `locale` → `en`   | Marketing content may safely fall back to English.                  |
+| `legal`                | `locale` **only** | A legal text in the wrong language/jurisdiction is worse than none. |
 
 When no file resolves, `getDoc` returns `null` and the page renders a
 launch-gate notice instead of fabricated text. When a file resolves but its
@@ -41,13 +41,13 @@ page).
 
 Shared by every document (`BaseFrontMatter`):
 
-| Field         | Type              | Required | Notes                                    |
-| ------------- | ----------------- | -------- | ---------------------------------------- |
-| `title`       | string (≥1)       | yes      | Plain string; localisation lives per-file. |
-| `description` | string (≥1)       | yes      | Used for meta + cards.                   |
-| `locale`      | `lt\|en\|ru`      | yes      | Must mirror the directory it lives under. |
-| `slug`        | string (≥1)       | yes      | Canonical slug, no locale prefix.        |
-| `draft`       | boolean           | no       | Drafts are excluded from `listSlugs`.    |
+| Field         | Type         | Required | Notes                                      |
+| ------------- | ------------ | -------- | ------------------------------------------ |
+| `title`       | string (≥1)  | yes      | Plain string; localisation lives per-file. |
+| `description` | string (≥1)  | yes      | Used for meta + cards.                     |
+| `locale`      | `lt\|en\|ru` | yes      | Must mirror the directory it lives under.  |
+| `slug`        | string (≥1)  | yes      | Canonical slug, no locale prefix.          |
+| `draft`       | boolean      | no       | Drafts are excluded from `listSlugs`.      |
 
 Per-collection additions (enforced by the zod schemas in `content-loader.ts`):
 

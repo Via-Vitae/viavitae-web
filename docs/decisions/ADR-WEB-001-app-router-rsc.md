@@ -19,7 +19,7 @@ rendering model:
 - Pages are Server Components by default; interactivity is opt-in via `'use client'`
   islands (forms, calculators, menus, consent).
 - Locale routing uses a `[locale]` dynamic segment with `next-intl` and `localePrefix:
-  'always'`, so every URL is explicitly localised and crawlable.
+'always'`, so every URL is explicitly localised and crawlable.
 - Metadata, canonical URLs and JSON-LD are produced server-side
   (`components/seo/metadata-builder.ts`, `components/seo/jsonld.tsx`).
 - `output: 'standalone'` for a minimal container runtime (see Dockerfile).

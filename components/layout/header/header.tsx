@@ -1,5 +1,5 @@
-import { GlobalNav } from './global-nav';
-import { ChurchRibbon } from './church-ribbon';
+import { GlobalNav } from "./global-nav";
+import { ChurchRibbon } from "./church-ribbon";
 
 // Two-part header: (a) the global navigation row, (b) the church ribbon strip.
 // Server component shell; the interactive nav is a client island.

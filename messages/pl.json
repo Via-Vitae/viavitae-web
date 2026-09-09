@@ -115,13 +115,7 @@
     "eyebrow": "",
     "heroSubtitle": "",
     "featuresHeading": "",
-    "features": [
-      "",
-      "",
-      "",
-      "",
-      ""
-    ],
+    "features": ["", "", "", "", ""],
     "demoHeading": "",
     "demoTitle": "",
     "pricingHeading": "",
@@ -419,50 +413,32 @@
   "why": {
     "title": "",
     "lead": "",
-    "body": [
-      "",
-      ""
-    ]
+    "body": ["", ""]
   },
   "about": {
     "title": "",
     "lead": "",
-    "body": [
-      "",
-      ""
-    ]
+    "body": ["", ""]
   },
   "mission": {
     "title": "",
     "lead": "",
-    "body": [
-      "",
-      ""
-    ]
+    "body": ["", ""]
   },
   "partners": {
     "title": "",
     "lead": "",
-    "body": [
-      "",
-      ""
-    ]
+    "body": ["", ""]
   },
   "solutions": {
     "title": "",
     "lead": "",
-    "body": [
-      "",
-      ""
-    ]
+    "body": ["", ""]
   },
   "legalCompliance": {
     "title": "",
     "lead": "",
-    "body": [
-      "",
-      ""
-    ],
+    "body": ["", ""],
     "links": [
       {
         "label": "",
@@ -485,10 +461,7 @@
   "onboarding": {
     "title": "",
     "lead": "",
-    "body": [
-      "",
-      ""
-    ],
+    "body": ["", ""],
     "links": [
       {
         "label": "",

@@ -1,12 +1,12 @@
-import type { Metadata } from 'next';
-import { getTranslations, setRequestLocale } from 'next-intl/server';
-import { buildMetadata } from '@/components/seo/metadata-builder';
-import { Breadcrumbs } from '@/components/layout/breadcrumbs';
-import { Link } from '@/lib/i18n';
-import type { Locale } from '@/lib/routing';
+import type { Metadata } from "next";
+import { getTranslations, setRequestLocale } from "next-intl/server";
+import { buildMetadata } from "@/components/seo/metadata-builder";
+import { Breadcrumbs } from "@/components/layout/breadcrumbs";
+import { Link } from "@/lib/i18n";
+import type { Locale } from "@/lib/routing";
 
-const PATH = '/solutions';
-const NS = 'solutions';
+const PATH = "/solutions";
+const NS = "solutions";
 
 export async function generateMetadata({
   params,
@@ -17,11 +17,7 @@ export async function generateMetadata({
   return buildMetadata({ path: PATH, locale: locale as Locale });
 }
 
-export default async function Page({
-  params,
-}: {
-  params: Promise<{ locale: string }>;
-}) {
+export default async function Page({ params }: { params: Promise<{ locale: string }> }) {
   const { locale } = await params;
   setRequestLocale(locale);
   const t = await getTranslations({ locale });
@@ -30,9 +26,9 @@ export default async function Page({
   return (
     <div className="mx-auto flex max-w-3xl flex-col gap-8 px-4 py-16">
       <Breadcrumbs
-        label={t('nav.breadcrumb')}
+        label={t("nav.breadcrumb")}
         crumbs={[
-          { name: t('nav.home'), path: '/' },
+          { name: t("nav.home"), path: "/" },
           { name: t(`${NS}.title`), path: PATH },
         ]}
       />
@@ -42,12 +38,17 @@ export default async function Page({
       </header>
       <div className="flex flex-col gap-4">
         {body.map((paragraph, index) => (
-          <p key={index} className="text-body-md text-text-secondary">{paragraph}</p>
+          <p key={index} className="text-body-md text-text-secondary">
+            {paragraph}
+          </p>
         ))}
       </div>
       <div>
-        <Link href="/start-for-free" className="inline-block rounded-sm bg-gold-500 px-6 py-3 text-body-md font-medium text-text-on-gold hover:bg-gold-600">
-          {t('nav.startFree')}
+        <Link
+          href="/start-for-free"
+          className="inline-block rounded-sm bg-gold-500 px-6 py-3 text-body-md font-medium text-text-on-gold hover:bg-gold-600"
+        >
+          {t("nav.startFree")}
         </Link>
       </div>
     </div>

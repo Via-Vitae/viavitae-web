@@ -1,6 +1,6 @@
-import { Link } from '@/lib/i18n';
-import { JsonLd, breadcrumbJsonLd } from '@/components/seo/jsonld';
-import type { Crumb } from '@/components/seo/jsonld';
+import { Link } from "@/lib/i18n";
+import { JsonLd, breadcrumbJsonLd } from "@/components/seo/jsonld";
+import type { Crumb } from "@/components/seo/jsonld";
 
 // Breadcrumb trail + matching BreadcrumbList JSON-LD. The last crumb is the
 // current page (aria-current="page", not a link). `crumbs` paths are canonical and

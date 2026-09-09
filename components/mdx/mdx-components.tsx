@@ -4,8 +4,8 @@ import type {
   HTMLAttributes,
   ImgHTMLAttributes,
   JSX,
-} from 'react';
-import { slugify } from '@/lib/utils';
+} from "react";
+import { slugify } from "@/lib/utils";
 
 // Custom MDX element renderers used by next-mdx-remote/rsc (ADR-WEB-003).
 // Accessibility is enforced here so no author can ship a non-compliant document:
@@ -20,10 +20,10 @@ function isExternal(href?: string): boolean {
 function Img({ alt, src, ...rest }: ImgHTMLAttributes<HTMLImageElement>): JSX.Element {
   if (alt === undefined) {
     // Fail loudly in development: an image without alt is a WCAG 1.1.1 failure.
-    if (process.env.NODE_ENV !== 'production') {
+    if (process.env.NODE_ENV !== "production") {
       console.warn(`[mdx] <img src="${String(src)}"> is missing an alt attribute`);
     }
-    alt = '';
+    alt = "";
   }
   // Content images are authored in MDX and served from /public; use a plain img
   // with eager loading and explicit dimensions to avoid CLS (set width/height in MDX).
@@ -31,11 +31,7 @@ function Img({ alt, src, ...rest }: ImgHTMLAttributes<HTMLImageElement>): JSX.El
   return <img alt={alt} src={src} loading="lazy" decoding="async" {...rest} />;
 }
 
-function Anchor({
-  href,
-  children,
-  ...rest
-}: AnchorHTMLAttributes<HTMLAnchorElement>): JSX.Element {
+function Anchor({ href, children, ...rest }: AnchorHTMLAttributes<HTMLAnchorElement>): JSX.Element {
   if (isExternal(href)) {
     return (
       <a href={href} target="_blank" rel="noopener noreferrer" {...rest}>
@@ -51,14 +47,15 @@ function Anchor({
 }
 
 function heading(level: number) {
-  const Tag: ElementType = `h${level}`;
-  return function Heading({
-    children,
-    ...rest
-  }: HTMLAttributes<HTMLHeadingElement>): JSX.Element {
-    const text = String(children ?? '');
+  const Tag = `h${level}` as ElementType;
+  return function Heading({ children, ...rest }: HTMLAttributes<HTMLHeadingElement>): JSX.Element {
+    const text = String(children ?? "");
     const id = rest.id ?? slugify(text);
-    return <Tag id={id} {...rest}>{children}</Tag>;
+    return (
+      <Tag id={id} {...rest}>
+        {children}
+      </Tag>
+    );
   };
 }
 

@@ -1,8 +1,8 @@
-'use client';
+"use client";
 
-import { useId, useState } from 'react';
-import type { ReactNode } from 'react';
-import { cn } from '@/lib/utils';
+import { useId, useState } from "react";
+import type { ReactNode } from "react";
+import { cn } from "@/lib/utils";
 
 // Accessible tooltip: the description is exposed via aria-describedby and shown on
 // both hover and keyboard focus, so it is available without a pointer (WCAG 1.4.13).
@@ -20,7 +20,7 @@ export function Tooltip({ label, children, className }: TooltipProps) {
 
   return (
     <span
-      className={cn('relative inline-flex', className)}
+      className={cn("relative inline-flex", className)}
       onMouseEnter={() => setVisible(true)}
       onMouseLeave={() => setVisible(false)}
       onFocus={() => setVisible(true)}

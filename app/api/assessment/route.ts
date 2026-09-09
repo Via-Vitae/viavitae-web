@@ -1,6 +1,6 @@
-import { NextResponse, type NextRequest } from 'next/server';
-import { assessmentRequestSchema } from '@/lib/assessment-schema';
-import { submitAssessment } from '@/lib/bitrix24';
+import { NextResponse, type NextRequest } from "next/server";
+import { assessmentRequestSchema } from "@/lib/assessment-schema";
+import { submitAssessment } from "@/lib/bitrix24";
 
 // Server-side proxy for the "Request a Digital Assessment" funnel. The browser
 // never talks to viavitae-api directly and never holds the service token; this
@@ -13,7 +13,7 @@ import { submitAssessment } from '@/lib/bitrix24';
 //   - idempotency: a client-generated UUID key is required so retries de-duplicate;
 //   - fail closed: a missing API_SERVICE_TOKEN or upstream/network failure is
 //     reported as an error, never as success.
-export const runtime = 'nodejs';
+export const runtime = "nodejs";
 
 const UUID_RE = /^[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}$/i;
 
@@ -23,10 +23,7 @@ function errorResponse(
   message: string,
   fields?: Record<string, string>,
 ): NextResponse {
-  return NextResponse.json(
-    { error: { code, message, ...(fields ? { fields } : {}) } },
-    { status },
-  );
+  return NextResponse.json({ error: { code, message, ...(fields ? { fields } : {}) } }, { status });
 }
 
 export async function POST(request: NextRequest): Promise<NextResponse> {
@@ -34,18 +31,18 @@ export async function POST(request: NextRequest): Promise<NextResponse> {
   try {
     raw = await request.json();
   } catch {
-    return errorResponse(400, 'invalid_json', 'Request body must be valid JSON.');
+    return errorResponse(400, "invalid_json", "Request body must be valid JSON.");
   }
 
   // Bot trap first: a filled honeypot looks like success but is never forwarded.
   // Returning the same 202 shape as a real submission keeps the trap invisible.
-  if (typeof raw === 'object' && raw !== null) {
+  if (typeof raw === "object" && raw !== null) {
     const honeypot = (raw as { honeypot?: unknown }).honeypot;
-    if (typeof honeypot === 'string' && honeypot.length > 0) {
+    if (typeof honeypot === "string" && honeypot.length > 0) {
       return NextResponse.json(
         {
           assessment_id: crypto.randomUUID(),
-          status: 'accepted',
+          status: "accepted",
           next_steps: { confirmation_email_sent: false, booking_url: null },
         },
         { status: 202 },
@@ -53,12 +50,12 @@ export async function POST(request: NextRequest): Promise<NextResponse> {
     }
   }
 
-  const idempotencyKey = request.headers.get('Idempotency-Key') ?? '';
+  const idempotencyKey = request.headers.get("Idempotency-Key") ?? "";
   if (!UUID_RE.test(idempotencyKey)) {
     return errorResponse(
       400,
-      'missing_idempotency_key',
-      'A valid Idempotency-Key header (UUID) is required.',
+      "missing_idempotency_key",
+      "A valid Idempotency-Key header (UUID) is required.",
     );
   }
 
@@ -66,13 +63,13 @@ export async function POST(request: NextRequest): Promise<NextResponse> {
   if (!parsed.success) {
     const fields: Record<string, string> = {};
     for (const issue of parsed.error.issues) {
-      const key = issue.path.join('.');
+      const key = issue.path.join(".");
       if (key) fields[key] = issue.message;
     }
     return errorResponse(
       400,
-      'validation_error',
-      'The assessment request failed validation.',
+      "validation_error",
+      "The assessment request failed validation.",
       fields,
     );
   }
@@ -101,11 +98,11 @@ export async function POST(request: NextRequest): Promise<NextResponse> {
     // Forward the upstream contract error verbatim (400 / 409 / 422 / 429).
     if (status === 400 || status === 409 || status === 422 || status === 429) {
       const headers = new Headers();
-      const retryAfter = result.response.headers.get('Retry-After');
-      if (retryAfter) headers.set('Retry-After', retryAfter);
+      const retryAfter = result.response.headers.get("Retry-After");
+      if (retryAfter) headers.set("Retry-After", retryAfter);
       return NextResponse.json(
         result.error ?? {
-          error: { code: 'upstream_error', message: 'Upstream rejected the request.' },
+          error: { code: "upstream_error", message: "Upstream rejected the request." },
         },
         { status, headers },
       );
@@ -113,13 +110,13 @@ export async function POST(request: NextRequest): Promise<NextResponse> {
 
     return errorResponse(
       502,
-      'upstream_error',
-      'The assessment service returned an unexpected response.',
+      "upstream_error",
+      "The assessment service returned an unexpected response.",
     );
   } catch (error) {
     // Fail closed: a missing service token (thrown by the gateway) or a network
     // failure must surface as an error, never as a silent success.
-    const message = error instanceof Error ? error.message : 'Unknown error';
-    return errorResponse(500, 'service_unavailable', `Assessment submission failed: ${message}`);
+    const message = error instanceof Error ? error.message : "Unknown error";
+    return errorResponse(500, "service_unavailable", `Assessment submission failed: ${message}`);
   }
 }

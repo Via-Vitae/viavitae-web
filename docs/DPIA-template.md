@@ -28,17 +28,17 @@ the national list published by the State Data Protection Inspectorate
 (Valstybinė duomenų apsaugos inspekcija) for the Lithuanian pilot, add criteria. As a
 working rule, **two or more** of the following means a DPIA is required:
 
-| # | Criterion |
-| --- | --- |
-| 1 | Evaluation or scoring, including profiling and predicting behaviour |
-| 2 | Automated decision-making with legal or similarly significant effect |
-| 3 | Systematic monitoring of data subjects |
-| 4 | Sensitive data or data of a highly personal nature, including religious belief |
-| 5 | Data processed on a large scale |
-| 6 | Matching or combining datasets from different sources |
-| 7 | Data concerning vulnerable data subjects, including children and people in a relationship of dependency |
-| 8 | Innovative use or application of new technology, including AI |
-| 9 | Processing that prevents data subjects from exercising a right or using a service or contract |
+| #   | Criterion                                                                                               |
+| --- | ------------------------------------------------------------------------------------------------------- |
+| 1   | Evaluation or scoring, including profiling and predicting behaviour                                     |
+| 2   | Automated decision-making with legal or similarly significant effect                                    |
+| 3   | Systematic monitoring of data subjects                                                                  |
+| 4   | Sensitive data or data of a highly personal nature, including religious belief                          |
+| 5   | Data processed on a large scale                                                                         |
+| 6   | Matching or combining datasets from different sources                                                   |
+| 7   | Data concerning vulnerable data subjects, including children and people in a relationship of dependency |
+| 8   | Innovative use or application of new technology, including AI                                           |
+| 9   | Processing that prevents data subjects from exercising a right or using a service or contract           |
 
 For ViaVitae, criteria 4, 7 and 8 are engaged by default: the organisation serves religious
 communities, so religious belief is inherently in scope; parishioners and clergy are in a
@@ -59,25 +59,25 @@ reasoning if you conclude otherwise.
 
 ## Status values
 
-| Status | Meaning |
-| --- | --- |
-| `Draft` | Being written. Processing must not start. |
-| `In review` | With the DPO. Processing must not start. |
-| `Approved` | Signed off. Processing may start within the agreed conditions. |
-| `Approved with conditions` | Processing may start only once the listed conditions are met and verified. |
-| `Requires update` | A change has invalidated the assessment. Processing continues only if the change is minor and the DPO agrees; otherwise it pauses. |
-| `Prior consultation required` | Residual high risk remains. Article 36 consultation with the supervisory authority is needed before processing starts. |
-| `Withdrawn` | The processing did not proceed. Kept for history. |
+| Status                        | Meaning                                                                                                                            |
+| ----------------------------- | ---------------------------------------------------------------------------------------------------------------------------------- |
+| `Draft`                       | Being written. Processing must not start.                                                                                          |
+| `In review`                   | With the DPO. Processing must not start.                                                                                           |
+| `Approved`                    | Signed off. Processing may start within the agreed conditions.                                                                     |
+| `Approved with conditions`    | Processing may start only once the listed conditions are met and verified.                                                         |
+| `Requires update`             | A change has invalidated the assessment. Processing continues only if the change is minor and the DPO agrees; otherwise it pauses. |
+| `Prior consultation required` | Residual high risk remains. Article 36 consultation with the supervisory authority is needed before processing starts.             |
+| `Withdrawn`                   | The processing did not proceed. Kept for history.                                                                                  |
 
 ---
 
 ## Register
 
-| DPIA | Processing operation | Status | Residual risk | Owner | Approved | Review due |
-| --- | --- | --- | --- | --- | --- | --- |
-| [DPIA-001](#dpia-001-assessment-funnel) | Assessment funnel — enquiry capture and quotation | Approved with conditions | Medium | Product | 2026-08-21 | 2027-08-21 |
-| [DPIA-002](#dpia-002-ai-pastoral-assistant) | AI pastoral assistant with a human approval queue | Approved with conditions | High | Product | 2026-09-02 | 2027-03-02 |
-| _DPIA-003_ | _next available number_ | — | — | — | — | — |
+| DPIA                                        | Processing operation                              | Status                   | Residual risk | Owner   | Approved   | Review due |
+| ------------------------------------------- | ------------------------------------------------- | ------------------------ | ------------- | ------- | ---------- | ---------- |
+| [DPIA-001](#dpia-001-assessment-funnel)     | Assessment funnel — enquiry capture and quotation | Approved with conditions | Medium        | Product | 2026-08-21 | 2027-08-21 |
+| [DPIA-002](#dpia-002-ai-pastoral-assistant) | AI pastoral assistant with a human approval queue | Approved with conditions | High          | Product | 2026-09-02 | 2027-03-02 |
+| _DPIA-003_                                  | _next available number_                           | —                        | —             | —       | —          | —          |
 
 Review cadence: annually, or immediately on any material change to purpose, scope, data
 categories, recipients, retention, technology or residency. Assessments carrying a High
@@ -94,14 +94,14 @@ and add the register row in the same pull request. All nine sections are mandato
 ```markdown
 ## DPIA-NNN: <processing operation name>
 
-| Field | Value |
-| --- | --- |
-| Status | Draft |
-| Assessment owner | <role> |
-| Version | 1.0 |
-| Date started | <YYYY-MM-DD> |
-| Related ADR | <ADR-NNN or not applicable> |
-| Repositories affected | <list> |
+| Field                 | Value                       |
+| --------------------- | --------------------------- |
+| Status                | Draft                       |
+| Assessment owner      | <role>                      |
+| Version               | 1.0                         |
+| Date started          | <YYYY-MM-DD>                |
+| Related ADR           | <ADR-NNN or not applicable> |
+| Repositories affected | <list>                      |
 
 ### 1. Description of processing
 
@@ -225,19 +225,19 @@ Score each risk before mitigation using the matrix below.
 
 Likelihood and severity are each scored 1 to 5. The product gives the inherent risk rating.
 
-| Likelihood × Severity | 1 Negligible | 2 Minor | 3 Moderate | 4 Significant | 5 Severe |
-| --- | --- | --- | --- | --- | --- |
-| **5 Almost certain** | 5 Medium | 10 High | 15 High | 20 Critical | 25 Critical |
-| **4 Likely** | 4 Low | 8 Medium | 12 High | 16 Critical | 20 Critical |
-| **3 Possible** | 3 Low | 6 Medium | 9 Medium | 12 High | 15 High |
-| **2 Unlikely** | 2 Low | 4 Low | 6 Medium | 8 Medium | 10 High |
-| **1 Rare** | 1 Low | 2 Low | 3 Low | 4 Low | 5 Medium |
+| Likelihood × Severity | 1 Negligible | 2 Minor  | 3 Moderate | 4 Significant | 5 Severe    |
+| --------------------- | ------------ | -------- | ---------- | ------------- | ----------- |
+| **5 Almost certain**  | 5 Medium     | 10 High  | 15 High    | 20 Critical   | 25 Critical |
+| **4 Likely**          | 4 Low        | 8 Medium | 12 High    | 16 Critical   | 20 Critical |
+| **3 Possible**        | 3 Low        | 6 Medium | 9 Medium   | 12 High       | 15 High     |
+| **2 Unlikely**        | 2 Low        | 4 Low    | 6 Medium   | 8 Medium      | 10 High     |
+| **1 Rare**            | 1 Low        | 2 Low    | 3 Low      | 4 Low         | 5 Medium    |
 
-| Rating | Band | Required response |
-| --- | --- | --- |
-| 1 to 4 | Low | Accept and record. Revisit at review. |
-| 5 to 9 | Medium | Mitigate where proportionate; record the decision either way. |
-| 10 to 14 | High | Mitigation mandatory before processing starts. DPO sign-off required. |
+| Rating   | Band     | Required response                                                                             |
+| -------- | -------- | --------------------------------------------------------------------------------------------- |
+| 1 to 4   | Low      | Accept and record. Revisit at review.                                                         |
+| 5 to 9   | Medium   | Mitigate where proportionate; record the decision either way.                                 |
+| 10 to 14 | High     | Mitigation mandatory before processing starts. DPO sign-off required.                         |
 | 15 to 25 | Critical | Do not proceed. Mitigate and reassess, or consult the supervisory authority under Article 36. |
 
 Consider at least these harms: unauthorised disclosure; loss of confidentiality of belief,
@@ -335,13 +335,13 @@ a DPIA without a named signatory has not been approved.
 
 ## DPIA-001: Assessment funnel
 
-| Field | Value |
-| --- | --- |
-| Status | Approved with conditions |
-| Assessment owner | Product |
-| Version | 1.2 |
-| Date started | 2026-07-28 |
-| Related ADR | ADR-001 |
+| Field                 | Value                                                             |
+| --------------------- | ----------------------------------------------------------------- |
+| Status                | Approved with conditions                                          |
+| Assessment owner      | Product                                                           |
+| Version               | 1.2                                                               |
+| Date started          | 2026-07-28                                                        |
+| Related ADR           | ADR-001                                                           |
 | Repositories affected | `viavitae-web`, `viavitae-api`, `viavitae-infra`, `viavitae-docs` |
 
 ### 1. Description of processing
@@ -410,12 +410,12 @@ turned into a proposal that a ViaVitae staff member reviews before it is sent.
 
 ### 3. Lawful basis
 
-| Purpose | Article 6 basis | Reasoning |
-| --- | --- | --- |
-| Responding to an enquiry and producing a quotation | 6(1)(b) contract | Necessary for steps taken at the data subject's request prior to entering a contract. |
-| Retaining the quotation and related correspondence after a contract is signed | 6(1)(c) legal obligation | Accounting and tax record-keeping obligations under Lithuanian law, 7 years. |
-| Abuse prevention on the submission endpoint | 6(1)(f) legitimate interests | See the balancing test below. |
-| Retaining an enquiry that does not convert, for 12 months | 6(1)(f) legitimate interests | See the balancing test below. |
+| Purpose                                                                       | Article 6 basis              | Reasoning                                                                             |
+| ----------------------------------------------------------------------------- | ---------------------------- | ------------------------------------------------------------------------------------- |
+| Responding to an enquiry and producing a quotation                            | 6(1)(b) contract             | Necessary for steps taken at the data subject's request prior to entering a contract. |
+| Retaining the quotation and related correspondence after a contract is signed | 6(1)(c) legal obligation     | Accounting and tax record-keeping obligations under Lithuanian law, 7 years.          |
+| Abuse prevention on the submission endpoint                                   | 6(1)(f) legitimate interests | See the balancing test below.                                                         |
+| Retaining an enquiry that does not convert, for 12 months                     | 6(1)(f) legitimate interests | See the balancing test below.                                                         |
 
 **Legitimate interests balancing test, abuse prevention.** The interest is protecting the
 service from automated spam and submission abuse, which would otherwise degrade a service
@@ -447,17 +447,17 @@ redone before that change ships.
 
 ### 4. Data flows and storage locations
 
-| Stage | System | Location | Protection |
-| --- | --- | --- | --- |
-| Collection | `viavitae-web` funnel form, served over TLS 1.3 | Self-hosted k3s, Frankfurt, DE | HSTS, no third-party scripts on the form route |
-| Transport | Authenticated API call to `viavitae-api` | Frankfurt, DE, internal network | TLS 1.3, mTLS between services |
-| Processing and scoring | `viavitae-api` assessment service | Frankfurt, DE | Least-privilege service accounts |
-| Primary storage | PostgreSQL, contact and assessment schemas separated by surrogate key | Frankfurt, DE | AES-256 at rest, column-level encryption on contact details |
-| Backup | Nightly encrypted snapshot, 35-day retention | Vilnius, LT | AES-256 at rest, key held separately from the snapshot |
-| Object storage | Uploaded attachments only | Frankfurt, DE | Private bucket, signed URLs expiring in 15 minutes |
-| Logs | Structured application logs | Frankfurt, DE | Identifier fields redacted at the logging layer; no free-text bodies logged |
-| Monitoring | Self-hosted metrics and alerting | Vilnius, LT | Aggregates only; no personal data in labels |
-| Email notification | Self-hosted mail relay to staff | Vilnius, LT | TLS on submission; the notification contains a link, not the assessment content |
+| Stage                  | System                                                                | Location                        | Protection                                                                      |
+| ---------------------- | --------------------------------------------------------------------- | ------------------------------- | ------------------------------------------------------------------------------- |
+| Collection             | `viavitae-web` funnel form, served over TLS 1.3                       | Self-hosted k3s, Frankfurt, DE  | HSTS, no third-party scripts on the form route                                  |
+| Transport              | Authenticated API call to `viavitae-api`                              | Frankfurt, DE, internal network | TLS 1.3, mTLS between services                                                  |
+| Processing and scoring | `viavitae-api` assessment service                                     | Frankfurt, DE                   | Least-privilege service accounts                                                |
+| Primary storage        | PostgreSQL, contact and assessment schemas separated by surrogate key | Frankfurt, DE                   | AES-256 at rest, column-level encryption on contact details                     |
+| Backup                 | Nightly encrypted snapshot, 35-day retention                          | Vilnius, LT                     | AES-256 at rest, key held separately from the snapshot                          |
+| Object storage         | Uploaded attachments only                                             | Frankfurt, DE                   | Private bucket, signed URLs expiring in 15 minutes                              |
+| Logs                   | Structured application logs                                           | Frankfurt, DE                   | Identifier fields redacted at the logging layer; no free-text bodies logged     |
+| Monitoring             | Self-hosted metrics and alerting                                      | Vilnius, LT                     | Aggregates only; no personal data in labels                                     |
+| Email notification     | Self-hosted mail relay to staff                                       | Vilnius, LT                     | TLS on submission; the notification contains a link, not the assessment content |
 
 - **No transfers outside the EEA.** Every system in the flow is on ViaVitae infrastructure in
   Germany or Lithuania.
@@ -481,34 +481,34 @@ redone before that change ships.
 
 ### 5. Risk assessment
 
-| ID | Risk | Harm to data subjects | L | S | Inherent |
-| --- | --- | --- | --- | --- | --- |
-| R1 | Unauthorised disclosure of enquiry content revealing a community's affiliation and circumstances | Stigmatisation, loss of trust, chilling effect on a community seeking help | 2 | 4 | 8 Medium |
-| R2 | Free-text answers disclose third-party special category data about parishioners, which is retained longer than necessary and is outside the third party's knowledge | Loss of control over another person's belief or health data | 3 | 4 | 12 High |
-| R3 | Backup media or snapshot leaves the EEA through a provider change or misconfiguration | Unlawful transfer, loss of the residency guarantee given to clients | 1 | 5 | 5 Medium |
-| R4 | Credential compromise of a staff account exposes the whole enquiry dataset | Bulk disclosure, potential targeted approach to vulnerable communities | 2 | 5 | 10 High |
-| R5 | Submission endpoint abused for bulk collection or spam injection | Degraded service for parishes; injected content stored and read by staff | 3 | 2 | 6 Medium |
-| R6 | Retention not enforced, so data accumulates beyond 12 months and access requests become unanswerable | Loss of accuracy, unlawful continued processing | 3 | 3 | 9 Medium |
-| R7 | Consent for Article 9 inference not demonstrable because the record lacks the text shown | Processing special category data without a valid condition | 2 | 5 | 10 High |
-| R8 | Logs capture free-text assessment content and are retained outside the deletion schedule | Disclosure through a lower-security path; erasure incomplete | 3 | 3 | 9 Medium |
-| R9 | Scoring output is treated as a decision and a proposal is sent without human review | Incorrect or inappropriate proposal to a community in a relationship of dependency | 2 | 4 | 8 Medium |
+| ID  | Risk                                                                                                                                                                | Harm to data subjects                                                              | L   | S   | Inherent |
+| --- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------- | --- | --- | -------- |
+| R1  | Unauthorised disclosure of enquiry content revealing a community's affiliation and circumstances                                                                    | Stigmatisation, loss of trust, chilling effect on a community seeking help         | 2   | 4   | 8 Medium |
+| R2  | Free-text answers disclose third-party special category data about parishioners, which is retained longer than necessary and is outside the third party's knowledge | Loss of control over another person's belief or health data                        | 3   | 4   | 12 High  |
+| R3  | Backup media or snapshot leaves the EEA through a provider change or misconfiguration                                                                               | Unlawful transfer, loss of the residency guarantee given to clients                | 1   | 5   | 5 Medium |
+| R4  | Credential compromise of a staff account exposes the whole enquiry dataset                                                                                          | Bulk disclosure, potential targeted approach to vulnerable communities             | 2   | 5   | 10 High  |
+| R5  | Submission endpoint abused for bulk collection or spam injection                                                                                                    | Degraded service for parishes; injected content stored and read by staff           | 3   | 2   | 6 Medium |
+| R6  | Retention not enforced, so data accumulates beyond 12 months and access requests become unanswerable                                                                | Loss of accuracy, unlawful continued processing                                    | 3   | 3   | 9 Medium |
+| R7  | Consent for Article 9 inference not demonstrable because the record lacks the text shown                                                                            | Processing special category data without a valid condition                         | 2   | 5   | 10 High  |
+| R8  | Logs capture free-text assessment content and are retained outside the deletion schedule                                                                            | Disclosure through a lower-security path; erasure incomplete                       | 3   | 3   | 9 Medium |
+| R9  | Scoring output is treated as a decision and a proposal is sent without human review                                                                                 | Incorrect or inappropriate proposal to a community in a relationship of dependency | 2   | 4   | 8 Medium |
 
 No risk scores Critical. Three score High and require mandatory mitigation before
 processing starts, which is recorded in section 6 and verified as a condition in section 8.
 
 ### 6. Mitigations and technical measures
 
-| Risk | Measure | Owner | Verification |
-| --- | --- | --- | --- |
-| R2 | The final step displays a notice asking the submitter not to include personal data about identifiable third parties, and to describe a community rather than individuals. Submitted text is scanned on write for patterns indicating a third-party name with a health or belief disclosure, and flagged for redaction by the product team within two working days. Retention for flagged records is reduced to 90 days. | Product | Monthly sample of 10 records reviewed by the DPO; scan hit rate reported |
-| R4 | MFA enforced on all staff accounts; hardware key required for production access; sessions expire after 8 hours; quarterly access review with automatic revocation on role change; break-glass access requires dual approval and is logged and reviewed within 24 hours | Platform | Access review report; penetration test annually |
-| R7 | The consent record stores the exact notice text version, the checkbox state, the timestamp, the IP and the user agent. Consent cannot be pre-checked and is not bundled with the terms of service. Withdrawal is a single link in every follow-up email. | Product | Consent records sampled quarterly by the DPO; UI test asserts the checkbox is unchecked by default |
-| R1 | Role-based access with contact details separated from assessment answers; AES-256 at rest; column-level encryption on contact fields; TLS 1.3 in transit | Platform | Configuration reviewed each release; annual penetration test |
-| R3 | Backup destination is declared in infrastructure-as-code and the value is asserted by a policy check in CI; a change of region or provider fails the pipeline and requires an ADR plus a transfer impact assessment | Platform | CI policy check on every pull request touching infrastructure |
-| R5 | Rate limiting per IP and per organisation; CAPTCHA only after a threshold, chosen to be accessible; IP and user agent retained 30 days then purged; inbound free text is length-limited and rendered inert | Platform | Rate-limit metrics reviewed monthly; abuse report log |
-| R6 | Scheduled deletion job runs nightly against the retention schedule and emits a count of records deleted; the job's failure pages the on-call engineer; deletion is recorded in an audit log that is itself retained 7 years | Platform | Deletion job dashboard; quarterly reconciliation against the register of processing |
-| R8 | The logging layer redacts identifier and free-text fields by an allowlist of logged keys rather than a blocklist of sensitive ones, so a new field is not logged by default; logs are retained 90 days and cannot be queried by an unredacted field | Platform | Log schema reviewed on every change to the assessment model; test asserts no free-text field appears in a log line |
-| R9 | The scoring service returns a suggestion and a confidence value; the UI requires a named staff member to confirm or amend before a proposal can be sent, and the confirmation is stored with the proposal; sending is impossible without it | Product | Integration test asserts the send endpoint rejects an unconfirmed proposal |
+| Risk | Measure                                                                                                                                                                                                                                                                                                                                                                                                                 | Owner    | Verification                                                                                                       |
+| ---- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | -------- | ------------------------------------------------------------------------------------------------------------------ |
+| R2   | The final step displays a notice asking the submitter not to include personal data about identifiable third parties, and to describe a community rather than individuals. Submitted text is scanned on write for patterns indicating a third-party name with a health or belief disclosure, and flagged for redaction by the product team within two working days. Retention for flagged records is reduced to 90 days. | Product  | Monthly sample of 10 records reviewed by the DPO; scan hit rate reported                                           |
+| R4   | MFA enforced on all staff accounts; hardware key required for production access; sessions expire after 8 hours; quarterly access review with automatic revocation on role change; break-glass access requires dual approval and is logged and reviewed within 24 hours                                                                                                                                                  | Platform | Access review report; penetration test annually                                                                    |
+| R7   | The consent record stores the exact notice text version, the checkbox state, the timestamp, the IP and the user agent. Consent cannot be pre-checked and is not bundled with the terms of service. Withdrawal is a single link in every follow-up email.                                                                                                                                                                | Product  | Consent records sampled quarterly by the DPO; UI test asserts the checkbox is unchecked by default                 |
+| R1   | Role-based access with contact details separated from assessment answers; AES-256 at rest; column-level encryption on contact fields; TLS 1.3 in transit                                                                                                                                                                                                                                                                | Platform | Configuration reviewed each release; annual penetration test                                                       |
+| R3   | Backup destination is declared in infrastructure-as-code and the value is asserted by a policy check in CI; a change of region or provider fails the pipeline and requires an ADR plus a transfer impact assessment                                                                                                                                                                                                     | Platform | CI policy check on every pull request touching infrastructure                                                      |
+| R5   | Rate limiting per IP and per organisation; CAPTCHA only after a threshold, chosen to be accessible; IP and user agent retained 30 days then purged; inbound free text is length-limited and rendered inert                                                                                                                                                                                                              | Platform | Rate-limit metrics reviewed monthly; abuse report log                                                              |
+| R6   | Scheduled deletion job runs nightly against the retention schedule and emits a count of records deleted; the job's failure pages the on-call engineer; deletion is recorded in an audit log that is itself retained 7 years                                                                                                                                                                                             | Platform | Deletion job dashboard; quarterly reconciliation against the register of processing                                |
+| R8   | The logging layer redacts identifier and free-text fields by an allowlist of logged keys rather than a blocklist of sensitive ones, so a new field is not logged by default; logs are retained 90 days and cannot be queried by an unredacted field                                                                                                                                                                     | Platform | Log schema reviewed on every change to the assessment model; test asserts no free-text field appears in a log line |
+| R9   | The scoring service returns a suggestion and a confidence value; the UI requires a named staff member to confirm or amend before a proposal can be sent, and the confirmation is stored with the proposal; sending is impossible without it                                                                                                                                                                             | Product  | Integration test asserts the send endpoint rejects an unconfirmed proposal                                         |
 
 **Privacy by default.** The funnel collects nothing until the final step. Analytics is off on
 the funnel route. Attachments are optional. The follow-up email is a single message within
@@ -548,17 +548,17 @@ quarterly tabletop exercise runs against this processing specifically.
 
 ### 8. Residual risk and sign-off
 
-| ID | Inherent | Mitigations | Residual |
-| --- | --- | --- | --- |
-| R1 | 8 Medium | Access separation, encryption | 4 Low |
-| R2 | 12 High | Notice, scan, redaction, reduced retention | 6 Medium |
-| R3 | 5 Medium | Infrastructure policy check in CI | 2 Low |
-| R4 | 10 High | MFA, hardware key, access review, break-glass control | 5 Medium |
-| R5 | 6 Medium | Rate limiting, purge schedule | 3 Low |
-| R6 | 9 Medium | Scheduled deletion with paging | 3 Low |
-| R7 | 10 High | Versioned consent record, unbundled checkbox | 4 Low |
-| R8 | 9 Medium | Allowlist logging redaction, 90-day retention | 3 Low |
-| R9 | 8 Medium | Mandatory named human confirmation | 4 Low |
+| ID  | Inherent | Mitigations                                           | Residual |
+| --- | -------- | ----------------------------------------------------- | -------- |
+| R1  | 8 Medium | Access separation, encryption                         | 4 Low    |
+| R2  | 12 High  | Notice, scan, redaction, reduced retention            | 6 Medium |
+| R3  | 5 Medium | Infrastructure policy check in CI                     | 2 Low    |
+| R4  | 10 High  | MFA, hardware key, access review, break-glass control | 5 Medium |
+| R5  | 6 Medium | Rate limiting, purge schedule                         | 3 Low    |
+| R6  | 9 Medium | Scheduled deletion with paging                        | 3 Low    |
+| R7  | 10 High  | Versioned consent record, unbundled checkbox          | 4 Low    |
+| R8  | 9 Medium | Allowlist logging redaction, 90-day retention         | 3 Low    |
+| R9  | 8 Medium | Mandatory named human confirmation                    | 4 Low    |
 
 - **Overall residual risk rating.** Medium.
 - **Can the processing proceed?** Yes, with conditions.
@@ -576,12 +576,12 @@ quarterly tabletop exercise runs against this processing specifically.
 - **Changes required elsewhere.** The record of processing activities was updated on
   2026-08-21. The privacy notice was published in all three locales on 2026-08-20.
 
-| Role | Name | Date |
-| --- | --- | --- |
-| Assessment owner | Product lead, ViaVitae IT Technologies | 2026-08-21 |
-| Business owner | Head of Client Services, ViaVitae IT Technologies | 2026-08-21 |
+| Role                    | Name                                              | Date       |
+| ----------------------- | ------------------------------------------------- | ---------- |
+| Assessment owner        | Product lead, ViaVitae IT Technologies            | 2026-08-21 |
+| Business owner          | Head of Client Services, ViaVitae IT Technologies | 2026-08-21 |
 | Data Protection Officer | Data Protection Officer, ViaVitae IT Technologies | 2026-08-21 |
-| Architecture | Architects team lead, ViaVitae IT Technologies | 2026-08-21 |
+| Architecture            | Architects team lead, ViaVitae IT Technologies    | 2026-08-21 |
 
 Named signatories are recorded in the signed copy held in the DPO register. An entry without
 a named signatory is not an approval.
@@ -604,13 +604,13 @@ a named signatory is not an approval.
 
 ## DPIA-002: AI pastoral assistant
 
-| Field | Value |
-| --- | --- |
-| Status | Approved with conditions |
-| Assessment owner | Product |
-| Version | 1.0 |
-| Date started | 2026-08-11 |
-| Related ADR | ADR-001 |
+| Field                 | Value                                                                            |
+| --------------------- | -------------------------------------------------------------------------------- |
+| Status                | Approved with conditions                                                         |
+| Assessment owner      | Product                                                                          |
+| Version               | 1.0                                                                              |
+| Date started          | 2026-08-11                                                                       |
+| Related ADR           | ADR-001                                                                          |
 | Repositories affected | `viavitae-api`, `viavitae-web`, `viavitae-infra`, `viavitae-docs`, `viavitae-qa` |
 
 ### 1. Description of processing
@@ -703,11 +703,11 @@ The **parish is the controller**; ViaVitae IT Technologies is a **processor** ac
 Article 28 contract. This division matters: the lawful basis is the parish's to determine,
 and ViaVitae must not use the data for its own purposes.
 
-| Purpose | Article 6 basis | Article 9 condition |
-| --- | --- | --- |
-| Drafting a pastoral reply to a message received by the parish | 6(1)(d) vital interests where the message discloses risk to a person; otherwise 6(1)(f) legitimate interests of the parish in administering its pastoral ministry | 9(2)(d) — processing by a not-for-profit body with a religious aim, relating to members or persons in regular contact, and not disclosed outside the body without consent |
-| Retaining the exchange and the reviewer decision for accountability | 6(1)(f) legitimate interests | 9(2)(d), as above |
-| Quality review of drafts on redacted samples | 6(1)(f) legitimate interests | 9(2)(d), with redaction applied before review |
+| Purpose                                                             | Article 6 basis                                                                                                                                                   | Article 9 condition                                                                                                                                                       |
+| ------------------------------------------------------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| Drafting a pastoral reply to a message received by the parish       | 6(1)(d) vital interests where the message discloses risk to a person; otherwise 6(1)(f) legitimate interests of the parish in administering its pastoral ministry | 9(2)(d) — processing by a not-for-profit body with a religious aim, relating to members or persons in regular contact, and not disclosed outside the body without consent |
+| Retaining the exchange and the reviewer decision for accountability | 6(1)(f) legitimate interests                                                                                                                                      | 9(2)(d), as above                                                                                                                                                         |
+| Quality review of drafts on redacted samples                        | 6(1)(f) legitimate interests                                                                                                                                      | 9(2)(d), with redaction applied before review                                                                                                                             |
 
 **Legitimate interests balancing test.** The parish's interest is discharging its pastoral
 duty to respond to people who write to it, many of whom are in distress, without that duty
@@ -747,18 +747,18 @@ test that must pass before release.
 
 ### 4. Data flows and storage locations
 
-| Stage | System | Location | Protection |
-| --- | --- | --- | --- |
-| Ingress | Parish mailbox or web form, forwarded to `viavitae-api` | Vilnius, LT | TLS 1.3, DKIM and SPF verification, per-parish tenant isolation |
-| Preprocessing | Redaction and context windowing in `viavitae-api` | Vilnius, LT | Contact details replaced by surrogate reference before any model call |
-| Inference | Self-hosted open-weight language model, no external API | Self-hosted k3s on Proxmox, Vilnius, LT | Air-gapped from third-party inference providers; model weights and prompts under version control |
-| Approval queue | Reviewer interface in `viavitae-web` | Vilnius, LT | Per-parish tenancy, MFA, named reviewer on every action |
-| Draft storage | PostgreSQL, per-tenant schema | Vilnius, LT | AES-256 at rest, per-tenant encryption keys held separately |
-| Audit trail | Immutable reviewer-decision log | Vilnius, LT | Append-only, 24-month retention, tamper-evident |
-| Backup | Nightly encrypted snapshot, 35 days | Frankfurt, DE | AES-256, key held separately from the snapshot |
-| Quality sampling | Redacted exports to the product team | Vilnius, LT | Redaction applied before export; 30-day retention; access logged |
-| Logs | Structured application logs | Vilnius, LT | Message bodies never logged; an allowlist of keys determines what may be logged |
-| Monitoring | Self-hosted metrics | Vilnius, LT | Counts and latencies only; no content in labels or tags |
+| Stage            | System                                                  | Location                                | Protection                                                                                       |
+| ---------------- | ------------------------------------------------------- | --------------------------------------- | ------------------------------------------------------------------------------------------------ |
+| Ingress          | Parish mailbox or web form, forwarded to `viavitae-api` | Vilnius, LT                             | TLS 1.3, DKIM and SPF verification, per-parish tenant isolation                                  |
+| Preprocessing    | Redaction and context windowing in `viavitae-api`       | Vilnius, LT                             | Contact details replaced by surrogate reference before any model call                            |
+| Inference        | Self-hosted open-weight language model, no external API | Self-hosted k3s on Proxmox, Vilnius, LT | Air-gapped from third-party inference providers; model weights and prompts under version control |
+| Approval queue   | Reviewer interface in `viavitae-web`                    | Vilnius, LT                             | Per-parish tenancy, MFA, named reviewer on every action                                          |
+| Draft storage    | PostgreSQL, per-tenant schema                           | Vilnius, LT                             | AES-256 at rest, per-tenant encryption keys held separately                                      |
+| Audit trail      | Immutable reviewer-decision log                         | Vilnius, LT                             | Append-only, 24-month retention, tamper-evident                                                  |
+| Backup           | Nightly encrypted snapshot, 35 days                     | Frankfurt, DE                           | AES-256, key held separately from the snapshot                                                   |
+| Quality sampling | Redacted exports to the product team                    | Vilnius, LT                             | Redaction applied before export; 30-day retention; access logged                                 |
+| Logs             | Structured application logs                             | Vilnius, LT                             | Message bodies never logged; an allowlist of keys determines what may be logged                  |
+| Monitoring       | Self-hosted metrics                                     | Vilnius, LT                             | Counts and latencies only; no content in labels or tags                                          |
 
 - **No transfers outside the EEA.** Inference is self-hosted. There is **no** call to any
   external model provider, embedding service, transcription service, translation API,
@@ -792,20 +792,20 @@ test that must pass before release.
 
 ### 5. Risk assessment
 
-| ID | Risk | Harm to data subjects | L | S | Inherent |
-| --- | --- | --- | --- | --- | --- |
-| R1 | Cross-tenant disclosure — one parish's reviewer sees another parish's messages | Disclosure of grief, illness and belief to an unrelated community; severe loss of trust and stigmatisation | 2 | 5 | 10 High |
-| R2 | Message content leaves the EEA through an added dependency, SDK, telemetry call or egress path that nobody notices | Unlawful transfer of Article 9 data; the residency guarantee given to parishes becomes false | 2 | 5 | 10 High |
-| R3 | The approval queue is bypassed, disabled or degraded under delivery pressure, and a draft is sent without human review | A parishioner in distress receives a machine reply; Article 22 engaged without safeguards | 2 | 5 | 10 High |
-| R4 | Safeguarding content is drafted rather than escalated | A disclosure of abuse or intent of self-harm receives a generated reply and is not acted on; risk to a child or vulnerable adult | 2 | 5 | 10 High |
-| R5 | Hallucinated practical information — wrong funeral procedure, wrong diocesan requirement, invented availability | A parishioner acts on incorrect information about a rite or a service at a moment of vulnerability | 3 | 4 | 12 High |
-| R6 | Model output is biased or doctrinally inappropriate for the parish's tradition | Offence, distress, or a reply that misrepresents the parish's position | 3 | 3 | 9 Medium |
-| R7 | Content used for training or fine-tuning, or retained by a future dependency | Loss of control over belief and health data beyond the stated purpose | 1 | 5 | 5 Medium |
-| R8 | Retention not enforced across drafts, samples, logs and backups | Continued unlawful processing; erasure incomplete and unanswerable | 3 | 3 | 9 Medium |
-| R9 | Reviewer fatigue causes rubber-stamping, so oversight becomes nominal | The Article 22 conclusion and the legitimate interests balancing both fail; unreviewed output reaches parishioners | 3 | 4 | 12 High |
-| R10 | Redaction fails and identifying details reach the quality-review sample | Wider internal disclosure than necessary, including to staff without a pastoral need | 3 | 3 | 9 Medium |
-| R11 | Parishioner is unaware the assistant exists, so the transparency obligation is unmet | Processing belief data covertly; objection right cannot be exercised | 2 | 4 | 8 Medium |
-| R12 | A prompt-injection attempt in a message causes the model to disclose other conversations or system content | Cross-conversation disclosure through the model rather than the database | 2 | 5 | 10 High |
+| ID  | Risk                                                                                                                   | Harm to data subjects                                                                                                            | L   | S   | Inherent |
+| --- | ---------------------------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------------------------------- | --- | --- | -------- |
+| R1  | Cross-tenant disclosure — one parish's reviewer sees another parish's messages                                         | Disclosure of grief, illness and belief to an unrelated community; severe loss of trust and stigmatisation                       | 2   | 5   | 10 High  |
+| R2  | Message content leaves the EEA through an added dependency, SDK, telemetry call or egress path that nobody notices     | Unlawful transfer of Article 9 data; the residency guarantee given to parishes becomes false                                     | 2   | 5   | 10 High  |
+| R3  | The approval queue is bypassed, disabled or degraded under delivery pressure, and a draft is sent without human review | A parishioner in distress receives a machine reply; Article 22 engaged without safeguards                                        | 2   | 5   | 10 High  |
+| R4  | Safeguarding content is drafted rather than escalated                                                                  | A disclosure of abuse or intent of self-harm receives a generated reply and is not acted on; risk to a child or vulnerable adult | 2   | 5   | 10 High  |
+| R5  | Hallucinated practical information — wrong funeral procedure, wrong diocesan requirement, invented availability        | A parishioner acts on incorrect information about a rite or a service at a moment of vulnerability                               | 3   | 4   | 12 High  |
+| R6  | Model output is biased or doctrinally inappropriate for the parish's tradition                                         | Offence, distress, or a reply that misrepresents the parish's position                                                           | 3   | 3   | 9 Medium |
+| R7  | Content used for training or fine-tuning, or retained by a future dependency                                           | Loss of control over belief and health data beyond the stated purpose                                                            | 1   | 5   | 5 Medium |
+| R8  | Retention not enforced across drafts, samples, logs and backups                                                        | Continued unlawful processing; erasure incomplete and unanswerable                                                               | 3   | 3   | 9 Medium |
+| R9  | Reviewer fatigue causes rubber-stamping, so oversight becomes nominal                                                  | The Article 22 conclusion and the legitimate interests balancing both fail; unreviewed output reaches parishioners               | 3   | 4   | 12 High  |
+| R10 | Redaction fails and identifying details reach the quality-review sample                                                | Wider internal disclosure than necessary, including to staff without a pastoral need                                             | 3   | 3   | 9 Medium |
+| R11 | Parishioner is unaware the assistant exists, so the transparency obligation is unmet                                   | Processing belief data covertly; objection right cannot be exercised                                                             | 2   | 4   | 8 Medium |
+| R12 | A prompt-injection attempt in a message causes the model to disclose other conversations or system content             | Cross-conversation disclosure through the model rather than the database                                                         | 2   | 5   | 10 High  |
 
 Seven risks score High. This is the highest-risk processing operation in the ViaVitae
 portfolio and the residual risk remains High after mitigation, which is why the review cycle
@@ -813,20 +813,20 @@ is six months rather than twelve.
 
 ### 6. Mitigations and technical measures
 
-| Risk | Measure | Owner | Verification |
-| --- | --- | --- | --- |
-| R1 | Mandatory tenant predicate at the query layer, per-tenant encryption keys, a test suite asserting cross-tenant queries return nothing, and treatment of any cross-tenant disclosure as a Critical incident | Platform | Isolation suite runs on every pull request and nightly; annual penetration test with a cross-tenant scenario |
-| R2 | Egress network policy denying all outbound connections from the inference namespace; dependency review requires the compliance team for anything touching this service; a CI test asserts the policy is present and unchanged; adding a telemetry or analytics dependency to this service is a QODER rule 7 stop-condition | Platform | Egress test in CI on every pull request; quarterly review of the policy and of the dependency list |
-| R3 | No code path sends a draft without a stored reviewer decision; the send endpoint rejects any draft lacking one; the queue cannot be disabled by configuration in production; the UI records reviewer identity, timestamp and whether the text was edited | Product | Integration test asserts send fails without a decision; configuration schema forbids a disable flag in production |
-| R4 | A safeguarding classifier runs **before** drafting and on every inbound message; on a hit, drafting is suppressed and the message is routed to the parish's named safeguarding officer and to ViaVitae support with an alert; excluded from quality sampling; the classifier is tuned for the pilot languages and its recall is measured against a labelled set | Product | Classifier test suite with a minimum recall threshold that fails the build; monthly recall report to the DPO; tabletop exercise each quarter |
-| R5 | Drafts are marked internally as unverified suggestions; practical and procedural information is drawn from a parish-maintained reference rather than generated where a reference entry exists; the reviewer interface shows source attribution for any procedural claim; reviewers are trained that verifying facts is their responsibility | Product | Reference-coverage metric reported monthly; reviewer training completion tracked per parish |
-| R6 | Per-parish tone and doctrinal guidance supplied by the parish and stored with the tenant; reviewer edits are measured as a quality signal; a parish may suspend the assistant for a category of message; redacted samples reviewed monthly by the parish's nominated reviewer | Product | Edit-rate metric per parish reported monthly; monthly sample review recorded |
-| R7 | No training or fine-tuning pipeline exists in the deployment; inference is stateless across conversations; model inputs are deleted with the conversation; the configuration exposes no training option | Platform | Architecture review; dependency and configuration audit each release |
-| R8 | Nightly deletion job against the retention schedule for content, drafts, samples and prompt logs; tombstone audit records; job failure pages the on-call engineer; quarterly reconciliation against the register of processing | Platform | Deletion dashboard; quarterly reconciliation report to the DPO |
-| R9 | Queue presents one message at a time with no bulk-approve control; a minimum dwell time is enforced before approval is enabled; if a reviewer's edit rate falls below a threshold the parish is notified and sampling increases; reviewers may not approve a draft addressed to themselves; fatigue is treated as a control failure, not a user failure | Product | Dwell-time and edit-rate metrics reviewed monthly by the DPO; bulk-approve absence asserted by a UI test |
-| R10 | Allowlist-based redaction applied before any export, replacing names, addresses and identifiers with tokens; the redacted sample is reviewed by the product team only; samples expire after 30 days; redaction is tested against a corpus of realistic messages | Product | Redaction test suite in CI; monthly DPO sample of 10 redacted exports |
-| R11 | A parish cannot enable the assistant until its privacy notice is published in the parish's own languages and a first-reply footer is active; enablement is gated on a recorded confirmation; the notice explains the processor role, the Article 9 condition, the absence of automated sending, and the objection route | Product | Enablement gate asserted by an API test; notice presence checked at onboarding and at each annual review |
-| R12 | The model receives message content as data within a fixed prompt structure and is instructed to treat it as untrusted; system context is not retrievable by the conversation; per-request context is limited to the current message and the last three exchanges; outputs are constrained to the reply text and cannot invoke tools, fetch data or query other conversations; the model deployment has no tool-calling or retrieval capability enabled | Platform | Adversarial prompt test suite in CI, including known injection patterns; no tool-calling capability in the deployment configuration |
+| Risk | Measure                                                                                                                                                                                                                                                                                                                                                                                                                                                | Owner    | Verification                                                                                                                                 |
+| ---- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | -------- | -------------------------------------------------------------------------------------------------------------------------------------------- |
+| R1   | Mandatory tenant predicate at the query layer, per-tenant encryption keys, a test suite asserting cross-tenant queries return nothing, and treatment of any cross-tenant disclosure as a Critical incident                                                                                                                                                                                                                                             | Platform | Isolation suite runs on every pull request and nightly; annual penetration test with a cross-tenant scenario                                 |
+| R2   | Egress network policy denying all outbound connections from the inference namespace; dependency review requires the compliance team for anything touching this service; a CI test asserts the policy is present and unchanged; adding a telemetry or analytics dependency to this service is a QODER rule 7 stop-condition                                                                                                                             | Platform | Egress test in CI on every pull request; quarterly review of the policy and of the dependency list                                           |
+| R3   | No code path sends a draft without a stored reviewer decision; the send endpoint rejects any draft lacking one; the queue cannot be disabled by configuration in production; the UI records reviewer identity, timestamp and whether the text was edited                                                                                                                                                                                               | Product  | Integration test asserts send fails without a decision; configuration schema forbids a disable flag in production                            |
+| R4   | A safeguarding classifier runs **before** drafting and on every inbound message; on a hit, drafting is suppressed and the message is routed to the parish's named safeguarding officer and to ViaVitae support with an alert; excluded from quality sampling; the classifier is tuned for the pilot languages and its recall is measured against a labelled set                                                                                        | Product  | Classifier test suite with a minimum recall threshold that fails the build; monthly recall report to the DPO; tabletop exercise each quarter |
+| R5   | Drafts are marked internally as unverified suggestions; practical and procedural information is drawn from a parish-maintained reference rather than generated where a reference entry exists; the reviewer interface shows source attribution for any procedural claim; reviewers are trained that verifying facts is their responsibility                                                                                                            | Product  | Reference-coverage metric reported monthly; reviewer training completion tracked per parish                                                  |
+| R6   | Per-parish tone and doctrinal guidance supplied by the parish and stored with the tenant; reviewer edits are measured as a quality signal; a parish may suspend the assistant for a category of message; redacted samples reviewed monthly by the parish's nominated reviewer                                                                                                                                                                          | Product  | Edit-rate metric per parish reported monthly; monthly sample review recorded                                                                 |
+| R7   | No training or fine-tuning pipeline exists in the deployment; inference is stateless across conversations; model inputs are deleted with the conversation; the configuration exposes no training option                                                                                                                                                                                                                                                | Platform | Architecture review; dependency and configuration audit each release                                                                         |
+| R8   | Nightly deletion job against the retention schedule for content, drafts, samples and prompt logs; tombstone audit records; job failure pages the on-call engineer; quarterly reconciliation against the register of processing                                                                                                                                                                                                                         | Platform | Deletion dashboard; quarterly reconciliation report to the DPO                                                                               |
+| R9   | Queue presents one message at a time with no bulk-approve control; a minimum dwell time is enforced before approval is enabled; if a reviewer's edit rate falls below a threshold the parish is notified and sampling increases; reviewers may not approve a draft addressed to themselves; fatigue is treated as a control failure, not a user failure                                                                                                | Product  | Dwell-time and edit-rate metrics reviewed monthly by the DPO; bulk-approve absence asserted by a UI test                                     |
+| R10  | Allowlist-based redaction applied before any export, replacing names, addresses and identifiers with tokens; the redacted sample is reviewed by the product team only; samples expire after 30 days; redaction is tested against a corpus of realistic messages                                                                                                                                                                                        | Product  | Redaction test suite in CI; monthly DPO sample of 10 redacted exports                                                                        |
+| R11  | A parish cannot enable the assistant until its privacy notice is published in the parish's own languages and a first-reply footer is active; enablement is gated on a recorded confirmation; the notice explains the processor role, the Article 9 condition, the absence of automated sending, and the objection route                                                                                                                                | Product  | Enablement gate asserted by an API test; notice presence checked at onboarding and at each annual review                                     |
+| R12  | The model receives message content as data within a fixed prompt structure and is instructed to treat it as untrusted; system context is not retrievable by the conversation; per-request context is limited to the current message and the last three exchanges; outputs are constrained to the reply text and cannot invoke tools, fetch data or query other conversations; the model deployment has no tool-calling or retrieval capability enabled | Platform | Adversarial prompt test suite in CI, including known injection patterns; no tool-calling capability in the deployment configuration          |
 
 **Human oversight.** Every output is reviewed by a named person with authority to discard or
 rewrite it. Oversight is designed to be real: one message at a time, a minimum dwell time,
@@ -899,20 +899,20 @@ scenario.
 
 ### 8. Residual risk and sign-off
 
-| ID | Inherent | Mitigations | Residual |
-| --- | --- | --- | --- |
-| R1 | 10 High | Tenant isolation suite, per-tenant keys, Critical-incident treatment | 5 Medium |
-| R2 | 10 High | Egress denial verified in CI, dependency review gate | 4 Low |
-| R3 | 10 High | No send path without a stored decision, disable flag removed | 5 Medium |
-| R4 | 10 High | Pre-draft safeguarding classifier with a recall threshold | 6 Medium |
-| R5 | 12 High | Reference-sourced procedural facts, attribution, reviewer training | 8 Medium |
-| R6 | 9 Medium | Per-parish guidance, edit-rate signal, monthly sample review | 6 Medium |
-| R7 | 5 Medium | No training pipeline, stateless inference | 2 Low |
-| R8 | 9 Medium | Nightly deletion with paging, quarterly reconciliation | 3 Low |
-| R9 | 12 High | One-at-a-time queue, dwell time, no bulk approve, edit-rate monitoring | 9 Medium |
-| R10 | 9 Medium | Allowlist redaction tested against a realistic corpus | 4 Low |
-| R11 | 8 Medium | Enablement gated on a published notice, API test | 4 Low |
-| R12 | 10 High | Untrusted-content prompt structure, no tool-calling, adversarial test suite | 6 Medium |
+| ID  | Inherent | Mitigations                                                                 | Residual |
+| --- | -------- | --------------------------------------------------------------------------- | -------- |
+| R1  | 10 High  | Tenant isolation suite, per-tenant keys, Critical-incident treatment        | 5 Medium |
+| R2  | 10 High  | Egress denial verified in CI, dependency review gate                        | 4 Low    |
+| R3  | 10 High  | No send path without a stored decision, disable flag removed                | 5 Medium |
+| R4  | 10 High  | Pre-draft safeguarding classifier with a recall threshold                   | 6 Medium |
+| R5  | 12 High  | Reference-sourced procedural facts, attribution, reviewer training          | 8 Medium |
+| R6  | 9 Medium | Per-parish guidance, edit-rate signal, monthly sample review                | 6 Medium |
+| R7  | 5 Medium | No training pipeline, stateless inference                                   | 2 Low    |
+| R8  | 9 Medium | Nightly deletion with paging, quarterly reconciliation                      | 3 Low    |
+| R9  | 12 High  | One-at-a-time queue, dwell time, no bulk approve, edit-rate monitoring      | 9 Medium |
+| R10 | 9 Medium | Allowlist redaction tested against a realistic corpus                       | 4 Low    |
+| R11 | 8 Medium | Enablement gated on a published notice, API test                            | 4 Low    |
+| R12 | 10 High  | Untrusted-content prompt structure, no tool-calling, adversarial test suite | 6 Medium |
 
 - **Overall residual risk rating.** **High.** No risk remains Critical, and every inherent
   High has a verified control, but the combination of Article 9 subject matter, vulnerable
@@ -949,13 +949,13 @@ scenario.
   privacy notice was published before enablement. `SECURITY.md` was amended to treat
   cross-tenant disclosure as Critical.
 
-| Role | Name | Date |
-| --- | --- | --- |
-| Assessment owner | Product lead, ViaVitae IT Technologies | 2026-09-02 |
-| Business owner | Head of Client Services, ViaVitae IT Technologies | 2026-09-02 |
+| Role                    | Name                                              | Date       |
+| ----------------------- | ------------------------------------------------- | ---------- |
+| Assessment owner        | Product lead, ViaVitae IT Technologies            | 2026-09-02 |
+| Business owner          | Head of Client Services, ViaVitae IT Technologies | 2026-09-02 |
 | Data Protection Officer | Data Protection Officer, ViaVitae IT Technologies | 2026-09-02 |
-| Architecture | Architects team lead, ViaVitae IT Technologies | 2026-09-02 |
-| Security | Security team lead, ViaVitae IT Technologies | 2026-09-02 |
+| Architecture            | Architects team lead, ViaVitae IT Technologies    | 2026-09-02 |
+| Security                | Security team lead, ViaVitae IT Technologies      | 2026-09-02 |
 
 Named signatories are recorded in the signed copy held in the DPO register. Because Article 9
 data and automated assistance are both involved, security and architecture sign-off are
