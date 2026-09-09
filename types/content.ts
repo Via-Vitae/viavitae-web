@@ -2,7 +2,7 @@
 // Every MDX document under content/** declares front-matter matching one of these
 // shapes. content-loader.ts validates front-matter against these types at read time.
 
-import type { Locale } from '@/lib/routing';
+import type { Locale } from "@/lib/routing";
 
 /** Fields shared by every MDX document. */
 interface BaseFrontMatter {
@@ -19,7 +19,7 @@ interface BaseFrontMatter {
 }
 
 export interface BlogFrontMatter extends BaseFrontMatter {
-  readonly kind: 'blog';
+  readonly kind: "blog";
   /** ISO-8601 publication date (YYYY-MM-DD). */
   readonly publishedAt: string;
   /** ISO-8601 last-modified date (YYYY-MM-DD). */
@@ -32,13 +32,13 @@ export interface BlogFrontMatter extends BaseFrontMatter {
 }
 
 export interface NewsFrontMatter extends BaseFrontMatter {
-  readonly kind: 'news';
+  readonly kind: "news";
   readonly publishedAt: string;
   readonly source?: string;
 }
 
 export interface GuideFrontMatter extends BaseFrontMatter {
-  readonly kind: 'guide';
+  readonly kind: "guide";
   readonly topic: string;
   /** Estimated reading time in minutes; drives the card label. */
   readonly readingMinutes?: number;
@@ -46,8 +46,8 @@ export interface GuideFrontMatter extends BaseFrontMatter {
 }
 
 export interface LegalFrontMatter extends BaseFrontMatter {
-  readonly kind: 'legal';
-  readonly doc: 'privacy' | 'terms' | 'cookies' | 'impressum';
+  readonly kind: "legal";
+  readonly doc: "privacy" | "terms" | "cookies" | "impressum";
   /** ISO-8601 date this legal text takes effect. */
   readonly effectiveDate: string;
   /** Legal document version, surfaced in the page footer. */
@@ -55,10 +55,7 @@ export interface LegalFrontMatter extends BaseFrontMatter {
 }
 
 export type ContentFrontMatter =
-  | BlogFrontMatter
-  | NewsFrontMatter
-  | GuideFrontMatter
-  | LegalFrontMatter;
+  BlogFrontMatter | NewsFrontMatter | GuideFrontMatter | LegalFrontMatter;
 
 /** A loaded MDX document: validated front-matter plus the raw MDX body. */
 export interface ContentDoc<F extends ContentFrontMatter = ContentFrontMatter> {

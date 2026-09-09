@@ -1,5 +1,5 @@
-import { useTranslations } from 'next-intl';
-import { siteConfig } from '@/lib/config';
+import { useTranslations } from "next-intl";
+import { siteConfig } from "@/lib/config";
 
 // Embeds a live demo from demo.viavitae.com/<type> in an <iframe>, with an
 // accessible title and a text fallback link (WCAG: the iframe must be titled, and
@@ -13,12 +13,14 @@ export interface DemoEmbedProps {
   aspectClassName?: string;
 }
 
-export function DemoEmbed({ demoType, title, aspectClassName = 'aspect-video' }: DemoEmbedProps) {
-  const t = useTranslations('demo');
+export function DemoEmbed({ demoType, title, aspectClassName = "aspect-video" }: DemoEmbedProps) {
+  const t = useTranslations("demo");
   const src = `${siteConfig.demoBase}/${demoType}`;
   return (
     <figure className="not-prose">
-      <div className={`overflow-hidden rounded-md border border-border bg-surface-sunken ${aspectClassName}`}>
+      <div
+        className={`overflow-hidden rounded-md border border-border bg-surface-sunken ${aspectClassName}`}
+      >
         <iframe
           src={src}
           title={title}
@@ -28,11 +30,16 @@ export function DemoEmbed({ demoType, title, aspectClassName = 'aspect-video' }:
         />
       </div>
       <figcaption className="mt-2 text-body-sm text-text-secondary">
-        <a href={src} className="text-text-link underline" target="_blank" rel="noopener noreferrer">
-          {t('openFull')}
+        <a
+          href={src}
+          className="text-text-link underline"
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          {t("openFull")}
         </a>
-        {' · '}
-        {t('fallbackNote')}
+        {" · "}
+        {t("fallbackNote")}
       </figcaption>
     </figure>
   );

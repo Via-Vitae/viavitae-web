@@ -29,10 +29,10 @@ Introduce **OpenAPI 3.1 contracts as the single source of truth** under `docs/co
 
 Generated artefacts live under `src/generated/` — deliberately isolated from the otherwise
 flat root layout (`app/`, `components/`, `lib/`, `types/`) so the "do not edit" boundary is
-unmistakable and lint/coverage ignore it. *(Trade-off noted during review: this is the one
+unmistakable and lint/coverage ignore it. _(Trade-off noted during review: this is the one
 `src/` directory in an otherwise flat repo. It was kept because the isolation value outweighs
 the layout inconsistency; `@/*` still maps to the repo root, so imports read
-`@/src/generated/assessment`.)*
+`@/src/generated/assessment`.)_
 
 ### Freshness gate
 

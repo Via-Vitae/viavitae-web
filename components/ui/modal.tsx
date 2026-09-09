@@ -1,9 +1,9 @@
-'use client';
+"use client";
 
-import { useEffect, useId, useRef } from 'react';
-import type { ReactNode } from 'react';
-import { createPortal } from 'react-dom';
-import { cn } from '@/lib/utils';
+import { useEffect, useId, useRef } from "react";
+import type { ReactNode } from "react";
+import { createPortal } from "react-dom";
+import { cn } from "@/lib/utils";
 
 // Accessible modal dialog: focus-trapped, ESC to close, focus restored on close,
 // background scroll locked, aria-modal with a programmatic name. Rendered through
@@ -35,15 +35,15 @@ export function Modal({ open, onClose, title, children, className, describedBy }
     (first ?? panel)?.focus();
 
     const previousOverflow = document.body.style.overflow;
-    document.body.style.overflow = 'hidden';
+    document.body.style.overflow = "hidden";
 
     const onKeyDown = (event: KeyboardEvent) => {
-      if (event.key === 'Escape') {
+      if (event.key === "Escape") {
         event.preventDefault();
         onClose();
         return;
       }
-      if (event.key !== 'Tab' || !panel) return;
+      if (event.key !== "Tab" || !panel) return;
       const focusables = Array.from(panel.querySelectorAll<HTMLElement>(FOCUSABLE));
       if (focusables.length === 0) return;
       const firstEl = focusables[0]!;
@@ -58,9 +58,9 @@ export function Modal({ open, onClose, title, children, className, describedBy }
       }
     };
 
-    document.addEventListener('keydown', onKeyDown);
+    document.addEventListener("keydown", onKeyDown);
     return () => {
-      document.removeEventListener('keydown', onKeyDown);
+      document.removeEventListener("keydown", onKeyDown);
       document.body.style.overflow = previousOverflow;
       previouslyFocused.current?.focus();
     };
@@ -83,7 +83,7 @@ export function Modal({ open, onClose, title, children, className, describedBy }
         aria-describedby={describedBy}
         tabIndex={-1}
         className={cn(
-          'relative z-10 w-full max-w-lg rounded-md border border-border bg-surface-raised p-6 shadow-lg',
+          "relative z-10 w-full max-w-lg rounded-md border border-border bg-surface-raised p-6 shadow-lg",
           className,
         )}
       >

@@ -9,11 +9,11 @@ from us, and the protections we extend to good-faith researchers.
 **Please do not open a public GitHub issue.** Public disclosure before a fix is available
 puts users at risk.
 
-| Channel | Detail |
-| --- | --- |
-| **Email** | `security@viavitae.com` |
+| Channel        | Detail                                                                                                                                                                                                       |
+| -------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
+| **Email**      | `security@viavitae.com`                                                                                                                                                                                      |
 | **Encryption** | Strongly encouraged. Our PGP public key is published on the [OpenPGP key servers](https://keys.openpgp.org/search?q=security%40viavitae.com); fetch and verify the fingerprint out of band before first use. |
-| **GitHub** | Private vulnerability reporting is enabled on repositories in the `Via-Vitae` organisation. Use *Security* -> *Report a vulnerability* when available. |
+| **GitHub**     | Private vulnerability reporting is enabled on repositories in the `Via-Vitae` organisation. Use _Security_ -> _Report a vulnerability_ when available.                                                       |
 
 Include as much of the following as you can:
 
@@ -35,12 +35,12 @@ persistent access.
 
 ### Acknowledgement and triage
 
-| Stage | Target |
-| --- | --- |
-| **Acknowledgement** | Within **24 hours** of receipt. |
-| **Triage and severity assignment** | Within **72 hours** of receipt. |
-| **Status update cadence** | At least every 5 business days until closure. |
-| **Researcher notification of fix** | Within 5 business days of deployment. |
+| Stage                              | Target                                        |
+| ---------------------------------- | --------------------------------------------- |
+| **Acknowledgement**                | Within **24 hours** of receipt.               |
+| **Triage and severity assignment** | Within **72 hours** of receipt.               |
+| **Status update cadence**          | At least every 5 business days until closure. |
+| **Researcher notification of fix** | Within 5 business days of deployment.         |
 
 If you have not received an acknowledgement within 24 hours, resend to the same address
 and copy `legal@viavitae.com`. Email delivery failures happen, and we would rather receive
@@ -52,12 +52,12 @@ Severity is assigned during triage using CVSS v3.1 as a starting point, adjusted
 exploitability, the sensitivity of the data involved and whether the affected system holds
 personal data.
 
-| Severity | CVSS | Containment | Remediation | Public advisory |
-| --- | --- | --- | --- | --- |
-| **Critical** | 9.0 - 10.0 | **72 hours** | 7 days | Within 5 business days of fix |
-| **High** | 7.0 - 8.9 | 72 hours | **7 days** | Within 10 business days of fix |
-| **Medium** | 4.0 - 6.9 | Best effort | **30 days** | At next scheduled release |
-| **Low** | 0.1 - 3.9 | Best effort | Next scheduled release | Optional |
+| Severity     | CVSS       | Containment  | Remediation            | Public advisory                |
+| ------------ | ---------- | ------------ | ---------------------- | ------------------------------ |
+| **Critical** | 9.0 - 10.0 | **72 hours** | 7 days                 | Within 5 business days of fix  |
+| **High**     | 7.0 - 8.9  | 72 hours     | **7 days**             | Within 10 business days of fix |
+| **Medium**   | 4.0 - 6.9  | Best effort  | **30 days**            | At next scheduled release      |
+| **Low**      | 0.1 - 3.9  | Best effort  | Next scheduled release | Optional                       |
 
 **Containment** means the immediate action that stops active exploitation — disabling an
 endpoint, rotating a credential, revoking a token, blocking a route, or taking a demo
@@ -123,13 +123,13 @@ without consent, nor to any activity that is independently unlawful.
 
 In scope for reporting under this policy:
 
-| Scope | Detail |
-| --- | --- |
-| **Repositories** | All repositories in the `Via-Vitae` GitHub organisation, including public, private and internal repositories, their CI/CD configuration, and their build and deployment artefacts. |
-| **Domains and subdomains** | All `*.viavitae.com` hosts, including demo tenant subdomains provisioned by `viavitae-infra` and `viavitae-clients`. |
-| **Marketplace** | `jolarca.com` and the `jolarca` repository, including the vendor dashboard and vendor onboarding and KYC flows. |
-| **Infrastructure** | Self-hosted Proxmox, k3s and Terraform-managed resources, where testing is coordinated with us in advance. |
-| **Third parties** | Processors and subprocessors acting on our behalf, where the issue arises from our configuration or use of them. |
+| Scope                      | Detail                                                                                                                                                                             |
+| -------------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| **Repositories**           | All repositories in the `Via-Vitae` GitHub organisation, including public, private and internal repositories, their CI/CD configuration, and their build and deployment artefacts. |
+| **Domains and subdomains** | All `*.viavitae.com` hosts, including demo tenant subdomains provisioned by `viavitae-infra` and `viavitae-clients`.                                                               |
+| **Marketplace**            | `jolarca.com` and the `jolarca` repository, including the vendor dashboard and vendor onboarding and KYC flows.                                                                    |
+| **Infrastructure**         | Self-hosted Proxmox, k3s and Terraform-managed resources, where testing is coordinated with us in advance.                                                                         |
+| **Third parties**          | Processors and subprocessors acting on our behalf, where the issue arises from our configuration or use of them.                                                                   |
 
 Out of scope: findings that require physical access to a device or premises, findings in a
 browser or operating system unrelated to our code, reports that consist only of missing
@@ -142,11 +142,11 @@ been authorised by that service to test.
 Security fixes are delivered on the default branch of each repository. Tagged releases
 receive fixes according to the table below.
 
-| Version | Supported |
-| --- | --- |
-| Latest release on `main` | Yes — all severities |
-| Previous minor release | Yes — Critical and High only, for 90 days after the next release |
-| Older releases | No — upgrade required |
+| Version                  | Supported                                                        |
+| ------------------------ | ---------------------------------------------------------------- |
+| Latest release on `main` | Yes — all severities                                             |
+| Previous minor release   | Yes — Critical and High only, for 90 days after the next release |
+| Older releases           | No — upgrade required                                            |
 
 Because repositories in this organisation are deployed continuously from `main`, the
 deployed production version is normally the latest. If you are running an older tag,
@@ -154,11 +154,11 @@ upgrade before reporting a finding that has already been fixed.
 
 ## Contact
 
-| Role | Contact |
-| --- | --- |
-| Security team | `security@viavitae.com` |
-| Data Protection Officer | `dpo@viavitae.com` |
-| Legal | `legal@viavitae.com` |
+| Role                    | Contact                 |
+| ----------------------- | ----------------------- |
+| Security team           | `security@viavitae.com` |
+| Data Protection Officer | `dpo@viavitae.com`      |
+| Legal                   | `legal@viavitae.com`    |
 
 This policy is reviewed at least annually, and after any Critical severity incident.
 Changes are recorded in `CHANGELOG.md`.

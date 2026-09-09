@@ -1,13 +1,13 @@
-'use client';
+"use client";
 
-import { useEffect, useId, useState } from 'react';
-import { useTranslations } from 'next-intl';
-import { Link } from '@/lib/i18n';
-import { GLOBAL_NAV, NAV_CTAS } from '@/lib/navigation';
-import { siteConfig } from '@/lib/config';
-import { LanguageSwitcher } from '@/components/ui/language-switcher';
-import { ProductMenu } from './product-menu';
-import { MobileNav } from './mobile-nav';
+import { useEffect, useId, useState } from "react";
+import { useTranslations } from "next-intl";
+import { Link } from "@/lib/i18n";
+import { GLOBAL_NAV, NAV_CTAS } from "@/lib/navigation";
+import { siteConfig } from "@/lib/config";
+import { LanguageSwitcher } from "@/components/ui/language-switcher";
+import { ProductMenu } from "./product-menu";
+import { MobileNav } from "./mobile-nav";
 
 // Desktop + mobile global navigation row. Owns the open state for the product
 // mega-menu and the mobile drawer, closes on ESC and on outside click.
@@ -22,7 +22,7 @@ export function GlobalNav() {
 
   useEffect(() => {
     const onKey = (event: KeyboardEvent) => {
-      if (event.key === 'Escape') {
+      if (event.key === "Escape") {
         setProductOpen(false);
         setMobileOpen(false);
       }
@@ -35,21 +35,25 @@ export function GlobalNav() {
         setProductOpen(false);
       }
     };
-    document.addEventListener('keydown', onKey);
-    document.addEventListener('mousedown', onClick);
+    document.addEventListener("keydown", onKey);
+    document.addEventListener("mousedown", onClick);
     return () => {
-      document.removeEventListener('keydown', onKey);
-      document.removeEventListener('mousedown', onClick);
+      document.removeEventListener("keydown", onKey);
+      document.removeEventListener("mousedown", onClick);
     };
   }, [productPanelId, productButtonId]);
 
   return (
     <div className="relative mx-auto flex max-w-7xl items-center gap-4 px-4 py-3">
-      <Link href="/" className="font-display text-heading-4 text-text-primary" aria-label={siteConfig.name}>
+      <Link
+        href="/"
+        className="font-display text-heading-4 text-text-primary"
+        aria-label={siteConfig.name}
+      >
         {siteConfig.name}
       </Link>
 
-      <nav aria-label={t('nav.globalLabel')} className="ml-4 hidden items-center gap-1 md:flex">
+      <nav aria-label={t("nav.globalLabel")} className="ml-4 hidden items-center gap-1 md:flex">
         <button
           id={productButtonId}
           type="button"
@@ -58,9 +62,9 @@ export function GlobalNav() {
           onClick={() => setProductOpen((open) => !open)}
           className="rounded-sm px-3 py-2 text-body-md font-medium text-text-primary hover:bg-surface-sunken"
         >
-          {t('nav.product')}
+          {t("nav.product")}
         </button>
-        {GLOBAL_NAV.filter((item) => item.id !== 'product').map((item) => (
+        {GLOBAL_NAV.filter((item) => item.id !== "product").map((item) => (
           <Link
             key={item.id}
             href={item.href}
@@ -73,7 +77,10 @@ export function GlobalNav() {
 
       <div className="ml-auto hidden items-center gap-3 md:flex">
         <LanguageSwitcher />
-        <Link href={NAV_CTAS.login.href} className="text-body-md font-medium text-text-primary hover:underline">
+        <Link
+          href={NAV_CTAS.login.href}
+          className="text-body-md font-medium text-text-primary hover:underline"
+        >
           {t(NAV_CTAS.login.labelKey)}
         </Link>
         <Link
@@ -91,14 +98,22 @@ export function GlobalNav() {
         aria-controls={mobileLabelId}
         onClick={() => setMobileOpen((open) => !open)}
       >
-        <span className="vv-sr-only">{t('nav.menu')}</span>
+        <span className="vv-sr-only">{t("nav.menu")}</span>
         <span aria-hidden="true" className="block h-0.5 w-6 bg-current" />
         <span aria-hidden="true" className="mt-1 block h-0.5 w-6 bg-current" />
         <span aria-hidden="true" className="mt-1 block h-0.5 w-6 bg-current" />
       </button>
 
-      <ProductMenu open={productOpen} onClose={() => setProductOpen(false)} panelId={productPanelId} />
-      <MobileNav open={mobileOpen} onClose={() => setMobileOpen(false)} labelledBy={mobileLabelId} />
+      <ProductMenu
+        open={productOpen}
+        onClose={() => setProductOpen(false)}
+        panelId={productPanelId}
+      />
+      <MobileNav
+        open={mobileOpen}
+        onClose={() => setMobileOpen(false)}
+        labelledBy={mobileLabelId}
+      />
     </div>
   );
 }

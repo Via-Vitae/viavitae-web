@@ -1,7 +1,7 @@
-import { getTranslations } from 'next-intl/server';
-import { Link } from '@/lib/i18n';
-import { FOOTER_COLUMNS } from '@/lib/navigation';
-import { siteConfig } from '@/lib/config';
+import { getTranslations } from "next-intl/server";
+import { Link } from "@/lib/i18n";
+import { FOOTER_COLUMNS } from "@/lib/navigation";
+import { siteConfig } from "@/lib/config";
 
 // Four-column footer + trust badges + legal line. The newsletter signup is a
 // LAUNCH GATE: enabling it requires a same-origin /api/newsletter route (CSP
@@ -17,11 +17,15 @@ export async function Footer() {
       <div className="mx-auto grid max-w-7xl gap-8 px-4 py-12 md:grid-cols-5">
         <div className="md:col-span-1">
           <p className="font-display text-heading-4">{siteConfig.name}</p>
-          <p className="mt-2 text-body-sm text-navy-200">{t('footer.tagline')}</p>
-          <div className="mt-4 flex flex-wrap gap-2" aria-label={t('footer.trustBadges')}>
+          <p className="mt-2 text-body-sm text-navy-200">{t("footer.tagline")}</p>
+          <div className="mt-4 flex flex-wrap gap-2" aria-label={t("footer.trustBadges")}>
             <span className="rounded-sm border border-navy-700 px-2 py-1 text-body-sm">GDPR</span>
-            <span className="rounded-sm border border-navy-700 px-2 py-1 text-body-sm">WCAG 2.2 AA</span>
-            <span className="rounded-sm border border-navy-700 px-2 py-1 text-body-sm">EU hosted</span>
+            <span className="rounded-sm border border-navy-700 px-2 py-1 text-body-sm">
+              WCAG 2.2 AA
+            </span>
+            <span className="rounded-sm border border-navy-700 px-2 py-1 text-body-sm">
+              EU hosted
+            </span>
           </div>
         </div>
 
@@ -31,7 +35,10 @@ export async function Footer() {
             <ul className="flex flex-col gap-2">
               {column.items.map((item) => (
                 <li key={item.id}>
-                  <Link href={item.href} className="text-body-sm text-navy-200 hover:text-ivory-100">
+                  <Link
+                    href={item.href}
+                    className="text-body-sm text-navy-200 hover:text-ivory-100"
+                  >
                     {t(item.labelKey)}
                   </Link>
                 </li>
@@ -43,10 +50,8 @@ export async function Footer() {
 
       <div className="border-t border-navy-800">
         <div className="mx-auto flex max-w-7xl flex-col gap-2 px-4 py-6 text-body-sm text-navy-200 md:flex-row md:items-center md:justify-between">
-          <p>
-            {t('footer.copyright', { year, entity: siteConfig.legalEntity })}
-          </p>
-          <p>{t('footer.newsletterComingSoon')}</p>
+          <p>{t("footer.copyright", { year, entity: siteConfig.legalEntity })}</p>
+          <p>{t("footer.newsletterComingSoon")}</p>
         </div>
       </div>
     </footer>

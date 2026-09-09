@@ -1,6 +1,6 @@
-import { getTranslations } from 'next-intl/server';
-import { Link } from '@/lib/i18n';
-import { CHURCH_RIBBON } from '@/lib/navigation';
+import { getTranslations } from "next-intl/server";
+import { Link } from "@/lib/i18n";
+import { CHURCH_RIBBON } from "@/lib/navigation";
 
 // Apple-store-style horizontal strip of every catalogue product. Rendered from
 // CHURCH_RIBBON (lib/navigation.ts) so it can never drift from the mega-menu,
@@ -9,7 +9,10 @@ import { CHURCH_RIBBON } from '@/lib/navigation';
 export async function ChurchRibbon() {
   const t = await getTranslations();
   return (
-    <nav aria-label={t('nav.ribbonLabel')} className="border-b border-border-divider bg-surface-raised">
+    <nav
+      aria-label={t("nav.ribbonLabel")}
+      className="border-b border-border-divider bg-surface-raised"
+    >
       <ul className="mx-auto flex max-w-7xl gap-6 overflow-x-auto px-4 py-2 [scrollbar-width:thin]">
         {CHURCH_RIBBON.map((item) => (
           <li key={item.id} className="shrink-0">

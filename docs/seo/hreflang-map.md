@@ -9,13 +9,13 @@ Every indexable page is served under each routable locale with `localePrefix: 'a
 
 ## Locale → hreflang
 
-| Locale | URL prefix | `hreflang` | Language | Status |
-| --- | --- | --- | --- | --- |
-| `lt` | `/lt/…` | `lt` | Lithuanian | Live (default / pilot market) |
-| `en` | `/en/…` | `en` | English | Live |
-| `ru` | `/ru/…` | `ru` | Russian | Live |
-| `pl` | — | — | Polish | **Not routable** — "coming soon" in the switcher; no URLs, no hreflang |
-| `de` | — | — | German | **Not routable** — "coming soon"; no URLs, no hreflang |
+| Locale | URL prefix | `hreflang` | Language   | Status                                                                 |
+| ------ | ---------- | ---------- | ---------- | ---------------------------------------------------------------------- |
+| `lt`   | `/lt/…`    | `lt`       | Lithuanian | Live (default / pilot market)                                          |
+| `en`   | `/en/…`    | `en`       | English    | Live                                                                   |
+| `ru`   | `/ru/…`    | `ru`       | Russian    | Live                                                                   |
+| `pl`   | —          | —          | Polish     | **Not routable** — "coming soon" in the switcher; no URLs, no hreflang |
+| `de`   | —          | —          | German     | **Not routable** — "coming soon"; no URLs, no hreflang                 |
 
 ## x-default
 

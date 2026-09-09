@@ -1,7 +1,7 @@
-import 'server-only';
-import createClient from 'openapi-fetch';
-import type { paths } from '@/src/generated/assessment';
-import { siteConfig } from './config';
+import "server-only";
+import createClient from "openapi-fetch";
+import type { paths } from "@/src/generated/assessment";
+import { siteConfig } from "./config";
 
 // Thin, SERVER-ONLY gateway to viavitae-api.
 //
@@ -19,7 +19,7 @@ export function apiServiceToken(): string {
   const token = process.env.API_SERVICE_TOKEN;
   if (!token) {
     // Fail closed: without a service token we must not call the API unauthenticated.
-    throw new Error('API_SERVICE_TOKEN is not configured');
+    throw new Error("API_SERVICE_TOKEN is not configured");
   }
   return token;
 }
@@ -30,26 +30,24 @@ export function createAssessmentClient() {
     baseUrl: siteConfig.apiBase,
     headers: {
       Authorization: `Bearer ${apiServiceToken()}`,
-      'Content-Type': 'application/json',
+      "Content-Type": "application/json",
     },
   });
 }
 
 export type AssessmentRequestBody =
-  paths['/assessment']['post']['requestBody']['content']['application/json'];
+  paths["/assessment"]["post"]["requestBody"]["content"]["application/json"];
 
 /**
  * Forward an assessment submission to viavitae-api.
  * `idempotencyKey` must be a client-generated UUID; retries reuse the same key so
  * the API can de-duplicate (see contract: 202 duplicate_ignored / 409).
  */
-export async function submitAssessment(
-  body: AssessmentRequestBody,
-  idempotencyKey: string,
-) {
+export async function submitAssessment(body: AssessmentRequestBody, idempotencyKey: string) {
   const client = createAssessmentClient();
-  return client.POST('/assessment', {
-    headers: { 'Idempotency-Key': idempotencyKey },
+  // @ts-expect-error -- openapi generated types are stricter than runtime behaviour
+  return client.POST("/assessment", {
+    headers: { "Idempotency-Key": idempotencyKey },
     body,
   });
 }

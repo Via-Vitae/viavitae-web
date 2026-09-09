@@ -1,6 +1,6 @@
-import { siteConfig } from '@/lib/config';
-import { CONTACT_CHANNELS, TIERS, TIER_ORDER } from '@/lib/constants';
-import type { Product, TierId } from '@/types/catalog';
+import { siteConfig } from "@/lib/config";
+import { CONTACT_CHANNELS, TIERS, TIER_ORDER } from "@/lib/constants";
+import type { Product, TierId } from "@/types/catalog";
 
 // Server-side JSON-LD renderers. Each builder returns a plain object that the
 // <JsonLd> component serialises into a <script type="application/ld+json"> tag.
@@ -16,7 +16,6 @@ export function JsonLd({ data }: { data: Json | Json[] }) {
     <>
       {graphs.map((graph, index) => (
         <script
-          // eslint-disable-next-line react/no-array-index-key -- static, ordered, never reordered
           key={index}
           type="application/ld+json"
           // Values are structured data we construct, not user input; JSON.stringify
@@ -31,23 +30,23 @@ export function JsonLd({ data }: { data: Json | Json[] }) {
 /** Serialise JSON-LD, escaping sequences that could break out of the <script>. */
 function safeJsonLd(graph: Json): string {
   return JSON.stringify(graph)
-    .replace(/</g, '\\u003c')
-    .replace(/>/g, '\\u003e')
-    .replace(/&/g, '\\u0026');
+    .replace(/</g, "\\u003c")
+    .replace(/>/g, "\\u003e")
+    .replace(/&/g, "\\u0026");
 }
 
 export function organizationJsonLd(): Json {
-  const contactPoints = CONTACT_CHANNELS.filter((channel) => channel.kind === 'email').map(
+  const contactPoints = CONTACT_CHANNELS.filter((channel) => channel.kind === "email").map(
     (channel) => ({
-      '@type': 'ContactPoint',
+      "@type": "ContactPoint",
       contactType: channel.id,
       email: channel.value,
-      availableLanguage: ['lt', 'en', 'ru'],
+      availableLanguage: ["lt", "en", "ru"],
     }),
   );
   return {
-    '@context': 'https://schema.org',
-    '@type': 'Organization',
+    "@context": "https://schema.org",
+    "@type": "Organization",
     name: siteConfig.name,
     legalName: siteConfig.legalEntity,
     url: siteConfig.url,
@@ -57,8 +56,8 @@ export function organizationJsonLd(): Json {
 
 export function websiteJsonLd(): Json {
   return {
-    '@context': 'https://schema.org',
-    '@type': 'WebSite',
+    "@context": "https://schema.org",
+    "@type": "WebSite",
     name: siteConfig.name,
     url: siteConfig.url,
   };
@@ -86,11 +85,11 @@ export function productJsonLd({
   name,
   description,
   tierName,
-  currency = 'EUR',
-  availability = 'https://schema.org/PreOrder',
+  currency = "EUR",
+  availability = "https://schema.org/PreOrder",
 }: ProductJsonLdInput): Json {
   const offers = product.tiers.map((tierId) => ({
-    '@type': 'Offer',
+    "@type": "Offer",
     name: tierName(tierId),
     price: TIERS[tierId].priceEur.toFixed(2),
     priceCurrency: currency,
@@ -98,12 +97,19 @@ export function productJsonLd({
     url: `${siteConfig.url}/product/${product.slug}`,
   }));
   return {
-    '@context': 'https://schema.org',
-    '@type': 'Product',
+    "@context": "https://schema.org",
+    "@type": "Product",
     name,
     description,
-    brand: { '@type': 'Brand', name: siteConfig.name },
-    offers: { '@type': 'AggregateOffer', lowPrice: TIERS[TIER_ORDER[0]!].priceEur, highPrice: TIERS[TIER_ORDER[TIER_ORDER.length - 1]!].priceEur, priceCurrency: currency, offerCount: offers.length, offers },
+    brand: { "@type": "Brand", name: siteConfig.name },
+    offers: {
+      "@type": "AggregateOffer",
+      lowPrice: TIERS[TIER_ORDER[0]!].priceEur,
+      highPrice: TIERS[TIER_ORDER[TIER_ORDER.length - 1]!].priceEur,
+      priceCurrency: currency,
+      offerCount: offers.length,
+      offers,
+    },
   };
 }
 
@@ -114,12 +120,12 @@ export interface FaqItem {
 
 export function faqJsonLd(items: readonly FaqItem[]): Json {
   return {
-    '@context': 'https://schema.org',
-    '@type': 'FAQPage',
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
     mainEntity: items.map((item) => ({
-      '@type': 'Question',
+      "@type": "Question",
       name: item.question,
-      acceptedAnswer: { '@type': 'Answer', text: item.answer },
+      acceptedAnswer: { "@type": "Answer", text: item.answer },
     })),
   };
 }
@@ -137,17 +143,17 @@ export interface ArticleJsonLdInput {
 
 export function articleJsonLd(input: ArticleJsonLdInput): Json {
   return {
-    '@context': 'https://schema.org',
-    '@type': 'Article',
+    "@context": "https://schema.org",
+    "@type": "Article",
     headline: input.headline,
     description: input.description,
-    author: { '@type': 'Organization', name: input.author },
+    author: { "@type": "Organization", name: input.author },
     datePublished: input.datePublished,
     ...(input.dateModified ? { dateModified: input.dateModified } : {}),
     ...(input.image ? { image: input.image } : {}),
     url: input.url,
     inLanguage: input.inLanguage,
-    publisher: { '@type': 'Organization', name: siteConfig.name },
+    publisher: { "@type": "Organization", name: siteConfig.name },
   };
 }
 
@@ -158,10 +164,10 @@ export interface Crumb {
 
 export function breadcrumbJsonLd(crumbs: readonly Crumb[]): Json {
   return {
-    '@context': 'https://schema.org',
-    '@type': 'BreadcrumbList',
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
     itemListElement: crumbs.map((crumb, index) => ({
-      '@type': 'ListItem',
+      "@type": "ListItem",
       position: index + 1,
       name: crumb.name,
       item: absolute(crumb.path),
@@ -170,5 +176,5 @@ export function breadcrumbJsonLd(crumbs: readonly Crumb[]): Json {
 }
 
 function absolute(path: string): string {
-  return `${siteConfig.url}${path.startsWith('/') ? path : `/${path}`}`;
+  return `${siteConfig.url}${path.startsWith("/") ? path : `/${path}`}`;
 }

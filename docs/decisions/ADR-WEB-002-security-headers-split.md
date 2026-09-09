@@ -8,7 +8,7 @@
 
 The v1.0 tree set security headers in **both** `next.config.ts` (CSP, HSTS, headers) and
 `middleware.ts` (security headers, CSP nonce). Two sources for the same header class drift
-apart, and a duplicated `Content-Security-Policy` header is enforced as the *intersection*
+apart, and a duplicated `Content-Security-Policy` header is enforced as the _intersection_
 of both policies by browsers — a subtle, hard-to-debug failure. A nonce-based CSP must be
 computed **per request**, which `next.config.ts` (build-time, static) cannot do.
 

@@ -58,17 +58,17 @@ paths:
         content:
           application/json:
             schema:
-              $ref: '#/components/schemas/AssessmentRequest'
+              $ref: "#/components/schemas/AssessmentRequest"
       responses:
-        '202':
+        "202":
           description: |
             Accepted — lead created, or already existed for this Idempotency-Key
             (status `duplicate_ignored`).
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/AssessmentAccepted'
-        '400':
+                $ref: "#/components/schemas/AssessmentAccepted"
+        "400":
           description: |
             Validation error, including a `consent_privacy` value that is not
             `true` (schema `const` violation) and a honeypot that is non-empty
@@ -76,22 +76,22 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/Error'
-        '409':
+                $ref: "#/components/schemas/Error"
+        "409":
           description: Idempotency-Key reused with a different request payload.
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/Error'
-        '422':
+                $ref: "#/components/schemas/Error"
+        "422":
           description: |
             Schema-valid but a business rule was violated (for example
             `organization_type: other_organization` with no `message`).
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/Error'
-        '429':
+                $ref: "#/components/schemas/Error"
+        "429":
           description: Rate limited.
           headers:
             Retry-After:
@@ -102,7 +102,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/Error'
+                $ref: "#/components/schemas/Error"
 components:
   schemas:
     OrganizationType:
@@ -146,24 +146,24 @@ components:
         - locale
       properties:
         organization_type:
-          $ref: '#/components/schemas/OrganizationType'
+          $ref: "#/components/schemas/OrganizationType"
         organization_name:
           type: string
           minLength: 2
           maxLength: 200
         current_site_url:
-          type: [string, 'null']
+          type: [string, "null"]
           format: uri
           maxLength: 2048
         current_status:
-          $ref: '#/components/schemas/CurrentSiteStatus'
+          $ref: "#/components/schemas/CurrentSiteStatus"
         goals:
           type: array
           maxItems: 5
           items:
-            $ref: '#/components/schemas/AssessmentGoal'
+            $ref: "#/components/schemas/AssessmentGoal"
         message:
-          type: [string, 'null']
+          type: [string, "null"]
           maxLength: 2000
         contact_name:
           type: string
@@ -174,7 +174,7 @@ components:
           format: email
           maxLength: 254
         contact_phone:
-          type: [string, 'null']
+          type: [string, "null"]
           pattern: '^\+?[0-9 ()-]{6,20}$'
           maxLength: 20
         preferred_language:
@@ -186,7 +186,7 @@ components:
           description: UI locale of the submitting form (analytics only).
           enum: [lt, en, ru]
         utm:
-          type: [object, 'null']
+          type: [object, "null"]
           additionalProperties: false
           properties:
             source: { type: string, maxLength: 120 }
@@ -233,7 +233,7 @@ components:
             confirmation_email_sent:
               type: boolean
             booking_url:
-              type: [string, 'null']
+              type: [string, "null"]
               format: uri
               description: Cal.com scheduling link, present only when consent_privacy is true.
     Error:

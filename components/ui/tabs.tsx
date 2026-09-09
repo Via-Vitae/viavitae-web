@@ -1,8 +1,8 @@
-'use client';
+"use client";
 
-import { useId, useRef, useState } from 'react';
-import type { KeyboardEvent, ReactNode } from 'react';
-import { cn } from '@/lib/utils';
+import { useId, useRef, useState } from "react";
+import type { KeyboardEvent, ReactNode } from "react";
+import { cn } from "@/lib/utils";
 
 // Accessible tabs (WAI-ARIA Tabs pattern): roving tabindex, Arrow/Home/End key
 // navigation, aria-selected, and panels labelled by their tab.
@@ -32,19 +32,19 @@ export function Tabs({ items, className, label }: TabsProps) {
   const onKeyDown = (event: KeyboardEvent<HTMLButtonElement>, index: number) => {
     const last = items.length - 1;
     switch (event.key) {
-      case 'ArrowRight':
+      case "ArrowRight":
         event.preventDefault();
         focusTab(index === last ? 0 : index + 1);
         break;
-      case 'ArrowLeft':
+      case "ArrowLeft":
         event.preventDefault();
         focusTab(index === 0 ? last : index - 1);
         break;
-      case 'Home':
+      case "Home":
         event.preventDefault();
         focusTab(0);
         break;
-      case 'End':
+      case "End":
         event.preventDefault();
         focusTab(last);
         break;
@@ -75,10 +75,10 @@ export function Tabs({ items, className, label }: TabsProps) {
               onClick={() => setActive(index)}
               onKeyDown={(event) => onKeyDown(event, index)}
               className={cn(
-                'px-4 py-2 text-body-md font-medium transition-colors motion-reduce:transition-none',
+                "px-4 py-2 text-body-md font-medium transition-colors motion-reduce:transition-none",
                 selected
-                  ? 'border-b-2 border-gold-500 text-text-primary'
-                  : 'border-b-2 border-transparent text-text-secondary hover:text-text-primary',
+                  ? "border-b-2 border-gold-500 text-text-primary"
+                  : "border-b-2 border-transparent text-text-secondary hover:text-text-primary",
               )}
             >
               {item.label}

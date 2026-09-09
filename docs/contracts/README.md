@@ -3,10 +3,10 @@
 These OpenAPI 3.1 files are the **single source of truth** for the request/response
 shapes shared between `viavitae-web` and `viavitae-api` (ADR-WEB-005).
 
-| File | Purpose | Web artefact |
-| --- | --- | --- |
+| File                      | Purpose                                 | Web artefact                  |
+| ------------------------- | --------------------------------------- | ----------------------------- |
 | `assessment.openapi.yaml` | Assessment funnel `POST /v1/assessment` | `src/generated/assessment.ts` |
-| `quotes.openapi.yaml` | Quote PDF `POST /v1/quotes` | `src/generated/quotes.ts` |
+| `quotes.openapi.yaml`     | Quote PDF `POST /v1/quotes`             | `src/generated/quotes.ts`     |
 
 ## Rules
 
