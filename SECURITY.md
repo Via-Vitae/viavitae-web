@@ -9,11 +9,11 @@ from us, and the protections we extend to good-faith researchers.
 **Please do not open a public GitHub issue.** Public disclosure before a fix is available
 puts users at risk.
 
-| Channel        | Detail                                                                                                                                                                                                       |
-| -------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
-| **Email**      | `journey4oflife+viavitae.security@gmail.com`                                                                                                                                                                                      |
-| **Encryption** | Optional. No PGP key is published for this mailbox yet. Use GitHub private vulnerability reporting (*Security* -> *Report a vulnerability*) as the access-controlled channel, or say in your report that you will send proof-of-concept material out of band and we will arrange it. |
-| **GitHub**     | Private vulnerability reporting is enabled on repositories in the `Via-Vitae` organisation. Use _Security_ -> _Report a vulnerability_ when available.                                                       |
+| Channel        | Detail                                                                                                                                                                                                                                                                               |
+| -------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
+| **Email**      | `journey4oflife+viavitae.security@gmail.com`                                                                                                                                                                                                                                         |
+| **Encryption** | Optional. No PGP key is published for this mailbox yet. Use GitHub private vulnerability reporting (_Security_ -> _Report a vulnerability_) as the access-controlled channel, or say in your report that you will send proof-of-concept material out of band and we will arrange it. |
+| **GitHub**     | Private vulnerability reporting is enabled on repositories in the `Via-Vitae` organisation. Use _Security_ -> _Report a vulnerability_ when available.                                                                                                                               |
 
 Include as much of the following as you can:
 
@@ -154,11 +154,11 @@ upgrade before reporting a finding that has already been fixed.
 
 ## Contact
 
-| Role                    | Contact                 |
-| ----------------------- | ----------------------- |
+| Role                    | Contact                                      |
+| ----------------------- | -------------------------------------------- |
 | Security team           | `journey4oflife+viavitae.security@gmail.com` |
-| Data Protection Officer | `journey4oflife+viavitae.privacy@gmail.com`      |
-| Legal                   | `journey4oflife+viavitae.billing@gmail.com`    |
+| Data Protection Officer | `journey4oflife+viavitae.privacy@gmail.com`  |
+| Legal                   | `journey4oflife+viavitae.billing@gmail.com`  |
 
 This policy is reviewed at least annually, and after any Critical severity incident.
 Changes are recorded in `CHANGELOG.md`.
