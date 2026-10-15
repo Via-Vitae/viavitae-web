@@ -37,7 +37,7 @@
     "@fontsource-variable/inter": "^5.1.0",
     "@via-vitae/brand": "workspace:*",
     "gray-matter": "^4.0.3",
-    "next": "^15.1.0",
+    "next": "^15.5.27",
     "next-intl": "^3.26.0",
     "next-mdx-remote": "^6.0.0",
     "openapi-fetch": "^0.13.0",
