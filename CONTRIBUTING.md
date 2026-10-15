@@ -236,12 +236,12 @@ not a penalty; it changes how a reviewer reads the diff.
 
 ## Getting help
 
-| Question                                   | Where                                                             |
-| ------------------------------------------ | ----------------------------------------------------------------- |
-| Workflow, review, branch or commit rules   | This document, then `#engineering`                                |
-| Architecture or design decisions           | The maintainer, and record the outcome as an ADR                  |
-| Personal data, DPIA, retention, processors | `journey4oflife+viavitae.privacy@gmail.com`                                                |
-| Licensing and third-party components       | `journey4oflife+viavitae.billing@gmail.com`                                              |
+| Question                                   | Where                                                                                  |
+| ------------------------------------------ | -------------------------------------------------------------------------------------- |
+| Workflow, review, branch or commit rules   | This document, then `#engineering`                                                     |
+| Architecture or design decisions           | The maintainer, and record the outcome as an ADR                                       |
+| Personal data, DPIA, retention, processors | `journey4oflife+viavitae.privacy@gmail.com`                                            |
+| Licensing and third-party components       | `journey4oflife+viavitae.billing@gmail.com`                                            |
 | Vulnerabilities and security incidents     | `journey4oflife+viavitae.security@gmail.com` — private, per [SECURITY.md](SECURITY.md) |
 
 ## Recognition

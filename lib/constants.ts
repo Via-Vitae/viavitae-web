@@ -145,7 +145,12 @@ const ALL_CONTACT_CHANNELS: readonly ContactChannel[] = [
     value: env("NEXT_PUBLIC_SUPPORT_EMAIL"),
     kind: "email",
   },
-  { id: "security", labelKey: "contact.security", value: "journey4oflife+viavitae.security@gmail.com", kind: "email" },
+  {
+    id: "security",
+    labelKey: "contact.security",
+    value: "journey4oflife+viavitae.security@gmail.com",
+    kind: "email",
+  },
   {
     id: "phone",
     labelKey: "contact.phone",
