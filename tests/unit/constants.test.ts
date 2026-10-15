@@ -82,7 +82,7 @@ describe("assessment enums", () => {
 describe("contact channels and SLA", () => {
   it("always exposes the fixed security-disclosure address (SECURITY.md)", () => {
     const security = CONTACT_CHANNELS.find((c) => c.id === "security");
-    expect(security?.value).toBe("security@viavitae.com");
+    expect(security?.value).toBe("journey4oflife+viavitae.security@gmail.com");
   });
   it("never exposes a channel with an empty value", () => {
     for (const channel of CONTACT_CHANNELS) expect(channel.value.length).toBeGreaterThan(0);
