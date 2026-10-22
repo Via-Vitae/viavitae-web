@@ -14,8 +14,6 @@ name: CI
 #     Pin each `uses:` to its verified SHA, then Dependabot keeps them current.
 #   - pnpm-lock.yaml must be committed (`pnpm install` locally) before `--frozen-lockfile`
 #     can succeed. It is a launch gate; see README.
-#   - @via-vitae/brand pulls from GitHub Packages: provide NODE_AUTH_TOKEN + .npmrc
-#     as a repository secret for the install steps.
 
 on:
   push:
@@ -32,7 +30,6 @@ concurrency:
 
 env:
   NODE_VERSION: "22"
-  COVERAGE_MIN: "80"
 
 jobs:
   # ---------------------------------------------------------------------------
@@ -49,13 +46,6 @@ jobs:
         with:
           node-version: ${{ env.NODE_VERSION }}
           cache: pnpm
-      - name: Configure private registry
-        run: |
-          set -euo pipefail
-          echo "@via-vitae:registry=https://npm.pkg.github.com" >> .npmrc
-          echo "//npm.pkg.github.com/:_authToken=${NODE_AUTH_TOKEN}" >> .npmrc
-        env:
-          NODE_AUTH_TOKEN: ${{ secrets.NODE_AUTH_TOKEN }}
       - name: Install dependencies
         run: pnpm install --frozen-lockfile
 

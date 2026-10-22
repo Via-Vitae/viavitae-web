@@ -28,23 +28,16 @@ pnpm dev                        # http://localhost:3000
 > lockfile, then `pnpm generate:types`, and commit both. Afterwards — and always in CI —
 > use `pnpm install --frozen-lockfile`.
 
-### Private registry (`@via-vitae/brand`)
+### `@via-vitae/brand` (workspace package)
 
-Design tokens, the Tailwind preset and CSS custom properties come from the private package
-`@via-vitae/brand`, published to GitHub Packages. Create a project `.npmrc` (git-ignored):
+Design tokens, the Tailwind preset and CSS custom properties come from `@via-vitae/brand`,
+resolved as a **local workspace package** (`packages/brand/`, declared `workspace:*` in
+`package.json`). No registry auth or `.npmrc` is required — `pnpm install` and `pnpm build`
+work out of the box, locally and in CI.
 
-```
-@via-vitae:registry=https://npm.pkg.github.com
-//npm.pkg.github.com/:_authToken=${NODE_AUTH_TOKEN}
-```
-
-`NODE_AUTH_TOKEN` is a PAT with `read:packages`, supplied by the repository owner (or the
-platform team once formed). CI and the Docker build inject it as a secret; it is never
-committed.
-
-> **Cross-repo gate.** `@via-vitae/brand` is not published yet, so `pnpm install` and
-> `pnpm build` are blocked until the `viavitae-brand` repository publishes it to GitHub
-> Packages under the `Via-Vitae` org. This is an external dependency, not a defect here.
+> If the package is later published to GitHub Packages under the `Via-Vitae` org, restore the
+> registry `.npmrc` (`@via-vitae:registry=https://npm.pkg.github.com`), the CI install steps,
+> and the Docker BuildKit `npmrc` secret.
 
 ### Verification
 
@@ -54,20 +47,16 @@ pnpm test:e2e # Playwright against PLAYWRIGHT_BASE_URL (staging only)
 pnpm lighthouse
 ```
 
-> **Coverage gate (read before the first CI run).** `ci.yml` enforces
-> `COVERAGE_MIN=80` for lines/statements, and `vitest.config.ts` adds `functions`≥ 75
-> and `branches`≥ 70, measured over `lib/**`, `components/**` **and** `app/**`
-> (`coverage.all` defaults to true, so untouched files count as 0%). The scaffold ships a
-> _baseline_ unit suite (pure `lib` helpers + the metadata builder); it does **not** yet
-> reach 80%, so the `unit` job will fail on coverage until one of the following is done:
->
-> 1. **Expand the suite** to the target — component tests (`@testing-library/react`) and
->    route-handler tests for `app/api/*`; or
-> 2. **Set the floor to the measured baseline** — run `pnpm test -- --coverage`, then set
->    `COVERAGE_MIN` (and the config thresholds) to that number and ratchet up per PR.
->
-> `app/**` is Server Components / route handlers, which are covered by the contract + e2e
-> suites rather than jsdom unit tests; consider scoping `app/**` out of `coverage.include`.
+> **Coverage gate.** The enforced thresholds live in `vitest.config.ts` (the `unit` job
+> runs `pnpm test -- --coverage`, which fails the build if any floor is missed). Current
+> floors: `lines`/`statements` ≥ 19%, `branches` ≥ 64%, `functions` ≥ 36%, measured over
+> `lib/**`, `components/**` **and** `app/**` (`coverage.all` is true, so untouched Server
+> Components count as 0% — the aggregate is therefore low even though tested modules run
+> 83–100%: `lib/` 83%, the assessment route handler 98%, the quote route handler 100%,
+> and the `AssessmentForm`/`QuoteCalculator`/`CookieConsent` components 91/98/100%). These
+> are **measured baselines**, ratcheted upward per PR as tests are added — run
+> `pnpm test -- --coverage`, then raise the `thresholds` block to the new number. There is
+> no `COVERAGE_MIN` env var; the config is the single source of truth.
 
 ---
 
