@@ -1,9 +1,11 @@
 import { defineConfig } from "vitest/config";
 import path from "node:path";
+import react from "@vitejs/plugin-react";
 
 // Unit + component tests. Contract tests live in tests/contract and share this
 // config (run via `pnpm test:contract`). E2E/a11y run under Playwright instead.
 export default defineConfig({
+  plugins: [react()],
   resolve: {
     alias: {
       "@": path.resolve(import.meta.dirname),
@@ -19,7 +21,13 @@ export default defineConfig({
       reporter: ["text", "lcov"],
       include: ["lib/**/*.ts", "components/**/*.{ts,tsx}", "app/**/*.{ts,tsx}"],
       exclude: ["src/generated/**", "**/*.d.ts", "**/{layouts,pages}.ts", "app/**/layout.tsx"],
-      // TODO: re-enable thresholds once test coverage catches up (scaffold stage).
+      // Thresholds ratcheted up after API route + lib/ + component tests.
+      thresholds: {
+        lines: 10.5,
+        statements: 10.5,
+        branches: 59,
+        functions: 32,
+      },
     },
   },
 });
