@@ -29,7 +29,7 @@ describe("CookieConsent", () => {
   });
 
   it("renders nothing when consent cookie exists", () => {
-    document.cookie = "vv_consent={\"analytics\":true}; path=/";
+    document.cookie = 'vv_consent={"analytics":true}; path=/';
     const { container } = render(<CookieConsent />);
     expect(container.firstChild).toBeNull();
   });
