@@ -117,8 +117,10 @@ jobs:
       - name: Install Argo CD CLI
         run: |
           set -euo pipefail
-          # Pinned to a release tag; replace with a checksum-verified binary in prod.
-          curl -sSL -o argocd https://github.com/argoproj/argo-cd/releases/latest/download/argocd-linux-amd64
+          # Pinned to a specific release for reproducibility.
+          # TODO: Add checksum verification for supply-chain security.
+          ARGOCD_VERSION="v2.13.3"
+          curl -sSL -o argocd "https://github.com/argoproj/argo-cd/releases/download/${ARGOCD_VERSION}/argocd-linux-amd64"
           chmod +x argocd && sudo mv argocd /usr/local/bin/argocd
           argocd version --client
 
