@@ -1,12 +1,8 @@
 # syntax=docker/dockerfile:1
 # viavitae-web — multi-stage build: deps -> build -> standalone runtime.
 # Produces a minimal, non-root runtime image from Next.js `output: standalone`.
-#
-# Private registry: @via-vitae/brand is published to GitHub Packages. Pass the
-# auth token as a BuildKit secret at build time; it is never baked into a layer:
-#   DOCKER_BUILDKIT=1 docker build \
-#     --secret id=npmrc,src=.npmrc.docker \
-#     -t viavitae-web .
+# @via-vitae/brand is a local workspace package (packages/brand), so no registry
+# auth or BuildKit npmrc secret is needed at build time.
 
 ARG NODE_VERSION=22-alpine
 
@@ -16,9 +12,7 @@ RUN corepack enable
 WORKDIR /app
 # Install-only files first for layer caching.
 COPY package.json pnpm-lock.yaml ./
-# The private-registry .npmrc is mounted as a secret, not copied.
-RUN --mount=type=secret,id=npmrc,target=/root/.npmrc \
-    pnpm install --frozen-lockfile
+RUN pnpm install --frozen-lockfile
 
 # --- 2. build: generate contract types and build the app ---------------------
 FROM node:${NODE_VERSION} AS build

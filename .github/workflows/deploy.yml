@@ -9,7 +9,6 @@ name: Deploy
 # talks to Kubernetes directly. It asks Argo CD to sync the app to the new image tag.
 #
 # SECRETS REQUIRED (never hardcoded — QODER rule 7):
-#   NODE_AUTH_TOKEN   GitHub Packages read token, used to pull @via-vitae/brand at build.
 #   ARGOCD_SERVER     Argo CD API endpoint (EEA-hosted control plane).
 #   ARGOCD_AUTH_TOKEN Argo CD auth token scoped to the web app only (least privilege).
 #
@@ -78,16 +77,6 @@ jobs:
             type=sha
             type=raw,value=${{ github.sha }}
 
-      - name: Prepare private-registry npmrc (build secret)
-        run: |
-          set -euo pipefail
-          {
-            echo "@via-vitae:registry=https://npm.pkg.github.com"
-            echo "//npm.pkg.github.com/:_authToken=${NODE_AUTH_TOKEN}"
-          } > .npmrc.docker
-        env:
-          NODE_AUTH_TOKEN: ${{ secrets.NODE_AUTH_TOKEN }}
-
       - name: Build and push
         uses: docker/build-push-action@c3c9e263c25d99ce0380d002d59b67737d91b0dc # v7.4.0
         with:
@@ -97,14 +86,8 @@ jobs:
           labels: ${{ steps.meta.outputs.labels }}
           cache-from: type=gha
           cache-to: type=gha,mode=max
-          secrets: |
-            npmrc=${{ github.workspace }}/.npmrc.docker
           build-args: |
             NEXT_PUBLIC_SITE_URL=${{ github.event_name == 'workflow_dispatch' && (github.event.inputs.environment == 'production' && 'https://viavitae.com' || 'https://staging.viavitae.com') || 'https://viavitae.com' }}
-
-      - name: Shred build secret
-        if: always()
-        run: shred -u .npmrc.docker 2>/dev/null || rm -f .npmrc.docker
 
   argocd-sync:
     name: Argo CD sync
