@@ -21,12 +21,12 @@ export default defineConfig({
       reporter: ["text", "lcov"],
       include: ["lib/**/*.ts", "components/**/*.{ts,tsx}", "app/**/*.{ts,tsx}"],
       exclude: ["src/generated/**", "**/*.d.ts", "**/{layouts,pages}.ts", "app/**/layout.tsx"],
-      // Thresholds ratcheted up after API route + lib/ + component tests.
+      // Thresholds ratcheted up after API route + lib/ + church component tests.
       thresholds: {
-        lines: 10.5,
-        statements: 10.5,
-        branches: 59,
-        functions: 32,
+        lines: 19,
+        statements: 19,
+        branches: 64,
+        functions: 36,
       },
     },
   },
