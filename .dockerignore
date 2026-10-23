@@ -17,6 +17,5 @@ test-results
 Dockerfile
 .dockerignore
 README.md
-docs
 tests
 lighthouse
