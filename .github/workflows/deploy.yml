@@ -88,6 +88,10 @@ jobs:
           cache-to: type=gha,mode=max
           build-args: |
             NEXT_PUBLIC_SITE_URL=${{ github.event_name == 'workflow_dispatch' && (github.event.inputs.environment == 'production' && 'https://viavitae.com' || 'https://staging.viavitae.com') || 'https://viavitae.com' }}
+            NEXT_PUBLIC_API_URL=${{ github.event_name == 'workflow_dispatch' && github.event.inputs.environment == 'staging' && 'https://api-staging.viavitae.com/v1' || 'https://api.viavitae.com/v1' }}
+            NEXT_PUBLIC_DEMO_URL=${{ vars.NEXT_PUBLIC_DEMO_URL }}
+            NEXT_PUBLIC_MATOMO_URL=${{ vars.NEXT_PUBLIC_MATOMO_URL }}
+            NEXT_PUBLIC_MATOMO_SITE_ID=${{ vars.NEXT_PUBLIC_MATOMO_SITE_ID }}
 
   argocd-sync:
     name: Argo CD sync

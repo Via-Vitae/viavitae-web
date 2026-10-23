@@ -26,6 +26,15 @@ ARG NEXT_PUBLIC_API_URL
 ARG NEXT_PUBLIC_DEMO_URL
 ARG NEXT_PUBLIC_MATOMO_URL
 ARG NEXT_PUBLIC_MATOMO_SITE_ID
+# Promote build args into the environment so `next build` inlines them. A Docker
+# ARG alone is NOT visible to process.env inside RUN, so without this the values
+# silently fall back to lib/config.ts defaults (localhost) in the deployed image.
+# NEXT_PUBLIC_* are statically replaced in both the client and server bundles.
+ENV NEXT_PUBLIC_SITE_URL=$NEXT_PUBLIC_SITE_URL \
+    NEXT_PUBLIC_API_URL=$NEXT_PUBLIC_API_URL \
+    NEXT_PUBLIC_DEMO_URL=$NEXT_PUBLIC_DEMO_URL \
+    NEXT_PUBLIC_MATOMO_URL=$NEXT_PUBLIC_MATOMO_URL \
+    NEXT_PUBLIC_MATOMO_SITE_ID=$NEXT_PUBLIC_MATOMO_SITE_ID
 ENV NEXT_TELEMETRY_DISABLED=1
 # `prebuild` runs `generate:types` (openapi-typescript) before `next build`.
 RUN pnpm build
